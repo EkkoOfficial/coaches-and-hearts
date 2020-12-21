@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<!-- ***************************************************************
+*     Diese Datei gehört zum  WebEng-Kurs an der HNU
+*     Copyright (c) by Andrea Kohlhase                         
+*     Licensed under GPL3, see http://www.gnu.org/licenses/gpl.html
+******************************************************************** -->
+<html>
+<head>
+	<title>dyn (Login): meinbuch-KAUFEN</title>
+    <!-- Bild im Reiter -->
+    <link rel="shortcut icon" href="pics/favicon-16x16.png">
+    <!-- Bestimme den vom Browser zu benutzenden Zeichensatz -->
+	<meta charset="UTF-8" />
+    <link rel="stylesheet" type="text/css"
+          href="stylesheets/buchladen.css"/>
+    <script type="text/javascript" 
+            src="client-js/jquery-3.5.1.min.js"></script>
+    <style>
+        .waehrung::after{
+            content:" Euro";
+        }
+        .bildknopf{
+            height:40px;
+            background-color:orangered;
+            border:0px solid green;
+            margin:4px;
+        }    
+    </style>
+</head>
+
+<body>
+    <div id="leererBlock"></div>
+    <header>
+        <a href="buchladen-dyn-login-index.html">
+            <img id="logo" src="pics/buchladen-logo.png" alt="logo"/>
+        </a>
+        <nav class="navigation">
+            <ul>
+                <li><a href="buchladen-dyn-login-kaufen.html"
+                       class="active">Kaufen</a></li>
+                <li><a href="buchladen-dyn-login-verkaufen.html">Verkaufen</a></li>
+            </ul>
+        </nav>
+        <button id="logKnopf">Einloggen</button>
+    </header>
+    
+    <br/>
+    <h1>meinBuch (dyn. Klickmodell mit Login)</h1>
+    <h3>Ein Buchladen ohne Werbung</h3>
+    <div id="main">
+            
+        <!-- EINGABEMASKE -->
+        <form id="eingabe"  class="view" action="">
+            <h2>Buch neuanlegen/ändern</h2>
+            <div class="formular">
+                <label>Buchtitel</label>
+                <input id="eingabeTitel" type="text" placeholder="Titel eingeben"/>  
+            </div>
+            <div class="formular">
+                <label>Autor</label>
+                <input id="eingabeAutor" type="text" placeholder="Autor eingeben"/>  
+            </div>
+            <div class="formular">
+                <label>Preis</label>
+                <input id="eingabePreis" type="text" placeholder="Preis eingeben"/>  
+            </div>
+            <div class="formular">
+                <label>Zustand</label>
+                <input id="eingabeZustand" type="text" placeholder="Zustand eingeben"/>    
+            </div>
+            <input type="submit" value="Speichern"/>
+        </form>
+        
+        <!--LISTENANSICHT -->
+        <div id="liste" class="view">
+            <h2>Folgende Bücher sind verfügbar:</h2>
+            <div>
+                <!-- Liste aller Bücher -->         
+                <ul id="buecher">                    
+                </ul>
+            </div>
+        </div>
+	</div>
+    
+         
+    <!-- LOGINMASKE -->
+    <div id="loginMaske" class="view">
+        <h2>Logge dich ein!</h2>
+        <form action="javascript:einloggen()" method="post">
+            <div class="formular">
+                <label>Benutzername</label>
+                <input type="text" placeholder="Benutzernamen eingeben"/>  
+            </div>
+            <div class="formular">
+                <label>Passwort</label>
+                <input type="password" placeholder="Passwort eingeben"/>  
+            </div>
+            <div id="rolle">
+                <input type="radio" name="rolle" value="admin"/>als Admin
+                <input type="radio" name="rolle" value="mitarbeiter"/>als Mitarbeiter
+            </div>
+            <input type="submit" value="Login"/>
+        </form>    
+    </div>
+    
+    <script type="text/javascript">
+        //Die Datenstruktur eines Buchs
+		function Buch (titel, autor, zustand, preis){
+            console.log("Klasse Buch mit " 
+                        +titel + ", "
+                        +autor + ", "
+                        +zustand + ", "
+                        +preis)
+			this.titel=titel;
+			this.autor = autor;
+            this.zustand=zustand;
+            this.preis=preis;
+		}
+		//Dieses Array dient der Speicherung aller Bücher.
+		//Aber es ist nicht persistent und wird später durch eine Tabelle in einer Datenbank ersetzt!
+		var arrBuecher = new Array();
+		arrBuecher[0] = new Buch('Design 1', 'Müller','neu', 12);
+		arrBuecher[1] = new Buch('Web-Engineering', 'Maier', 'neu', 14);
+		arrBuecher[2] = new Buch('Mediendesign', 'Schmid','gebraucht',8);
+		
+        /* CRUD-FUNKTIONEN */
+        //ANLEGEN und AENDERN
+        function buchBearbeiten(index){
+            console.log("Funktion buchBearbeiten mit " + index);
+            //Lesen der Benutzereingaben
+            var titel=$("#eingabeTitel").val();
+            var autor=$("#eingabeAutor").val();
+            var zustand=$("#eingabeZustand").val();
+            var preis=$("#eingabePreis").val();
+            
+            if(index!="" ){
+                //ändern
+                console.log("\t ändern mit " + index);
+                arrBuecher[index]= new Buch(titel, autor, zustand, preis);
+            } else {
+                //anlegen
+                console.log("\t anlegen");
+                //Die Länge des Arrays ist gerade immer genau 
+                // um eins größer als der max. Index des Arrays
+                arrBuecher[arrBuecher.length] = new Buch(titel, autor,zustand, preis);
+            }
+            zeigeListenansicht();
+        }
+        //ANZEIGEN
+        function buecherAnzeigen(ort){
+            //wird aufgerufen in zeigeListenansicht
+			console.log('Funktion buecherAnzeigen: ' + ort);
+			
+            //Anlegen-Knopf erzeugen, wenn er noch nicht existiert
+            if($("#buch").length == 0){
+                console.log("\t Anlegeknopf wird erzeugt");
+                $("#liste").prepend(
+                    erzeugeButton("", 
+                       "zeigeEingabemaske", "pics/glyphicons-7-user-add.png",
+                       "adminButton")
+                )
+            }
+            
+            //Liste der Bücher leeren
+			$('#' + ort).empty();           
+			//Array-Schleife: für jeden Eintrag Erzeugung eines Buch-Eintrags in die Listenansicht
+			for (var i = 0; i < arrBuecher.length; i++) {
+				erzeugeBuchElem(i, ort);
+			}
+        }
+        //LOESCHEN
+        function buchLoeschen(index){
+            //wird aufgerufen in der zeigeSicherheitsabfrage
+            console.log("Funktion buchLoeschen mit " + index);
+            arrBuecher.splice(index,1);
+        }
+        
+        
+        //HILFSFUNKTIONEN
+        function erzeugeBuchElem(index, ort){
+            console.log("Funktion erzeugeBuchElem mit " + index + ", " + ort);
+            /*Erzeugung eines HTML-Strings für eine Zeile
+              durch Erzeugen eines HTML-Fragments für ein Buch und dazu jeweils ein Ändern- und ein Löschknopf
+			  und Anhängen des Strings als neues Element im ort-Tag
+            */
+			$("#" + ort).append(
+				  '<li id="' + index + '">' 
+				    + erzeugeBuchInhalt(index) 
+                    + erzeugeButton(index, "zeigeEingabemaske", "pics/glyphicons-31-pencil.png", " adminButton maButton")
+
+                    + erzeugeButton(index, "zeigeSicherheitsabfrage", "pics/glyphicons-17-bin.png", " adminButton")
+                    + '</li>'
+            );
+		}      
+        function erzeugeBuchInhalt(index){
+            console.log("Funktion erzeugeBuchInhalt mit " + index);
+            /* In dieser Funktion wird jeweils der Arrayeintrag der index-Stelle als Ast erzeugt (der später in die Baumstruktur des DOM als Ast gehängt werden kann)
+            */
+            var buch="";
+            //Erzeuge Titel
+            var titel="";
+            titel="<label>Titel</label>";
+            titel=titel + "<div>" + arrBuecher[index].titel + "</div>";
+                    
+            //Erzeuge Zustand
+            var zustand="";
+            zustand="<label>Zustand</label>";
+            zustand=zustand + "<div>" + arrBuecher[index].zustand + "</div>";
+            
+            //Erzeuge Preis
+            var preis=0;
+            preis="<label>Preis</label>";
+            preis=preis + "<div class='waehrung'>" + arrBuecher[index].preis + "</div>";
+            
+            //Erzeuge Autor
+            var autor="";
+            autor="<label>Autor</label>";
+            autor=autor + "<div>" + arrBuecher[index].autor + "</div>";
+            
+            buch =    "<div>" + titel   + "</div>"
+                    + "<div>" + autor   + "</div>"
+                    + "<div>" + zustand + "</div>"
+                    + "<div>" + preis   + "</div>";
+            
+            return buch;
+        }  
+        function erzeugeButton(id, func,       bildpfad,berechtigungsKlassen){
+            console.log("Funktion erzeugeButton mit " 
+                          + id + ", "
+                          + func + ", "
+                          + bildpfad + ", "
+                          + berechtigungsKlassen
+                       );
+            var vButton=""; 
+            //Das mit \ "maskierte" Anführungszeichen ist die dritte verschachtelte Ebene für Anführungszeichen
+            vButton="<img id='buch" + id + "'"
+                   + "onclick='" 
+                   + func + "(\"" + id + "\")'"
+                   + "class='bildknopf "+berechtigungsKlassen+"'"
+                   + "src='" + bildpfad + "'/>";            
+            return vButton;
+        }        
+        function zeigeEingabemaske(index){
+			console.log('zeigeEingabemaske ' + index);
+            
+            //Alle Eingabefelder leeren
+            $("#eingabe input[type='text']").val("");
+                      
+            //Wenn der index-Parameter ungleich dem leeren String ist ...
+            if(index!=""){
+                console.log("\t ändern");
+                $("#eingabe h2").html("Ändern Sie die Daten des Buchs");
+                
+                //Daten in die Eingabemaske eintragen
+                $("#eingabeTitel").val(arrBuecher[index].titel);
+                $("#eingabeZustand").val(arrBuecher[index].zustand);
+                $("#eingabeAutor").val(arrBuecher[index].autor);
+                $("#eingabePreis").val(arrBuecher[index].preis);
+                $("#eingabe").attr("action","javascript:buchBearbeiten('" + index +"')");
+            } else {
+                console.log("\t anlegen");
+                $("#eingabe h2").html("Erweitern Sie das Angebot um ein Buch"); $("#eingabe").attr("action","javascript:buchBearbeiten('')");
+            }
+            //Zum Abschluss nur Eingabemaske sichtbar machen
+            $(".view").hide();
+            $("#eingabe").show();
+            
+		}        
+        function zeigeSicherheitsabfrage(index){
+            console.log("Funktion zeigeSicherheitsabfrage mit " + index);
+            //Wenn Benutzer auf OK klickt, dann wird der Wahrheitswert
+            // TRUE zurückgegeben
+            if(confirm("Wollen Sie wirklich löschen?")){
+                buchLoeschen(index);
+                zeigeListenansicht();
+            }
+        }       
+        function zeigeLoginmaske(){
+            console.log('zeigeLoginmaske');
+            //nur Loginansicht sichtbar machen
+            $(".view").hide();
+            $("#loginMaske").show();
+        }
+        function zeigeListenansicht(){
+            console.log('Funktion zeigeListenansicht');
+            //nur Standardsicht sichtbar machen
+            $(".view").hide();
+            $("#liste").show();
+            
+            buecherAnzeigen("buecher");
+            checkeBerechtigungen();
+        }
+        
+        
+        // ********* FUNKTIONEN ZUM LOGIN UND LOGOUT **********
+        function checkeBerechtigungen(){
+           console.log("Funktion checkeBerechtigungen");
+            //Alle Knöpfe auf unsichtbar setzen
+            $(".adminButton, .maButton").hide();
+            
+            var aktuelleRolle=leseRolle();
+            if(aktuelleRolle=='admin'){
+                console.log("\t admin");
+                $(".adminButton").show();
+            } else if(aktuelleRolle=='mitarbeiter'){
+                console.log("\t mitabeiter");
+                $(".maButton").show();
+            } else {
+                console.log("\t nicht eingeloggt");
+            } 
+             
+        }
+        function leseRolle(){
+            console.log("Funktion leseRolle");
+            return $("input[name='rolle']:checked").val();
+        }
+        function einloggen(){
+            console.log("Funktion einloggen mit " + rolle);
+            
+            //Loggen-Knopf setzen
+            setLoginButton('ausloggen');
+            //Berechtigungen anpassen
+            checkeBerechtigungen();
+            //Richtige Ansicht nach dem Einloggen anzeigen
+            zeigeListenansicht();
+        }
+        function ausloggen(){
+            console.log("Funktion ausloggen");
+            
+            //Ausloggen
+            $("input[name='rolle']").prop('checked', false);
+            //Berechtigungen anpassen
+            checkeBerechtigungen();
+            //Loggen-Knopf setzen
+            setLogoutButton('zeigeLoginmaske');
+            //Richtige Ansicht nach dem Ausloggen anzeigen
+            zeigeListenansicht();
+        }
+        function setLoginButton(func){
+            console.log("Funktion setLoginButton mit " + func)
+            //Loggen-Knopf zu Logout-Knopf machen
+            $("#logKnopf").html("Ausloggen")
+                          .attr("onclick", func + "()");
+        }
+        function setLogoutButton(func){
+            console.log("Funktion setLogoutButton mit " + func)
+            //Loggen-Knopf zu Login-Knopf machen
+            $("#logKnopf").html("Einloggen")
+                          .attr("onclick", func + "()");
+        }
+    
+        
+        
+        //Zustand beim Aufrufen der Webseite
+        ausloggen();
+        
+    </script>
+</body>
+</html>
+
+
+
+
+
