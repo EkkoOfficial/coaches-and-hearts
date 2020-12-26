@@ -2,7 +2,8 @@ require('express-orm-mvc')({
     mode: 'development',           //default: production
     path: __dirname,               //default: auto detect
     express: require('express'),   //specify your express version
-    orm: require('orm')            //specify your orm version
+    orm: require('orm')        ,    //specify your orm version
+
 },
 function(error, mvc) {
     if(error)
