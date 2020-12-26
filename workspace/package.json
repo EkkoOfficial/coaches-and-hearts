@@ -2,10 +2,11 @@
   "name": "workspace",
   "version": "1.0.0",
   "description": "",
-  "main": "server.js",
+  "main": "./workspace_sisaalaz/server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "serve": "node ./workspace_sisaalaz/server.js"
+    "serve": "node ./workspace_sisaalaz/server.js",
+    "serve:dev": "nodemon @serve"
   },
   "author": "",
   "license": "ISC",
@@ -22,5 +23,8 @@
     "path": "^0.12.7",
     "pg": "^8.5.1",
     "pg-hstore": "^2.3.3"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.6"
   }
 }
