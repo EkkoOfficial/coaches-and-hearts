@@ -1,0 +1,96 @@
+/*<!-- ***************************************************************
+* Diese Datei gehört zum imuk3-WebEng-Musterprojekt                *
+* Copyright (c) by Projektgruppe 6                                 *                                  *
+* Licensed under GPL3, see http://www.gnu.org/licenses/gpl.html    *
+******************************************************************** -->*/
+
+/* ********** GESTALTUNGSRASTER mit GRID-Layout der kompletten Seite  *************/
+paket {
+    display: grid;
+    grid-template-columns: 10% 10% 20% 20% 20% 10% 10%;
+    grid-template-rows: auto;
+    /* Zeilenhöhe wird automatisch ermittelt*/
+    grid-template-areas:
+        "nav nav nav nav nav nav nav "
+        "main main main main main main main "
+        "footer footer footer footer footer footer";
+}
+
+/***********main *************/
+
+.grid-container {
+    display: grid;
+    grid-template-columns: 33% 33%;
+
+}
+.grid-container .col-left {
+    padding: 1.25em;
+}
+
+.grid-container > div {
+
+}
+.grid-container .col-right {
+
+}
+
+
+
+.btn-test{
+    padding: 10px 15px;
+    background-color: var(--bg-color-secondary);
+    border-radius: 5px;
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.btn-test2{
+    padding: 10px 15px;
+    background-color: var(--signal-color);
+    border-radius: 5px;
+    color: #ffffff;
+    text-decoration: none;
+}
+
+
+.btn-test3{
+    padding: 10px 15px;
+    background-color: var(--secondary-signal-color);
+    border-radius: 5px;
+    color: #ffffff;
+    text-decoration: none;
+}
+
+
+
+
+
+
+
+/* Backend*/
+
+.grid-table{
+    display: grid;
+
+}
+
+.table {
+    width: 100%;
+    text-align: left;
+    border-collapse: collapse;
+    border: 0;
+}
+
+.table > thead > tr {
+    background-color: lightblue;
+}
+
+.table > tbody > tr:nth-child(2n) {
+    background-color: lightblue;
+}
+
+.container {
+    width: 100%;
+    max-width: 1300px;
+    margin: 0 auto;
+}

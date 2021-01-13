@@ -245,7 +245,7 @@ function checkLogin(req) {
 }
 
 function checkRole(wanted, roleArray) {
-    console.log("Aufruf checkRole");
+    console.log("Aufruf checkRolle");
     if (!roleArray) return false;
     if (wanted == "") return true;
     var returnValue = false;

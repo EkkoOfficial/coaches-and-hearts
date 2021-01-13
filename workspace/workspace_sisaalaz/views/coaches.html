@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<!-- ***************************************************************
+*    Diese Datei gehört zum  WebEng-Kurs an der HNU
+*    Copyright (c) by Projektgruppe 6                     
+*    Licensed under GPL3, see http://www.gnu.org/licenses/gpl.html
+******************************************************************** -->
+<html>
+<head>
+    <title>Aktionen anlegen</title>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="stylesheets/css-style.css">
+    <link rel="stylesheet" href="stylesheets/css-style-coaches.css">
+    <link rel="script" href="coaches-js/coach-anmeldung.js">
+    <link rel="script" href="coaches-js/coach-actions.js">
+    <link rel="script" href="coaches-js/coach-rules.js">
+    <link rel="script" href="coaches-js/coach-login.js">
+    <link rel="script" href="coaches-js/coach-view.js">
+
+
+
+
+
+</head>
+
+<body >
+
+
+
+
+<!-- header -->
+<header>
+    <nav class="navigation">
+
+        <a href="index.html"> <img id="logo" src="pics/logo_StrongHeart.png" /> </a>
+        <ul>
+
+            <li><a href="Waren-dyn.html">Shop</a></li>
+            <li><a href="aktionen.html" class="active">Aktionen</a></li>
+            <li><a href="teammitglieder.html">Teammitglieder</a></li>
+            <li><a href="partner-dyn-modell.html">Partner</a></li>
+            <li><a href="Kontaktanfragen.html">Kontaktanfragen</a></li>
+            <li><a href="coaches.html">Coaches Anmeldungen</a></li>
+            <li><a href="umbau.html">Showcase Videos</a></li>
+            <li>
+                <button id="logKnopf">Einloggen</button>
+            </li>
+        </ul>
+
+    </nav>
+
+</header>
+
+
+//coaches Main-Contents
+<div id="mainCoaches">
+    <div class="platzhalternav"> </div>
+    <div id="liste" class="view item-Listenansicht">
+        <div>
+            <ul id="coaches">
+
+            </ul>
+        </div>
+    </div>
+
+
+
+
+    <!-- LOGINMASKE -->
+
+    <div id="loginMaske" class="view">
+
+        <form action="javascript:einloggen()" method="post" id="validateForm">
+            <div id="logingrid">
+
+                <h2 class="ueberschriftlogin">Logg dich ein!</h2>
+
+                <div class="item-labelBenutzer"><label>Benutzername</label></div>
+                <input  id="item-eingabeBenutzer" type="text" name='benutzernameEingeben' placeholder="Benutzernamen eingeben" />
+
+                <div class="item-labelPasswort"> <label>Passwort</label></div>
+                <input id="password" class="item-eingabePasswort" type="password" name='passwortEingeben' placeholder="Passwort eingeben" />
+
+                <input class="loginButton btn-grey" type="submit" value="Login" onclick="savelogin()" />
+
+            </div>
+
+
+        </form>
+        <div class="platzhalter"></div>
+    </div>
+
+
+
+    <!-- EINGABEMASKE -->
+    <button class="gr eingabeButtonzurueck btn-grey"  onclick="coachesAnzeigen('coaches')" >zurÃ¼ck</button>
+    <form id="eingabe" class="view" action="">
+
+        <div class="item-empfaenger labelstyle"> <label>Empfaenger</label></div>
+        <input class="gr" id="eingabeEmpfaenger" type="text" name='empfaenger' placeholder="Empfaenger eingeben" />
+
+        <div class="item-betrag labelstyle"> <label>Betrag</label></div>
+        <input class="gr" id="eingabeBetrag" type="text" name='betrag' placeholder="Betrag eingeben" />
+
+        <div class="item-quittung labelstyle"> <label>Quittung</label></div>
+        <input class="gr" id="eingabeQuittung" type="text" name='quittung' placeholder="Quittung eingeben" />
+
+        <div class="item-anrede labelstyle"> <label>Anrede</label></div>
+        <input class="gr" id="eingabeAnrede" type="text" name='anrede' placeholder="Anrede eingeben" />
+
+        <div class="item-titel labelstyle"> <label>Empfaenger</label></div>
+        <input class="gr" id="eingabeTitel" type="text" name='titel' placeholder="Titel eingeben" />
+
+        <div class="item-betrag labelstyle"> <label>Betrag</label></div>
+        <input class="gr" id="eingabeVorname" type="text" name='vorname' placeholder="Vorname eingeben" />
+
+        <div class="item-quittung labelstyle"> <label>Quittung</label></div>
+        <input class="gr" id="eingabeNachname" type="text" name='nachname' placeholder="Nachname eingeben" />
+
+        <div class="item-firma labelstyle"> <label>Firma</label></div>
+        <input class="gr" id="eingabeFirma" type="text" name='firma' placeholder="Firma eingeben" />
+
+        <div class="item-firmenzusatz labelstyle"> <label>Firmenzusatz</label></div>
+        <input class="gr" id="eingabeFirmenzusatz" type="text" name='firmenzusatz' placeholder="Firmenzusatz eingeben" />
+
+        <div class="item-email labelstyle"> <label>Email</label></div>
+        <input class="gr" id="eingabeEmail" type="text" name='email' placeholder="Email eingeben" />
+
+        <div class="item-strasse labelstyle"> <label>Strasse</label></div>
+        <input class="gr" id="eingabeStrasse" type="text" name='strasse' placeholder="Strasse eingeben" />
+
+        <div class="item-hausnummer labelstyle"> <label>Hausnummer</label></div>
+        <input class="gr" id="eingabeHausnummer" type="text" name='hausnummer' placeholder="Hausnummer eingeben" />
+
+        <div class="item-plz labelstyle"> <label>PLZ</label></div>
+        <input class="gr" id="eingabePlz" type="text" name='plz' placeholder="Postleitzahl eingeben" />
+
+        <div class="item-ort labelstyle"> <label>Ort</label></div>
+        <input class="gr" id="eingabeOrt" type="text" name='ort' placeholder="Ort eingeben" />
+
+        <div class="item-land labelstyle"> <label>Land</label></div>
+        <input class="gr" id="eingabeLand" type="text" name='land' placeholder="Land eingeben" />
+
+        <div class="item-zahlungsmethode labelstyle"> <label>Zahlungsmethode</label></div>
+        <input class="gr" id="eingabeZahlungsmethode" type="text" name='zahlungsmethode' placeholder="Zahlungsmethode eingeben" />
+
+
+
+
+        <input class="gr btn-grey eingabeButtonspeichern"  type="submit" value="Speichern" onclick="save()" />
+
+
+
+    </form>
+
+
+
+    <div class="platzhalter"> </div>
+
+</div>
+
+
+
+
+<!-- Footer -->
+<footer>
+
+
+    <nav>
+
+        <ul>
+            <li><a href="umbau.html">Impressum</a></li>
+            <li><a href="umbau.html">Datenschutz</a></li>
+            <li><a href="umbau.html">Cookie-Einstellungen</a></li>
+            <li><a href="umbau.html">Widerrufsbelehrung</a></li>
+            <li><a href="umbau.html">AGB</a></li>
+        </ul>
+    </nav>
+
+
+</footer>
+
+/****** <script type="text/javascript">
+
+    /******JQUERY UI wird verwendet DATE picker = Datum wird schÃ¶n angezeigt **********/
+    $(function() {
+        $("#eingabeDatum").datepicker();
+    });
+
+    $("#eingabeDatum").datepicker({
+
+        changeMonth: true,
+        changeYear: true,
+        yearRange: '1000:' + 'new Date().getFullYear()',
+        dateFormat: "dd-mm-yy",
+        monthNames: ["Januar", "Februar", "MÃ¤rz", "April", "Mai", "Juni", "August", "September", "Oktober", "November", "Dezember"],
+        monthNamesShort: ["Jan", "Feb", "MÃ¤r", "Apr", "Mai", "Jun", "Jul", "Aug", "Sep", "Okt", "Nov", "Dez"],
+        dayNames: ["Sonntag", "Montag", "Dienstag", "Mittwoch", "Donnerstag", "Freitag", "Samstag"],
+        dayNamesShort: ["So", "Mo", "Di", "Mi", "Do", "Fr", "Sa"],
+        dayNamesMin: ["So", "Mo", "Di", "Mi", "Do", "Fr", "Sa"],
+        weekHeader: "KW",
+        firstDay: 1,
+        isRTL: false,
+        showMonthAfterYear: false,
+
+
+
+    });
+</script> *******/
+</body>
+</html>

@@ -5,12 +5,12 @@
 ******************************************************************** */
 
 
-var buchDAO=require('../daos/buecherDAO.js');
+var coachDAO=require('../daos/coachesDAO.js');
 
 module.exports = {
     
     get: function (req, res, next) {
-        console.log("serviceBuecher.js --> get");
+        console.log("serviceCoaches.js --> get");
         var data=buchDAO.get(req,res, function(err,data){
             if(err) return next(err);
             res.send(data);
@@ -18,7 +18,7 @@ module.exports = {
     },
     
     getall: function (req, res, next) {
-        console.log("serviceBuecher.js --> getall");
+        console.log("serviceCoaches.js --> getall");
         
         buchDAO.getall(req,res, function(err,data){
             if(err) return next(err);
@@ -27,7 +27,7 @@ module.exports = {
     },
     
     create: function (req, res, next) {
-        console.log("serviceBuecher.js --> create");
+        console.log("serviceCoaches.js --> create");
         buchDAO.create(req,res, function(err,data){
             if(err) return next(err);
             res.send(data);
@@ -35,7 +35,7 @@ module.exports = {
     },
     
     update: function(req, res, next){
-        console.log("serviceBuecher.js --> update");
+        console.log("serviceCoaches.js --> update");
         buchDAO.update(req,res, function(err, data){
             if(err) return next(err);
             if(data){res.send(data)} else {res.end();}
@@ -43,7 +43,7 @@ module.exports = {
     },
     
     delete: function(req, res, next){
-        console.log("serviceBuecher.js --> delete");
+        console.log("serviceCoaches.js --> delete");
         buchDAO.delete(req,res, function(err,data){
             if(err) return next(err);
             res.send(data);

@@ -6,8 +6,8 @@
 
 module.exports = {    
     get: function (req, res, next) {
-        console.log("buecherDAO.js --> get");
-        req.models.buecherDB.find({id: req.params.id}, function(err, data) {
+        console.log("coachesDAO.js --> get");
+        req.models.coach_anmeldung.find({id: req.params.id},function(err,data){
             if(err) return next(err);
             if(data.length==0){
                 console.log("Keinen Eintrag gefunden (id= " + req.params.id + ")");
@@ -19,22 +19,22 @@ module.exports = {
         });
     },
     getall: function (req, res, next) {
-        console.log("buecherDAO.js --> getall");
-        req.models.buecherDB.find(function(err, data) {
+        console.log("coachesDAO.js --> getall");
+        req.models.coach_anmeldung.find(function(err, data) {
             if(err) return next(err);
             console.log("\t Alle Zeilen gelesen");
             return next(null, data);
         });
     },
     create: function (req, res, next) {
-        console.log("buecherDAO.js --> create");
+        console.log("coachesDAO.js --> create");
         var anfrage = req.body;
         console.log("\t Zeile zum anlegen (titel= " + anfrage.titel + ")");
-        req.models.buecherDB.create({
-           titel: anfrage.titel,
-			  autor: anfrage.autor,
-			  zustand: anfrage.zustand,
-			  preis: anfrage.preis,
+        req.models.coach_anmeldung.create({
+           empaenger: anfrage.empfaenger,
+			  betrag: anfrage.betrag,
+			  titel: anfrage.titel,
+			  name: anfrage.name,
         }, function(err, data) {
             if(err) return next(err);
             console.log("\t Zeile angelegt (id= " + data.id + ")");
@@ -42,19 +42,19 @@ module.exports = {
         });
     },
     update: function(req, res, next){
-        console.log("buecherDAO.js --> update");
+        console.log("coachesDAO.js --> update");
         var myRequest = req.body;
         console.log(JSON.stringify(req.body));
         console.log("\t update fuer id= " + req.params.id + "!" 
                     +"\t mit titel=" + myRequest.titel +"!");
-        req.models.buecherDB.find({
+        req.models.coach_anmeldung.find({
             id: req.params.id
-        }).each(function (buch) {
+        }).each(function (coach) {
             //myRequest-Parameter lesbar, weil wir den urlencoded-body-parser eingebunden haben
-            buch.titel= myRequest.titel;
-			   buch.autor= myRequest.autor;
-			   buch.preis= myRequest.preis;
-			   buch.zustand= myRequest.zustand;
+            coach.titel= myRequest.empfaenger;
+			   coach.autor= myRequest.betrag;
+			   coach.preis= myRequest.name;
+			   coach.zustand= myRequest.titel;
 			  
         }).save(function(err,data){
             if(err) return next(err);
@@ -63,8 +63,8 @@ module.exports = {
         });
     },
     delete: function(req, res, next){
-        console.log("buecherDAO.js --> delete (id=" + req.params.id + ")");
-        req.models.buecherDB.find({id: req.params.id}).remove(function(err, data) {
+        console.log("coachesDAO.js --> delete (id=" + req.params.id + ")");
+        req.models.coach_anmeldung.find({id: req.params.id}).remove(function(err, data) {
             if(err) return next(err);
             console.log("\t Zeile entfernt (id= " + req.params.id + ")");
             return next(null,data);

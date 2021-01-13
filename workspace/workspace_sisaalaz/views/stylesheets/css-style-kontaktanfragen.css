@@ -1,0 +1,151 @@
+/*<!-- ***************************************************************
+* Diese Datei gehört zum imuk3-WebEng-Musterprojekt                *
+* Copyright (c) by Projektgruppe 6                                 *                                  *
+* Licensed under GPL3, see http://www.gnu.org/licenses/gpl.html    *
+******************************************************************** -->*/
+html,
+
+body {
+    width: 100%;
+    height: auto;
+    background-color: #FFFCEC;
+    margin: auto;
+    font-family: 'Arial'
+}
+
+img {
+    width: 100%;
+}
+
+
+
+/* ********** GESTALTUNGSRASTER mit GRID-Layout der kompletten Seite  *************/
+paket {
+    display: grid;
+    grid-template-columns: 10% 10% 20% 20% 20% 10% 10%;
+    grid-template-rows: auto;
+    /* Zeilenhöhe wird automatisch ermittelt*/
+    grid-template-areas:
+        "nav nav nav nav nav nav nav "
+        "main main main main main main main "
+        "footer footer footer footer footer footer";
+
+}
+
+.navigation {
+    grid-area: nav;
+}
+
+footer {
+    grid-area: footer;
+}
+
+
+
+/****************LoginMaske positioniert *************/
+
+.ueberschrift {
+    margin-left: 200px;
+}
+
+
+/*table{
+    margin-left: 200px;
+}*/
+
+.platzhalter {
+    height: 100px;
+}
+
+
+/***********main *************/
+
+
+#homepagebild {
+    width: 100%;
+    position: inherit;
+}
+
+.homepage {
+    position: relative;
+    width: 100%;
+    /* for IE 6 */
+}
+
+.text {
+    position: fixed;
+    top: 290px;
+    left: 100px;
+    font-family: UGO;
+    word-spacing: 4px;
+    line-height: 0.5;
+    font-size: 170%;
+
+}
+
+.btn {
+    padding: 10px 15px;
+    background-color: #333333;
+    border-radius: 5px;
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.logoutbtn {
+    padding: 10px 15px;
+    background-color: lightcoral;
+    border-radius: 5px;
+    color: #000000;
+    text-decoration: none;
+}
+
+
+#wrapper {
+    padding-top: 100px;
+    padding-bottom: 50px;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: 50% 50%;
+
+}
+
+.grid-container .col-left {
+    padding: 1.25em;
+}
+
+.grid-container > div {}
+
+.grid-container .col-right {}
+
+.grid-table {
+    display: grid;
+
+}
+
+.table {
+    width: 100%;
+    text-align: left;
+    border-collapse: collapse;
+    border: 0;
+}
+
+.table > thead > tr {
+    background-color: lightblue;
+}
+
+.table > tbody > tr:nth-child(2n) {
+    background-color: lightblue;
+}
+
+.container {
+    width: 100%;
+    max-width: 1300px;
+    margin: 0 auto;
+}
+
+
+.form-group {
+    width: 200px;
+}
