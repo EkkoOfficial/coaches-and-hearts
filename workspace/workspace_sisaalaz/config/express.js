@@ -18,7 +18,6 @@ module.exports = function(app, express) {
 
     /*app.use('/api', require('./routes/api/index'));*/
 
-	app.use(express.static('/views'));
     //app.use(express.static('/views/client-js'));
     //app.use(express.static('/views/stylesheets'));
     //app.use(express.static(__dirname + "/views/stylesheets/"));

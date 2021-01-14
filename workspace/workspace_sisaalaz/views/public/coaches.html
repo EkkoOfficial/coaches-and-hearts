@@ -8,18 +8,7 @@
 <head>
     <title>Aktionen anlegen</title>
     <meta charset="UTF-8" />
-    <link rel="stylesheet" href="stylesheets/css-style.css">
-    <link rel="stylesheet" href="stylesheets/css-style-coaches.css">
-    <link rel="script" href="coaches-js/coach-anmeldung.js">
-    <link rel="script" href="coaches-js/coach-actions.js">
-    <link rel="script" href="coaches-js/coach-rules.js">
-    <link rel="script" href="coaches-js/coach-login.js">
-    <link rel="script" href="coaches-js/coach-view.js">
-
-
-
-
-
+    <link rel="stylesheet" href="assets/stylesheets/css-style.css">
 </head>
 
 <body >
@@ -31,7 +20,7 @@
 <header>
     <nav class="navigation">
 
-        <a href="index.html"> <img id="logo" src="pics/logo_StrongHeart.png" /> </a>
+        <a href="index.html"> <img id="logo" src="./assets/logo_StrongHeart.png" /> </a>
         <ul>
 
             <li><a href="Waren-dyn.html">Shop</a></li>
@@ -178,33 +167,6 @@
 
 
 </footer>
-
-/****** <script type="text/javascript">
-
-    /******JQUERY UI wird verwendet DATE picker = Datum wird schÃ¶n angezeigt **********/
-    $(function() {
-        $("#eingabeDatum").datepicker();
-    });
-
-    $("#eingabeDatum").datepicker({
-
-        changeMonth: true,
-        changeYear: true,
-        yearRange: '1000:' + 'new Date().getFullYear()',
-        dateFormat: "dd-mm-yy",
-        monthNames: ["Januar", "Februar", "MÃ¤rz", "April", "Mai", "Juni", "August", "September", "Oktober", "November", "Dezember"],
-        monthNamesShort: ["Jan", "Feb", "MÃ¤r", "Apr", "Mai", "Jun", "Jul", "Aug", "Sep", "Okt", "Nov", "Dez"],
-        dayNames: ["Sonntag", "Montag", "Dienstag", "Mittwoch", "Donnerstag", "Freitag", "Samstag"],
-        dayNamesShort: ["So", "Mo", "Di", "Mi", "Do", "Fr", "Sa"],
-        dayNamesMin: ["So", "Mo", "Di", "Mi", "Do", "Fr", "Sa"],
-        weekHeader: "KW",
-        firstDay: 1,
-        isRTL: false,
-        showMonthAfterYear: false,
-
-
-
-    });
-</script> *******/
+<script src="../../assets/lib/jquery-3.5.1.min.js"></script>
 </body>
 </html>

@@ -4,8 +4,10 @@ var router = express.Router();
 */
 
 
+module.exports = function (app, controllers) {
 
-module.exports = function(app, controllers) {
+    app.use('/', require('./routes/public'));
+
     app.use('/api', require('./routes/api'));
 }
 /*module.exports = router;*/
