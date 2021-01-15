@@ -21,6 +21,9 @@ body {
     font-family: 'Poppins';
 }
 
+.view-hidden {
+    display: none;
+}
 
 /*******navigation***********/
 /*******Klassen umändern***********/
@@ -104,9 +107,6 @@ h6 {
 }
 
 
-
-
-
 /****Grid für LoginMaske*******/
 
 #logingrid {
@@ -133,7 +133,6 @@ h6 {
     text-align: center;
     color: var(--text-color-secondary);
 }
-
 
 
 .item-labelBenutzer {
@@ -191,7 +190,7 @@ h6 {
 
 }
 
-.btn-grey{
+.btn-grey {
     padding: 10px 15px;
     background-color: var(--bg-color-secondary);
     border-radius: 5px;
@@ -199,7 +198,7 @@ h6 {
     text-decoration: none;
 }
 
-.btn-blue{
+.btn-blue {
     padding: 10px 15px;
     background-color: var(--signal-color);
     border-radius: 5px;
@@ -207,15 +206,13 @@ h6 {
     text-decoration: none;
 }
 
-.btn-green{
+.btn-green {
     padding: 10px 15px;
     background-color: var(--bg-color-secondary);
     border-radius: 5px;
     color: #ffffff;
     text-decoration: none;
 }
-
-
 
 
 /************footer***********/
@@ -245,7 +242,7 @@ footer ul li a {
     padding: 18px 20px;
 }
 
-.grey{
+.grey {
     padding: 10px 15px;
     background-color: var(--bg-color-secondary);
     border-radius: 5px;
@@ -253,7 +250,7 @@ footer ul li a {
     text-decoration: none;
 }
 
-.btn-blue{
+.btn-blue {
     padding: 10px 15px;
     background-color: var(--signal-color);
     border-radius: 5px;
@@ -262,7 +259,7 @@ footer ul li a {
 }
 
 
-.btn-green{
+.btn-green {
     padding: 10px 15px;
     background-color: var(--secondary-signal-color);
     border-radius: 5px;

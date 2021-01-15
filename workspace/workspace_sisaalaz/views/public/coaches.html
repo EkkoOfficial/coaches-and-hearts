@@ -7,21 +7,19 @@
 <html>
 <head>
     <title>Coaches + Hearts</title>
-    <meta charset="UTF-8" />
+    <meta charset="UTF-8"/>
     <link rel="stylesheet" href="assets/stylesheets/css-style.css">
 
 </head>
 
-<body >
-
-
+<body>
 
 
 <!-- header -->
 <header>
     <nav class="navigation">
 
-        <a href="index.html"> <img id="logo" src="./assets/logo_StrongHeart.png" /> </a>
+        <a href="index.html"> <img id="logo" src="./assets/logo_StrongHeart.png"/> </a>
         <ul>
 
             <li><a href="Waren-dyn.html">Shop</a></li>
@@ -42,8 +40,42 @@
 
 
 //coaches Main-Contents
+
+<main id="viewContent">
+
+    <div id="indexView"></div>
+    <div id="loginView">
+
+        <form action="javascript:einloggen()" method="post" id="validateForm">
+            <div id="logingrid">
+
+                <h2 class="ueberschriftlogin">Logg dich ein!</h2>
+
+                <div class="item-labelBenutzer"><label>Benutzername</label></div>
+                <input id="item-eingabeBenutzer" type="text" name='benutzernameEingeben'
+                       placeholder="Benutzernamen eingeben"/>
+
+                <div class="item-labelPasswort"><label>Passwort</label></div>
+                <input id="password" class="item-eingabePasswort" type="password" name='passwortEingeben'
+                       placeholder="Passwort eingeben"/>
+
+                <input class="loginButton btn-grey" type="submit" value="Login" onclick="savelogin()"/>
+
+            </div>
+
+
+        </form>
+        <div class="platzhalter"></div>
+    </div>
+    <div id="anmeldungView"></div>
+    <div id="coachListeView"></div>
+    <div id="coachBearbeitenView"></div>
+
+</main>
+
+
 <div id="mainCoaches">
-    <div class="platzhalternav"> </div>
+    <div class="platzhalternav"></div>
     <div id="liste" class="view item-Listenansicht">
         <div>
             <ul id="coaches">
@@ -53,80 +85,54 @@
     </div>
 
 
-
-
-    <!-- LOGINMASKE -->
-
-    <div id="loginMaske" class="view">
-
-        <form action="javascript:einloggen()" method="post" id="validateForm">
-            <div id="logingrid">
-
-                <h2 class="ueberschriftlogin">Logg dich ein!</h2>
-
-                <div class="item-labelBenutzer"><label>Benutzername</label></div>
-                <input  id="item-eingabeBenutzer" type="text" name='benutzernameEingeben' placeholder="Benutzernamen eingeben" />
-
-                <div class="item-labelPasswort"> <label>Passwort</label></div>
-                <input id="password" class="item-eingabePasswort" type="password" name='passwortEingeben' placeholder="Passwort eingeben" />
-
-                <input class="loginButton btn-grey" type="submit" value="Login" onclick="savelogin()" />
-
-            </div>
-
-
-        </form>
-        <div class="platzhalter"></div>
-    </div>
-
-
-
     <!-- EINGABEMASKE -->
-    <button class="gr eingabeButtonzurueck btn-grey"  onclick="coachesAnzeigen('coaches')" >zurÃ¼ck</button>
+    <button class="gr eingabeButtonzurueck btn-grey" onclick="coachesAnzeigen('coaches')">zurÃ¼ck</button>
     <form id="eingabe" class="view" action="">
 
         <h2 id="aktionAnlegenueberschrift" class="eingabemaskeUeberschrift"> Neue Aktion anlegen</h2>
-        <h2 id="aktionbearbeitenueberschrift"class="eingabemaskeUeberschrift">Aktion bearbeiten</h2>
+        <h2 id="aktionbearbeitenueberschrift" class="eingabemaskeUeberschrift">Aktion bearbeiten</h2>
 
 
-
-        <div class="item-empfaenger labelstyle"> <label>Aktionsname</label></div>
-        <input class="gr" id="eingabeEmpfaenger" type="text" name='aktionsname' placeholder="Empfänger eingeben" />
-
-
-        <div class="item-betrag labelstyle"> <label>Ort</label></div>
-        <input class="gr" id="eingabeOrt" type="text" name='ort' placeholder="Betrag eingeben" />
+        <div class="item-empfaenger labelstyle"><label>Aktionsname</label></div>
+        <input class="gr" id="eingabeEmpfaenger" type="text" name='aktionsname' placeholder="Empfänger eingeben"/>
 
 
-        <div class="item-quittung labelstyle"> <label>Datum</label></div>
-        <input class="gr" id="eingabeDatum" type="text" name='datum' placeholder="Datum eingeben" />
+        <div class="item-betrag labelstyle"><label>Ort</label></div>
+        <input class="gr" id="eingabeOrt" type="text" name='ort' placeholder="Betrag eingeben"/>
 
 
-        <div class="item-aktionsinfo labelstyle"> <label>Aktionsinfo</label></div>
-        <textarea cols="100" rows="10" class="gr" id="eingabeAktionsinfo" name='aktionsinfo' placeholder="Aktionsinfo eingeben"></textarea>
+        <div class="item-quittung labelstyle"><label>Datum</label></div>
+        <input class="gr" id="eingabeDatum" type="text" name='datum' placeholder="Datum eingeben"/>
 
 
-        <div class="item-anrede labelstyle"> <label>Spendengeld</label></div>
-        <input class="gr" id="eingabeSpendengeld" type="text" name='spendengeld' placeholder="Spendengeld eingeben" />
+        <div class="item-aktionsinfo labelstyle"><label>Aktionsinfo</label></div>
+        <textarea cols="100" rows="10" class="gr" id="eingabeAktionsinfo" name='aktionsinfo'
+                  placeholder="Aktionsinfo eingeben"></textarea>
 
 
-        <div class="item-titel labelstyle"> <label>Veranstalter</label></div>
-        <input class="gr" id="eingabeVeranstalter" type="text" name='veranstalter' placeholder="Veranstalter eingeben" />
+        <div class="item-anrede labelstyle"><label>Spendengeld</label></div>
+        <input class="gr" id="eingabeSpendengeld" type="text" name='spendengeld' placeholder="Spendengeld eingeben"/>
 
 
-        <input class="gr btn-grey eingabeButtonspeichern"  type="submit" value="Speichern" onclick="save()" />
+        <div class="item-titel labelstyle"><label>Veranstalter</label></div>
+        <input class="gr" id="eingabeVeranstalter" type="text" name='veranstalter' placeholder="Veranstalter eingeben"/>
 
+
+        <input class="gr btn-grey eingabeButtonspeichern" type="submit" value="Speichern" onclick="save()"/>
 
 
     </form>
 
 
-
-    <div class="platzhalter"> </div>
-
+    <div class="platzhalter"></div>
 </div>
 
 
+
+<div class="view view-hidden" id="coachesListe">
+
+
+</div>
 
 
 <!-- Footer -->
@@ -150,10 +156,7 @@
 <script src="assets/lib/jquery.validate.min.js"></script>
 <script src="assets/lib/jquery-extensions.js"></script>
 <script src="assets/lib/jquery-ui-1.12.1/jquery-ui.min.js"></script>
-<script src="../../assets/js/coaches/coaches.js"></script>
-
-
-
+<script src="../../assets/js/coaches.js"></script>
 
 </body>
 </html>
