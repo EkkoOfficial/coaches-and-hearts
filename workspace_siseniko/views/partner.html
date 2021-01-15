@@ -1,0 +1,841 @@
+<!DOCTYPE html>
+<!-- ***************************************************************
+*    Diese Datei gehört zum  WebEng-Kurs an der HNU
+*    Copyright (c) by Sevdeta Nikolaeva                     
+*    Licensed under GPL3, see http://www.gnu.org/licenses/gpl.html
+******************************************************************** -->
+<html>
+
+<head>
+  <title>Partner anlegen</title>
+  <meta charset="UTF-8" />
+  <link rel="stylesheet" href="stylesheets/css-style.css" />
+  <link rel="stylesheet" href="stylesheets/stylepartner.css" />
+
+  <script type="text/javascript" src="client-js/jquery-3.5.1.min.js"></script>
+  <script type="text/javascript" src="client-js/jquery.validate.min.js"></script>
+  <script src="client-js/jquery-ui-1.12.1/jquery-ui.js"></script>
+  <script type="text/javascript" src="client-js/jquery-extensions.js"></script>
+  <link rel="stylesheet" href="client-js/jquery-ui-1.12.1/jquery-ui.css">
+
+
+</head>
+
+
+ 
+
+<body>
+
+  <div id="leererBlock"></div>
+
+  <header>
+    <nav class="navigation">
+
+      <a href="index-dyn.html"> <img id="logo" src="pics/logo_StrongHeart.png" /> </a>
+      <ul>
+
+        <li><a href="Waren-dyn.html">Shop</a></li>
+        <li><a href="aktionen.html">Aktionen</a></li>
+        <li><a href="teammitglieder.html">Teammitglieder</a></li>
+        <li><a href="partner-dyn-modell.html">Partner</a></li>
+        <li><a href="Kontaktanfragen.html">Kontaktanfragen</a></li>
+        <li><a href="coaches.html">Coaches Anmeldungen</a></li>
+        <li><a href="umbau.html">Showcase Videos</a></li>
+        <li>
+          <button id="logKnopf">Einloggen</button>
+        </li>
+      </ul>
+
+    </nav>
+  </header>
+
+  <br />
+
+
+    
+    <!--LISTENANSICHT -->
+    <div class="container">
+         <!-- Überschrift -->
+        <h2 class="item-title">Unsere Partner</h2>
+       <!-- Bilder -->
+             <img src="pics/partner/partnerb1.jpg" alt="Partnerschaft" class="item-bild-1" />
+             <img src="pics/partner/partnerb2.jpg" alt="Partnerschaft" class="item-bild-2" />
+      <!-- Farbenblocken -->
+      <div class="farbenblock"></div>
+      <div class="farbenblock1"></div>
+  <!-- Beschreibung -->
+       <h3 class="item-info">Gemeinsam mit unseren Partnern arbeiten wir an verschiedenen Projekten im Zusammenhang mit Wohltätigkeit. Unser gemeinsames Ziel ist es, Menschen in Not zu helfen. Alle Gewinne gehen zu 100 % an unsere Partner.</h3>
+          <!-- Zweite Überschrift -->
+         <h4 class="item-ueb2">Möchten Sie auch unsere Partner aktiv unterstützen?</h4>
+       <!-- Bilder -->
+       <img src="pics/partner/partnerb3.jpg" alt="Partnerschaft" class="item-bild-3" />
+        <!-- Dritte Überschrift -->
+        <h4 class="item-headline">Hier finden Sie detaillierte Informationen zu unseren Partnern</h4>
+      
+      <div id="liste" class="view">
+   
+        <!--Anlegen Button -->
+        <img onclick="zeigeEingabemaske('','','','','','')" src="pics/icons/add.png" alt="anlegen" class="bildknopf adminButton" id="parnterneuAnlegen" />
+     
+      
+      
+        <!-- Liste aller Partner -->
+        <div id="partner"></div>
+      </div>
+    </div>
+
+
+    <!-- LOGINMASKE -->
+  
+   <div class="platzhalter"> </div> 
+    <div id="loginMaske" class="view">
+      <form action="javascript:einloggen()" method="post">
+        <div id="logingrid">
+          <!-- Überschrift -->
+          <h2 class="ueberschriftlogin">Logge dich ein!</h2>
+          <div class="item-labelBenutzer">
+            <label>Benutzername</label></div>
+          <input id="item-eingabeBenutzer" type="text" placeholder="Benutzernamen eingeben" />
+
+          <div class="item-labelPasswort">
+            <label>Passwort</label></div>
+
+          <input class="item-eingabePasswort" id="password" type="password" placeholder="Passwort eingeben" />
+
+          <input class="btn-grey" id="loginButton" type="submit" value="Login" />
+
+        </div>
+
+
+
+
+      </form>
+      
+    </div>
+
+    <!-- EINGABEMASKE -->
+        <form id="eingabe" class="view" action="">
+            <div id="eingabePartnerdaten">
+                <!-- Überschrift -->
+                <div class="eingabeMaske">Sie können die Partnerdaten ändern/neuanlegen</div>
+                <div class="item-label-1">
+                    <label>Partnerbild</label>
+                </div>
+                <input id="eingabePartnerbild" name='partnerbild' type="text" placeholder="Bildpfad eingeben:pics/partnerLogo.jpg" />
+
+                <div class="item-label-2">
+                    <label>Partnername</label>
+                </div>
+                <input id="eingabePartnername" name='partnername' type="text" placeholder="Partnername eingeben" title="Das ist ein Pflichtfeld!" />
+
+                <div class="item-label-3">
+                    <label>Beschreibung</label>
+                </div>
+                <textarea id="eingabeBeschreibung" name='beschreibung' type="text" placeholder="Beschreibung eingeben" title="Das ist ein Pflichtfeld! Für uns ist wichtig, dass unsere Kunden detaillierte Informationen zu unseren Partner bekommen."> </textarea>
+
+                <div class="item-label-4">
+                    <label>Ansprechpartner</label>
+                </div>
+                <input id="eingabeAnsprechpartner" name='ansprechpartner' type="text" placeholder="Ansprechpartner eingeben" title="Das ist ein Pflichtfeld!" />
+
+                <div class="item-label-5">
+                    <label>Telefonnummer</label>
+                </div>
+                <input id="eingabeTelefonnummer" name='telefonnummer' type="text" placeholder="Telefonnummer eingeben" title="Das ist ein Pflichtfeld!" />
+
+                <div class="item-label-6">
+                    <label>E-mail</label>
+                </div>
+                <input id="eingabeEmail" name='email' type="text" placeholder="Email eingeben" />
+
+                <!--Selectmenü mit verschiedene Auswahlmöglichkeiten(Städte in Deutschland) für das Attribut Standort-->
+                <div class="item-label-7">
+                    <label for="eingabeStandort">Standort</label>
+                </div>
+                
+                <select id="eingabeStandort" name='standort' type="text" placeholder="Wählen Sie ein Standort">
+                    <!--Das ist der Titel des Menüs und keine Auswahlmöglichkeit-->
+                    <option id="auswahl" disabled selecte>Wählen Sie ein Standort</option>
+               
+                    <option>Aachen</option>
+                    <option>Aalen</option>
+                    <option>Abensberg</option>
+                    <option>Adenau </option>
+                    <option>Augsburg</option>
+                    <option>Berlin</option>
+                    <option>Bonn</option>
+                    <option>Bremen</option>
+                    <option>Dortmund</option>
+                    <option>Dresden</option>
+                    <option>Duisburg</option>
+                    <option>Düsseldorf</option>
+                    <option>Essen</option>
+                    <option>Frankfurt am Main</option>
+                    <option>Freiburg (im Breisgau)</option>
+                    <option>Friedberg (Bayern)</option>
+                    <option>Füssen</option>
+                    <option>Fürth (Bayern)</option>
+                    <option>Fürth (Odenwald)</option>
+                    <option>Gablenz</option>
+                    <option>Geisingen </option>
+                    <option>Hamburg</option>
+                    <option>Hannover</option>
+                    <option>Karlsruhe</option>
+                    <option>Köln</option>
+                    <option>Leipzig</option>
+                    <option>Lindau (Bodensee)</option>
+                    <option>Marburg</option>
+                    <option>Magdeburg</option>
+                    <option>Mannheim </option>
+                    <option>München</option>
+                    <option>Münster</option>
+                    <option>Nürnberg</option>
+                    <option>Neu-Ulm</option>
+                    <option>Passau</option>
+                    <option>Regensburg</option>
+                    <option>Ravensburg</option>
+                    <option>Saarbrücken</option>
+                    <option>Stuttgart</option>
+                    <option>Trier</option>
+                    <option>Tübingen</option>
+                    <option>Ulm</option>
+                    <option>Wiesbaden</option>
+                                         
+
+                </select>
+            
+<input class="btn-grey" id="speichernButton" type="submit" value="Speichern" onclick="save()" />
+            </div>
+            
+          
+        </form>
+
+
+    </div>
+ 
+
+  <div>
+    <footer>
+
+      <nav>
+
+        <ul>
+          <li><a href="umbau.html">Impressum</a></li>
+          <li><a href="umbau.html">Datenschutz</a></li>
+          <li><a href="umbau.html">Cookie-Einstellungen</a></li>
+          <li><a href="umbau.html">Widerrufsbelehrung</a></li>
+          <li><a href="umbau.html">AGB</a></li>
+
+
+        </ul>
+
+      </nav>
+
+    </footer>
+  </div>
+
+  <script type="text/javascript">
+    //Die Datenstruktur einem Partner
+    function Partner(id, partnerbild, partnername, beschreibung, ansprechpartner, telefonnummer, email, standort) {
+      console.log("Funktion Partner mit " + id + partnerbild + partnername + beschreibung + ansprechpartner + telefonnummer + email + standort);
+
+      this.id = "";
+      this.partnerbild = partnerbild;
+      this.partnername = partnername;
+      this.beschreibung = beschreibung;
+      this.ansprechpartner = ansprechpartner;
+      this.telefonnummer = telefonnummer;
+      this.email = email;
+      this.standort = standort;
+    }
+
+
+
+
+    //In diesen Array waren alle Partner und die Informationen über diesen gespeichert, jetzt dient zum Speichern von Partnerdaten im Backend 
+    var arrPartner = new Array();
+
+
+       /* Funktion für Selectmenü, dient für den Auswahl von mehrere angegebene Optionen Quelle:https://jqueryui.com/selectmenu/ */ 
+        $(function() {
+            $("#eingabeStandort").selectmenu();
+
+            $("#files").selectmenu();
+
+            $("#number")
+                .selectmenu()
+                .selectmenu("menuWidget")
+                .addClass("overflow");
+
+            $("#salutation").selectmenu();
+        });
+   
+        /*Hier befindet sich die Funktion für Tooltip,diese Funktion dient für die Anzeige von zusätzliche Informationen/Erklärungen Quelle: https://jqueryui.com/tooltip/ */
+        $(function() {
+            $(document).tooltip();
+        });
+    
+    
+    
+    
+    /* CRUD-FUNKTIONEN */
+
+    ////Funktion Anzeigen
+    function partnerAnzeigen(ort) {
+      console.log("partnerAnzeigen: " + ort);
+
+      //Anlegen-Knopf wird erzeugt, wenn er noch nicht existiert
+      if ($("#partner").length == 0) {
+        console.log("\t Anlegeknopf wird erzeugt");
+        $("#liste").prepend(
+          erzeugeButton(
+            "",
+            "zeigeEingabemaske",
+            "pics/icons/eidt.png",
+            "adminButton maButton"
+          )
+        );
+      }
+      // GET-Request
+      $.get("/partner", "", function(res) {
+          console.log("Callbackfunktion des get-Requests (lesen): \n" + JSON.stringify(res).toString());
+          $("#" + ort).empty();
+          arrPartner = res;
+          //Array-Schleife: für jeden Eintrag Erzeugung eines Partner-Eintrags in die Listenansicht
+          for (var i = 0; i < arrPartner.length; i++) {
+            erzeugePartnerElem(i, ort);
+          }
+          //nur Listenansicht sichtbar machen
+          $(".view").hide();
+          $("#liste").show();
+        $(".container").show();
+        $(".item-farbenblock").show();
+          checkeBerechtigungen();
+
+
+
+
+        })
+        .fail(function(xhr) {
+          console.log("/t Aufruf von get.fail-Funktion mit Parameter err=" + xhr.responseText);
+          errorAlert(xhr.responseText);
+        });
+
+
+    }
+
+    //ANLEGEN Funktion, diese Funktion dient für die Eingabe von Daten 
+    function partnerBearbeiten(index) {
+      console.log("Funktion partnerBearbeiten mit " + index);
+      //Lesen der Benutzereingaben
+      var partnerbild = $("#eingabePartnerbild").val();
+      var partnername = $("#eingabePartnername").val();
+      var beschreibung = $("#eingabeBeschreibung").val();
+      var ansprechpartner = $("#eingabeAnsprechpartner").val();
+      var telefonnummer = $("#eingabeTelefonnummer").val();
+      var email = $("#eingabeEmail").val();
+      var standort = $("#eingabeStandort").val();
+      var partner = new Partner("", partnerbild, partnername, beschreibung, ansprechpartner, telefonnummer, email, standort);
+
+      if (index == "") {
+
+        // POST-Request
+        $.post("/partner", partner, function(res) {
+            console.log("\t Callbackfunktion des post-Requests (anlegen): \n" + JSON.stringify(res).toString());
+            arrPartner = res;
+            partnerAnzeigen('partner');
+          })
+          .fail(function(xhr) {
+            console.log("\t Aufruf von post.fail-Funktion mit Parameter err=" + xhr.responseText);
+            errorAlert(xhr.responseText);
+          });
+
+
+
+
+      } else {
+        console.log("\t ändern mit " + index);
+
+        $.put("/partner/" + arrPartner[index].id, partner, function(res) {
+            console.log("Callbackfunktion des put-Requests (ändern): \n" +
+              JSON.stringify(res).toString());
+            arrPartner = res;
+
+            partnerAnzeigen('partner');
+          })
+          .fail(function(xhr) {
+            console.log("/t Aufruf von put.fail-Funktion mit Parameter err=" + xhr.responseText);
+            errorAlert(xhr.responseText);
+          });
+
+      }
+
+
+    }
+
+
+
+
+
+    //LOESCHEN Funktion, mit dieser Funktion werden Daten gelöschen, die aktualisierte Partnerliste wird nach jedem Datenlöschen angezeigt
+    function partnerLoeschen(index) {
+      console.log("Funktion partnerLoeschen mit " + index)
+
+
+      // DELETE-Request 
+      $.delete("/partner/" + arrPartner[index].id, function(res) { /* beim löschen wird auch der Name des Partners angezeigt*/
+          console.log("Callbackfunktion des delete-Requests (löschen): \n" + JSON.stringify(res).toString());
+          arrPartner = res;
+
+          partnerAnzeigen('partner');
+
+        })
+        .fail(function(xhr) {
+          console.log("/t Aufruf von delete.fail-Funktion mit Parameter err=" + xhr.responseText);
+          errorAlert(xhr.responseText);
+        });
+
+    }
+
+
+
+
+    //HILFSFUNKTIONEN
+
+    function berechneKlasse(index) {
+      // In dieser Funktion wird die Gridklasse berechnet zur Anzeige der Partner
+      console.log("Funktion berechneKlasse mit " + index);
+      var klasse = "item-zelle-1";
+      klasse = klasse + (((index) % 3) + 1);
+      console.log("Klasse: " + klasse);
+      return klasse;
+    }
+
+    function erzeugePartnerElem(index, ort) {
+      console.log("Funktion erzeugePartnerElem mit " + index + ", " + ort);
+
+      var klasse = berechneKlasse(index);
+
+
+
+      if ($("." + klasse).length) {
+        console.log("Klasse " + klasse + " existiert schon!")
+        $("." + klasse).append(
+          erzeugePartner(index)
+        );
+      } else {
+        $("#" + ort).append(
+          '<div class="' + klasse + '">' +
+          erzeugePartner(index) +
+          '</div>'
+        );
+      }
+
+
+    }
+
+
+    function erzeugePartner(index) {
+
+
+      return '<div id="' + index + '"' +
+        'class="partner">' +
+        erzeugePartnerInhalt(index)
+
+        +
+        '<div class="item-buttons">' +
+        erzeugeButton(index, "zeigeEingabemaske", "pics/icons/edit.png", " adminButton maButton")
+
+        +
+        erzeugeButton(index, "zeigeSicherheitsabfrage", "pics/icons/delete.png", " adminButton") +
+        '</div>' +
+        '</div>';
+
+
+    }
+
+
+    function erzeugePartnerInhalt(index) {
+      console.log("Funktion erzeugePartnerInhalt mit " + index);
+      /* In dieser Funktion wird der Arrayeintrag der index-ten Stelle als Ast erzeugt
+       */
+      var partner = "";
+      //Erzeuge Partnerbild
+      partnerbild = "<img class='item-bild-value' src=" + arrPartner[index].partnerbild + ">";
+
+      //Erzeuge  Partnername-Ast
+
+      partnername = '<div class="item-n-value">' + arrPartner[index].partnername + "</div>";
+
+      //Erzeuge Beschreibung
+     // beschreibung = "<label class='item-beschreibung'>Beschreibung:</label>";
+      beschreibung =  '<div class="item-b-value">' + arrPartner[index].beschreibung + "</div>";
+
+      //Erzeuge Ansprechpartner
+      ansprechpartner = "<label class='item-ansprechpartner'>Ansprechpartner:</label>";
+      ansprechpartner = ansprechpartner + '<div class="item-a-value">' + arrPartner[index].ansprechpartner + "</div>";
+
+      //Erzeuge  Telefonnummer
+      telefonnummer = "<label class='item-telefonnummer'>Telefonnummer:</label>";
+      telefonnummer = telefonnummer + '<div class="item-t-value">' + arrPartner[index].telefonnummer + "</div>";
+
+      //Erzeuge Email
+      email = "<label class='item-email'>Email:</label>";
+      email = email + '<div class="item-e-value">' + arrPartner[index].email + "</div>";
+
+      //Erzeuge Standort
+      standort = "<label class='item-standort'>Standort:</label>";
+      standort = standort + '<div class="item-s-value">' + arrPartner[index].standort + "</div>";
+
+      partner = partnerbild + partnername + beschreibung + ansprechpartner + telefonnummer + email + standort;
+      return partner;
+    }
+
+    function erzeugeButton(id, func, bildpfad, berechtigungsKlassen) {
+      console.log(
+        "Funktion erzeugeButton mit " +
+        id +
+        ", " +
+        func +
+        ", " +
+        bildpfad +
+        ", " +
+        berechtigungsKlassen
+      );
+
+      var vButton = "";
+      //Das mit \ "maskierte" Anführungszeichen ist die dritte verschachtelte Ebene für Anführungszeichen
+      vButton =
+        "<img id='partner" +
+        id +
+        "'" +
+        "onclick='" +
+        func +
+        '("' +
+        id +
+        "\")'" +
+        "class='bildknopf " +
+        berechtigungsKlassen +
+        "'" +
+        "src='" +
+        bildpfad +
+        "'/>";
+      return vButton;
+    }
+
+    // ********* FUNKTIONEN ZUM LOGIN UND LOGOUT **********
+    function checkeBerechtigungen() {
+      console.log("Funktion checkeBerechtigungen")
+      //Alle Knöpfe auf unsichtbar setzen
+      $('.adminButton, .maButton').hide();
+      leseRolle(callback);
+
+      function callback(roles) {
+        console.log("Funktion callback mit " + JSON.stringify(roles).toString());
+        var rolesArray = roles.toString().split(',');
+        for (var i = 0; i < rolesArray.length; i++) {
+          if (rolesArray[i] == 'admin') {
+            console.log("\t admin-Button wird gezeigt");
+            $('.adminButton').show();
+          } else if (rolesArray[i] == 'mitarbeiter') {
+            console.log('\t mitarbeiter-Button wird gezeigt');
+            $('.maButton').show();
+          } else {
+            console.log("\t Unbekannte Rolle: " + rolesArray[i]);
+          }
+        }
+        console.log("Achtung Achtung")
+      }
+    }
+
+    function leseRolle(func) {
+      console.log("Funktion leseRolle");
+      //Beim Server wird nachgefragt, ob der Benutzer eingeloggt ist
+      $.get("/service_istEingelogged", function(data) {
+        console.log("eingeloggt: " + data.toString());
+
+        //Falls User eingeloggt ist, dann werden Sichtbarkeiten in Abhängigkeit von den Rollen gesetzt
+        if (data === true) {
+          //Benutzer ist eingeloggt
+          console.log("\t eingeloggt");
+          setLoginButton("ausloggen");
+          //Berechtigungen werden erfragt und bei erfolgreichem Lesen wird whatToDo ausgeführt
+          $.get("/service_rollenAbfrage", function(roles) {
+            func(roles);
+          })
+        } else {
+          //Benutzer ist nicht eingeloggt
+          console.log("\t nicht eingeloggt");
+          setLogoutButton("zeigeLoginmaske");
+        }
+      })
+    }
+
+    function einloggen() {
+      console.log("Funktion einloggen");
+
+      //Einloggen
+      var loginDaten = {
+        "user": $("#item-eingabeBenutzer").val(),
+        "password": $("#password").val()
+      }
+      $.post('/login', loginDaten, function(data) {
+        if (data === false) {
+          console.log("\t POST: falscher login");
+          alert("Ihre Benutzerdaten waren nicht richtig, bitte versuchen Sie es noch einmal.");
+        } else {
+          console.log("\t POST: richtiger login");
+
+          //Richtige Ansicht nach dem Einloggen anzeigen
+          partnerAnzeigen("partner");
+        }
+      })
+
+    }
+
+    function ausloggen() {
+      console.log("Funktion ausloggen");
+      //Ausloggen
+      $.get('/logout', function(res) {
+          console.log("\t GET: logout success");
+          //Berechtigungen anpassen
+          checkeBerechtigungen();
+          //Loggen-Knopf setzen
+          setLogoutButton('zeigeLoginmaske');
+          //Richtige Ansicht nach dem Ausloggen anzeigen
+          partnerAnzeigen("partner");
+        })
+        .fail(function(xhr) {
+          console.log("\t GET: logout failure");
+          //xhr steht für XML-HTTP-Request, also das HTTP-Objekt
+          console.log("/t Aufruf von get.fail-Funktion mit Parameter err=" + xhr.responseText);
+          errorAlert(xhr.responseText);
+        });
+
+    }
+
+    function setLoginButton(func) {
+      console.log("Funktion setLoginButton mit " + func);
+      //Mit dieser Funktion wird Loggen-Knopf zu Logout-Knopf
+      $("#logKnopf")
+        .html("Ausloggen")
+        .attr("onclick", func + "()");
+    }
+
+
+
+    function setLogoutButton(func) {
+      console.log("Funktion setLogoutButton mit " + func);
+      //Mit dieser Funktion wird Loggen-Knopf zu Login-Knopf
+      $("#logKnopf")
+        .html("Einloggen")
+        .attr("onclick", func + "()");
+    }
+
+    function zeigeLoginmaske() {
+      console.log("zeigeLoginmaske");
+      //nur Loginansicht sichtbar machen
+      $(".view").hide();
+      $("#loginMaske").show();
+      $(".item-farbenblock").hide();
+      $(".item-farbenblock1").hide();
+      $(".container").hide(); 
+        
+    }
+
+    function zeigeEingabemaske(index) {
+      console.log("zeigeEingabemaske " + index);
+      
+      //Alle Eingabefelder leeren
+      $("#eingabe input[type='text']").val("");
+      $("#eingabe textarea[type='text']").val("");
+      $("#eingabeStandort").selectmenu('destroy')
+                                        .prop('selectedIndex',0)
+                                        .selectmenu();
+ 
+      
+      //nur Eingabemaske sichtbar machen
+      $(".view").hide();
+      $("#eingabe").show();
+      $(".container").hide();
+      
+  
+      if (index == "") {
+        //Eingabemaske initialisieren
+        $("#eingabe input").val("");
+        $("#eingabe input[type='submit']").val("Speichern");
+        $("#eingabe").attr("action", "javascript:partnerBearbeiten('')");
+      } else {
+        //Eingabemaske initialisieren
+        $("#eingabe input").val("");
+        $("#eingabe input[type='submit']").val("Speichern");
+
+        //Daten in die Eingabemaske eintragen
+        $("#eingabePartnerbild").val(arrPartner[index].partnerbild);
+        $("#eingabePartnername").val(arrPartner[index].partnername);
+        $("#eingabeBeschreibung").val(arrPartner[index].beschreibung);
+        $("#eingabeAnsprechpartner").val(arrPartner[index].ansprechpartner);
+        $("#eingabeTelefonnummer").val(arrPartner[index].telefonnummer);
+        $("#eingabeEmail").val(arrPartner[index].email);
+        $("#eingabeStandort").val(arrPartner[index].standort);
+
+        $("#eingabe").attr(
+          "action",
+          "javascript:partnerBearbeiten('" + index + "')"
+        );
+      }
+    }
+
+    //Hier befindet sich die Dialogbox für die Sicherheitsabfrage, diese Sicherheitsabfrage wird beim Löschen von Partner angezeigt
+    function zeigeSicherheitsabfrage(index) {
+      console.log("Funktion zeigeSicherheitsabfrage mit " + index);
+      $(function() {
+        $("<div id='dialog-confirm'title='Sicherheitsabfrage'><p> Wollen Sie der Partner mit dem Namen '" + arrPartner[index].partnername + "' wirklich löschen? </p></div>").dialog({
+          resizable: false,
+          height: "auto",
+          width: 400,
+          modal: true,
+          buttons: {
+            "Löschen": function() {
+              $(this).dialog("close");
+              partnerLoeschen(index);
+              partnerAnzeigen("partner");
+
+            },
+            Abbrechen: function() {
+              $(this).dialog("close");
+            }
+          }
+        });
+      });
+
+
+    }
+
+     //Hier fängt die Validierung an, es werden vier Attributen validiert
+        //Es wird überprüft, ob alle Eingaben valide sind
+        //Ein Dialogbox wird angezeigt nach der Überprüfung den Daten
+        function save() {
+            if ($("#eingabe").valid()) {
+                console.log("\t Eingabe ist gültig");
+                //Diesen Dialogbox wird angezeigt, wenn alle Daten validiert wurden
+                $(function() {
+                    $("<div id='dialog-confirm'title='Validation'><p>Alle Eingaben sind valide!</p></div>").dialog({
+                        resizable: false,
+                        height: "auto",
+                        width: 400,
+                        modal: true,
+                        buttons: {
+                            "OK": function() {
+                                $(this).dialog("close");
+
+
+
+                            },
+
+                        }
+                    });
+                });
+
+                
+
+            } else {
+                 //Diese Fehlermeldung kommt vor, wenn nicht alle Daten validiert wurden 
+                $(function() {
+                    $("<div id='dialog-confirm'title='Validation'><p>Achtung-nicht alle Eingaben sind valide!</p></div>").dialog({
+                        resizable: false,
+                        height: "auto",
+                        width: 400,
+                        modal: true,
+                        buttons: {
+                            "OK": function() {
+                                $(this).dialog("close");
+
+
+
+                            },
+
+                        }
+                    });
+                });
+               
+            }
+        }
+    
+    function myRules() {
+      console.log("Aufruf von Funktion myRules()");
+
+      $("input[name='partnername']").rules("add", {
+        required: true, //Das Feld muss ausgefüllt werden
+        minlength: 2, //Mindestlänge der Zeichen
+
+        //Diese Fehlermeldung kommt bei Nichteinhaltung der Regeln vor
+        messages: {
+          required: 'Bitte geben Sie den vollständigen Namen ein.',
+          minlength: 'Bitte geben Sie den vollständigen Namen(mind. 2 Zeichen) ein.'
+        }
+
+      });
+       $("textarea[name='beschreibung']").rules("add", {
+            required: true, //Das Feld muss ausgefüllt werden
+             minlength: 15,
+
+            //Diese Fehlermeldung kommt bei Nichteinhaltung der Regeln vor
+              messages: {
+                  required: 'Bitte geben Sie eine Beschreibung ein.',
+                  minlength: 'Bitte geben Sie eine Beschreibung (mind. 15 Zeichen)ein.'
+                   }
+
+               });
+      
+      $("input[name='ansprechpartner']").rules("add", {
+        required: true, //Das Feld muss ausgefüllt werden
+        minlength: 2,
+
+        //Diese Fehlermeldung kommt bei Nichteinhaltung der Regeln vor
+        messages: {
+          required: 'Bitte geben Sie ein Ansprechpartner ein.',
+          minlength: 'Bitte geben Sie den vollständigen Namen den Arbeitspartner(mind. 2 Zeichen) ein.'
+        }
+
+      });
+      $("input[name='telefonnummer']").rules("add", {
+        required: true, //Das Feld muss ausgefüllt werden
+        minlength: 2,
+
+        //Diese Fehlermeldung kommt bei Nichteinhaltung der Regeln vor
+        messages: {
+          required: 'Bitte geben Sie ein Telefonnummer ein.',
+          minlength: 'Bitte geben Sie ein gültiges Telefonnummer(nur Ziffern)  ein.'
+        }
+
+      });
+
+
+    }
+    //Hier befindet sich die Validate Funktion
+    $("#eingabe").validate({
+      errorElement: 'span'
+    });
+
+    //Hier wird die Funktion myrules aufgerufen
+    myRules();
+
+    function errorAlert(data) {
+      console.log("Server Error Message: " + JSON.stringify(data).toString());
+      alert("Fehler auf dem Server: " + JSON.stringify(data).toString());
+    }
+
+
+
+    //Ansicht beim Aufrufen der Webseite
+    partnerAnzeigen("partner");
+
+    
+  </script>
+
+
+
+</body>
+
+</html>

@@ -1,0 +1,526 @@
+/*<!-- ***************************************************************
+* Diese Datei gehört zum imuk3-WebEng-Musterprojekt                *
+* Copyright (c) by Sevdeta Nikolaeva                                *                                  *
+* Licensed under GPL3, see http://www.gnu.org/licenses/gpl.html    *
+******************************************************************** -->*/
+
+#parnterneuAnlegen {
+  width: 8%;
+}
+
+/*Erste Grid mit*/
+ .container{
+   
+    display: grid;
+    grid-template-columns: 15% 35% 35% 15%;
+    grid-template-rows: auto;
+    grid-template-areas:
+        "farbenb  button1 button1 farbenb1"
+        "farbenb  ueb ueb farbenb1"
+        "farbenb bild-1 bild-2 farbenb1"
+        "farbenb info info farbenb1"
+        "farbenb ueb2 ueb2 farbenb1"
+        "farbenb bild-3 bild-3 farbenb1"
+        "farbenb headline headline farbenb1"
+        "farbenb main main farbenb1"
+        "farbenb main main farbenb1"
+        "farbenb main main farbenb1"
+        "footer-1 footer-2 footer-3 footer-4";
+}
+/*Durch die Spalten farbenblock und farbenblock1 befinden sich blauen Farbenblöcke links und rechts*/
+.farbenblock {
+  grid-area: farbenb;
+  background-color: var(--secondary-signal-color);
+  width:100%;
+}
+.farbenblock1 {
+  grid-area: farbenb1;
+  background-color: var(--secondary-signal-color);
+  width:100%;
+}
+.item-title {
+  grid-area: ueb;
+  margin-top: 100px;
+  text-align: center;
+  height: 20px;
+  font-size: 35px;
+  color: black;
+  margin-bottom: 50px;
+  text-decoration:underline solid;
+}
+.item-info {
+  grid-area: info;
+  font-weight: bolder;
+  color: black;
+  text-align: center;
+}
+.item-ueb2 {
+  grid-area: ueb2;
+  font-weight: bolder;
+  color: black;
+  text-align: center;
+  background-color: var(--signal-color);
+  height: 20px;
+  font-size: 25px;
+  margin-bottom: 0px;
+  padding: 10px;
+  border: 25px;
+}
+.item-bild-3 {
+    grid-area: bild-3;
+    width: 50%;
+    margin-left: 260px;
+    margin-top: 20px;
+}
+.item-headline {
+  grid-area: headline;
+  font-weight: bolder;
+  color: black;
+  display: inline-flex;
+  margin-top: 20px;
+  background-color: var(--secondary-signal-color);
+  height: 20px;
+  font-size: 25px;
+  margin-bottom: 0px;
+  padding: 10px;
+  border: 25px;
+  text-align: center;
+  margin-right: 100px;
+  margin-left: 100px;
+}
+.item-bild-1 {
+    grid-area: bild-1;
+    width: 90%;
+    margin-left: 25px;
+}
+
+.item-bild-2 {
+    grid-area: bild-2;
+    width: 85%;
+    margin-left: 25px;
+}
+
+
+#parnterneuAnlegen {
+    margin-top: 100px;
+    grid-area: button1;
+}
+
+#loginMaske {
+    grid-area: main;
+    margin-top: 100px;
+}
+
+#eingabe {
+    grid-area: main;
+    margin-top: 100px;
+}
+
+#liste {
+    grid-area: main;
+}
+
+
+/* Inneres Grid für Listenansicht */
+
+#partner {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 100%;
+  grid-template-rows: auto;
+  grid-template-areas: "zelle-11" "zelle-12" "zelle-13";
+}
+
+.item-zelle-11 {
+  grid-area: zelle-11;
+  margin-top: 100px;
+}
+
+.item-zelle-12 {
+  grid-area: zelle-12;
+}
+
+.item-zelle-13 {
+  grid-area: zelle-13;
+}
+
+/* Innerstes Grid für Partner-Grid, dient für die Darstellung von Überschriften und detaillierte Informationen zu den Partnern (7 Attibuten mit Values)  */
+
+.partner {
+  display: grid;
+  grid-template-columns:  18% 2% 40% 40%;
+  grid-template-rows: auto;
+  grid-template-areas:
+    " partnerbild1 . bild-value bild-value" 
+    " . . n-value  n-value" 
+    " beschreibung1 . b-value b-value" 
+    " ansprechpartner1 . a-value a-value"
+    "telefonnummer1 . t-value t-value"
+    " email1 . e-value e-value"
+    " standort1 . s-value s-value" 
+    ". buttons buttons buttons";
+  width: 100%;
+  overflow: hidden;
+  margin: 0px 0px 50px 0px;
+}
+
+
+.item-partnerbild {
+  grid-area: partnerbild1;
+}
+
+.item-beschreibung {
+  grid-area: beschreibung1;
+  font-family: sans-serif;
+  font-weight: bolder;
+  margin-top: 0px;
+}
+
+.item-ansprechpartner {
+  grid-area: ansprechpartner1;
+  font-family: sans-serif;
+  font-weight: bolder;
+  margin-top: 0px;
+}
+
+.item-telefonnummer {
+  grid-area: telefonnummer1;
+  font-family: sans-serif;
+  font-weight: bolder;
+  margin-top: 0px;
+}
+
+.item-email {
+  grid-area: email1;
+  font-family: sans-serif;
+  font-weight: bolder;
+  margin-top: 0px;
+}
+
+.item-standort {
+  grid-area: standort1;
+  font-family: sans-serif;
+  font-weight: bolder;
+  margin-top: 0px;
+}
+
+.item-bild-value {
+  grid-area: bild-value;
+  margin-bottom: 15px;
+  margin-top: 50px;
+  /* Damit es mehr Abstand zwischen das Bild und der Inhalt der anderen Partner gibt*/
+  border: 5px solid var(--signal-color);
+  /* Damit es Rahmen um die Bilder gibt*/
+}
+
+.item-n-value {
+  grid-area: n-value;
+  font-family: sans-serif;
+  font-weight: bolder;
+  display: inline-flex;
+  height: 20px;
+  font-size: 35px;
+  color: black;
+  margin-bottom: 20px;
+}
+
+.item-a-value {
+  grid-area: a-value;
+  font-family: sans-serif;
+  font-weight: bolder;
+  background-color: var(--signal-color);
+  color: white;
+}
+
+.item-t-value {
+  grid-area: t-value;
+  font-family: sans-serif;
+  font-weight: bolder;
+  color: black;
+  background-color: var(--signal-color);
+  color: white;
+  text-decoration:underline solid;
+  /* Damit das Telefonnummer unterstrichen ist */
+}
+
+.item-e-value {
+  grid-area: e-value;
+  font-family: sans-serif;
+  font-weight: bolder;
+  color: white;
+  background-color: var(--signal-color);
+  text-decoration:underline solid;
+  /* Damit das Email unterstrichen ist */
+}
+
+.item-s-value {
+  grid-area: s-value;
+  font-family: sans-serif;
+  font-weight: bolder;
+  background-color: var(--signal-color);
+  color: white;
+}
+
+.item-b-value {
+  grid-area: b-value;
+  background-color: var(--signal-color);
+  color: white;
+}
+
+.item-buttons {
+  grid-area: buttons;
+}
+
+
+
+
+
+#validateForm {
+  background-color: gainsboro;
+  padding: 25px 50px;
+}
+
+ 
+span.error {
+  color: black;
+  font-size: 12px;
+  margin: 10px 0 0 0 0;
+}
+
+input.error {
+  border: 1px solid black;
+}
+
+label {
+  display: block;
+  margin: 0px 0 10px 10px;
+}
+
+/***DIALOGBOX Style***/
+
+/***Text im Dialogbox ***/
+
+#dialog-confirm {
+  background-color: var(--signal-color);
+  font-family: sans-serif;
+  font-weight: bolder;
+  color: white;
+  /*Buchstaben in weiß*/
+  text-align: center;
+}
+
+/***Löschen und Abbrechen Buttons im Dialogbox***/
+
+/*Diese Klasse habe ich beim Untersuchen mit dem Pfail in Brackets gefunden*/
+
+.ui-dialog .ui-dialog-buttonpane button {
+  margin: .5em .4em .5em 0;
+  cursor: pointer;
+  background-color: var(--signal-color);
+  /*Buttons werden im blau gefärbt*/
+  border-color: black;
+  font-weight: bolder;
+}
+
+/* Die Klasse platzhalter habe ich erstellt, damit es Abstand zwischen bestimmten Inhalten und die Navigation gibts */
+.platzhalter {
+  height: 100px;
+}
+/***Grid für die Eingabemaske mit zwei Spalten (in der ersten Spalte die Namen von den Attributen und in der zweiten Spalte Eingabefelder/Fehlermeldung wenn nicht alle Eingaben valide sind***/
+#eingabePartnerdaten {
+    display: grid;
+    grid-template-columns: 40% 40%;
+    grid-template-rows: auto;
+    grid-template-areas:
+        "eingabeMaske eingabeMaske "
+        "label-1 eingabePartnerbild "
+        "label-2 eingabePartnername"
+        ". fehlermeldungName"
+        "label-3 eingabeBeschreibung"
+        ". fehlermeldungBeschreibung"
+        "label-4 eingabeAnsprechpartner"
+        ". fehlermeldungAnsprechpartner"
+        "label-5 eingabeTelefonnummer"
+        ". fehlermeldungTelefonnummer"
+        "label-6 eingabeEmail "
+        "label-7 eingabeStandort"
+        ". speichernButton";
+    width: 80%;
+    background-color: var(--signal-color);
+    border-radius: 20px;
+    margin-bottom: 100px;
+    margin-left: 150px;
+}
+
+.eingabeMaske {
+    grid-area: eingabeMaske;
+    background-color: gainsboro;
+    font-weight: bolder;
+    padding: 5px;
+    font-size: 25px;
+    display: inline-flex;
+    margin-left: 250px;
+    margin-bottom: 20px;
+}
+ 
+#eingabeAnsprechpartner-error {
+  grid-area: fehlermeldungAnsprechpartner;
+  color: red;
+  font-weight: bolder;
+}
+
+#eingabePartnername-error {
+  grid-area: fehlermeldungName;
+  color: red;
+  font-weight: bolder;
+}
+
+
+#eingabeTelefonnummer-error {
+  grid-area: fehlermeldungTelefonnummer;
+  color: red;
+  font-weight: bolder;
+}
+#eingabeBeschreibung-error.error {
+  grid-area: fehlermeldungBeschreibung;
+  color: red;
+  font-weight: bolder;
+}
+
+.item-label-1 {
+    grid-area: label-1;
+    font-size: 20px;
+    margin-left: 100px;
+    font-weight: bolder;
+    margin-top: 20px;
+
+}
+
+.item-label-2 {
+    grid-area: label-2;
+    font-size: 20px;
+    margin-left: 100px;
+    font-weight: bolder;
+  margin-top: 20px;
+}
+
+.item-label-3 {
+    grid-area: label-3;
+    font-size: 20px;
+    margin-left: 100px;
+    font-weight: bolder;
+  margin-top: 20px;
+}
+
+.item-label-4 {
+    grid-area: label-4;
+    font-size: 20px;
+    margin-left: 100px;
+    font-weight: bolder;
+    margin-top: 20px;
+}
+
+.item-label-5 {
+    grid-area: label-5;
+    font-size: 20px;
+    margin-left: 100px;
+    font-weight: bolder;
+    margin-top: 20px;
+}
+
+.item-label-6 {
+    grid-area: label-6;
+    font-size: 20px;
+    margin-left: 100px;
+    font-weight: bolder;
+    margin-top: 20px;
+}
+
+.item-label-7 {
+    grid-area: label-7;
+    font-size: 20px;
+    margin-left: 100px;
+    font-weight: bolder;
+    margin-top: 20px;
+}
+
+#eingabePartnerbild {
+    outline: none;
+    font-size: 12px;
+    width: 280px;
+    display: block;
+    outline: none;
+    padding: 15px 10px;
+    margin-top: 15px;
+    /*Damit es Abstand zwischen den Eingabefelder gibt*/
+}
+
+#eingabePartnername {
+    grid-area: eingabePartnername;
+    display: block;
+    width: 280px;
+    padding: 15px 10px;
+    margin-top: 15px;
+}
+
+#eingabeBeschreibung {
+    grid-area: eingabeBeschreibung;
+    margin-right: 20px;
+    height: 150px;
+    width: 280px;
+    resize: none;
+    display: block;
+    padding: 15px 10px;
+    margin-top: 15px;
+}
+
+
+#eingabeAnsprechpartner {
+    grid-area: eingabeAnsprechpartner;
+    width: 280px;
+    display: block;
+    padding: 15px 10px;
+    margin-top: 15px;
+}
+
+
+
+#eingabeTelefonnummer {
+    grid-area: eingabeTelefonnummer;
+    display: block;
+    width: 280px;
+    padding: 15px 10px;
+    margin-top: 15px;
+}
+
+
+#eingabeEmail {
+    grid-area: eingabeEmail;
+    display: block;
+    width: 280px;
+    padding: 15px 10px;
+    margin-top: 15px;
+}
+
+
+#eingabeStandort-button{
+    grid-area: eingabeStandort;
+    color: black;
+    padding: 15px 10px;
+    margin-top: 15px;
+    font-weight: bolder;
+    width: 280px;
+}
+ 
+#auswahl{
+  font-weight: bold;
+}
+ 
+#speichernButton {
+    grid-area: speichernButton;
+    margin-top: 20px;
+}
+/*Style vom Selectmenu Auswahlbutton*/
+.ui-selectmenu-icon.ui-icon.ui-icon-triangle-1-s{
+  color: black;
+}
