@@ -6,9 +6,10 @@
 ******************************************************************** -->
 <html>
 <head>
-    <title>Aktionen anlegen</title>
+    <title>Coaches + Hearts</title>
     <meta charset="UTF-8" />
     <link rel="stylesheet" href="assets/stylesheets/css-style.css">
+
 </head>
 
 <body >
@@ -84,55 +85,33 @@
     <button class="gr eingabeButtonzurueck btn-grey"  onclick="coachesAnzeigen('coaches')" >zurÃ¼ck</button>
     <form id="eingabe" class="view" action="">
 
-        <div class="item-empfaenger labelstyle"> <label>Empfaenger</label></div>
-        <input class="gr" id="eingabeEmpfaenger" type="text" name='empfaenger' placeholder="Empfaenger eingeben" />
-
-        <div class="item-betrag labelstyle"> <label>Betrag</label></div>
-        <input class="gr" id="eingabeBetrag" type="text" name='betrag' placeholder="Betrag eingeben" />
-
-        <div class="item-quittung labelstyle"> <label>Quittung</label></div>
-        <input class="gr" id="eingabeQuittung" type="text" name='quittung' placeholder="Quittung eingeben" />
-
-        <div class="item-anrede labelstyle"> <label>Anrede</label></div>
-        <input class="gr" id="eingabeAnrede" type="text" name='anrede' placeholder="Anrede eingeben" />
-
-        <div class="item-titel labelstyle"> <label>Empfaenger</label></div>
-        <input class="gr" id="eingabeTitel" type="text" name='titel' placeholder="Titel eingeben" />
-
-        <div class="item-betrag labelstyle"> <label>Betrag</label></div>
-        <input class="gr" id="eingabeVorname" type="text" name='vorname' placeholder="Vorname eingeben" />
-
-        <div class="item-quittung labelstyle"> <label>Quittung</label></div>
-        <input class="gr" id="eingabeNachname" type="text" name='nachname' placeholder="Nachname eingeben" />
-
-        <div class="item-firma labelstyle"> <label>Firma</label></div>
-        <input class="gr" id="eingabeFirma" type="text" name='firma' placeholder="Firma eingeben" />
-
-        <div class="item-firmenzusatz labelstyle"> <label>Firmenzusatz</label></div>
-        <input class="gr" id="eingabeFirmenzusatz" type="text" name='firmenzusatz' placeholder="Firmenzusatz eingeben" />
-
-        <div class="item-email labelstyle"> <label>Email</label></div>
-        <input class="gr" id="eingabeEmail" type="text" name='email' placeholder="Email eingeben" />
-
-        <div class="item-strasse labelstyle"> <label>Strasse</label></div>
-        <input class="gr" id="eingabeStrasse" type="text" name='strasse' placeholder="Strasse eingeben" />
-
-        <div class="item-hausnummer labelstyle"> <label>Hausnummer</label></div>
-        <input class="gr" id="eingabeHausnummer" type="text" name='hausnummer' placeholder="Hausnummer eingeben" />
-
-        <div class="item-plz labelstyle"> <label>PLZ</label></div>
-        <input class="gr" id="eingabePlz" type="text" name='plz' placeholder="Postleitzahl eingeben" />
-
-        <div class="item-ort labelstyle"> <label>Ort</label></div>
-        <input class="gr" id="eingabeOrt" type="text" name='ort' placeholder="Ort eingeben" />
-
-        <div class="item-land labelstyle"> <label>Land</label></div>
-        <input class="gr" id="eingabeLand" type="text" name='land' placeholder="Land eingeben" />
-
-        <div class="item-zahlungsmethode labelstyle"> <label>Zahlungsmethode</label></div>
-        <input class="gr" id="eingabeZahlungsmethode" type="text" name='zahlungsmethode' placeholder="Zahlungsmethode eingeben" />
+        <h2 id="aktionAnlegenueberschrift" class="eingabemaskeUeberschrift"> Neue Aktion anlegen</h2>
+        <h2 id="aktionbearbeitenueberschrift"class="eingabemaskeUeberschrift">Aktion bearbeiten</h2>
 
 
+
+        <div class="item-empfaenger labelstyle"> <label>Aktionsname</label></div>
+        <input class="gr" id="eingabeEmpfaenger" type="text" name='aktionsname' placeholder="Empfänger eingeben" />
+
+
+        <div class="item-betrag labelstyle"> <label>Ort</label></div>
+        <input class="gr" id="eingabeOrt" type="text" name='ort' placeholder="Betrag eingeben" />
+
+
+        <div class="item-quittung labelstyle"> <label>Datum</label></div>
+        <input class="gr" id="eingabeDatum" type="text" name='datum' placeholder="Datum eingeben" />
+
+
+        <div class="item-aktionsinfo labelstyle"> <label>Aktionsinfo</label></div>
+        <textarea cols="100" rows="10" class="gr" id="eingabeAktionsinfo" name='aktionsinfo' placeholder="Aktionsinfo eingeben"></textarea>
+
+
+        <div class="item-anrede labelstyle"> <label>Spendengeld</label></div>
+        <input class="gr" id="eingabeSpendengeld" type="text" name='spendengeld' placeholder="Spendengeld eingeben" />
+
+
+        <div class="item-titel labelstyle"> <label>Veranstalter</label></div>
+        <input class="gr" id="eingabeVeranstalter" type="text" name='veranstalter' placeholder="Veranstalter eingeben" />
 
 
         <input class="gr btn-grey eingabeButtonspeichern"  type="submit" value="Speichern" onclick="save()" />
@@ -167,6 +146,14 @@
 
 
 </footer>
-<script src="../../assets/lib/jquery-3.5.1.min.js"></script>
+<script src="assets/lib/jquery-3.5.1.min.js"></script>
+<script src="assets/lib/jquery.validate.min.js"></script>
+<script src="assets/lib/jquery-extensions.js"></script>
+<script src="assets/lib/jquery-ui-1.12.1/jquery-ui.min.js"></script>
+<script src="assets/js/coaches/coaches-main.js"></script>
+
+
+
+
 </body>
 </html>

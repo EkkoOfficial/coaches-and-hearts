@@ -3,6 +3,6 @@ module.exports = function(orm,db){
         email: String,
         benutzername : String,
         passwort : String,
-        rolle: ['ADMIN', 'MITARBEITER', 'AUSHILFE']
+        rolle: ['admin', 'mitarbeiter', 'teammitglied', 'aushilfe']
     })
 }

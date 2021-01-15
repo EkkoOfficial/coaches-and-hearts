@@ -29,12 +29,16 @@ module.exports = {
     create: function (req, res, next) {
         console.log("coachesDAO.js --> create");
         var anfrage = req.body;
-        console.log("\t Zeile zum anlegen (titel= " + anfrage.titel + ")");
+        console.log("\t Zeile zum anlegen (empfaenger= " + anfrage.empfaenger + ")");
         req.models.coach_anmeldung.create({
-           empaenger: anfrage.empfaenger,
-			  betrag: anfrage.betrag,
-			  titel: anfrage.titel,
-			  name: anfrage.name,
+            empaenger: anfrage.empfaenger,
+            betrag: anfrage.betrag,
+            quittung: anfrage.quittung,
+            anrede: anfrage.anrede,
+            titel: anfrage.empfaenger,
+            betrag: anfrage.betrag,
+            quittung: anfrage.quittung,
+            anrede: anfrage.anrede,
         }, function(err, data) {
             if(err) return next(err);
             console.log("\t Zeile angelegt (id= " + data.id + ")");
@@ -45,17 +49,32 @@ module.exports = {
         console.log("coachesDAO.js --> update");
         var myRequest = req.body;
         console.log(JSON.stringify(req.body));
-        console.log("\t update fuer id= " + req.params.id + "!" 
-                    +"\t mit titel=" + myRequest.titel +"!");
+        console.log("\t update fuer id= " + req.params.id + "!"
+            +"\t mit empfaenger=" + myRequest.empfaenger +"!");
+
+
         req.models.coach_anmeldung.find({
             id: req.params.id
         }).each(function (coach) {
             //myRequest-Parameter lesbar, weil wir den urlencoded-body-parser eingebunden haben
-            coach.titel= myRequest.empfaenger;
-			   coach.autor= myRequest.betrag;
-			   coach.preis= myRequest.name;
-			   coach.zustand= myRequest.titel;
-			  
+            coach.empfaenger= myRequest.empfaenger;
+            coach.betrag= myRequest.betrag;
+            coach.quittung= myRequest.quittung;
+            coach.vorname= myRequest.vorname;
+            coach.nachname= myRequest.nachname;
+            coach.email= myRequest.email;
+            coach.firma= myRequest.firma;
+            coach.firmenzusatz= myRequest.firmenzusatz;
+            coach.email= myRequest.email;
+            coach.strasse= myRequest.strasse;
+            coach.hausnummer= myRequest.hausnummer;
+            coach.plz= myRequest.plz;
+            coach.ort= myRequest.ort;
+            coach.land= myRequest.land;
+            coach.zahlungsmethode= myRequest.zahlungsmethode;
+
+
+
         }).save(function(err,data){
             if(err) return next(err);
             console.log("\t Zeile geändert (id= " + req.params.id + ")");
