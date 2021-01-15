@@ -1,0 +1,263 @@
+/*<!-- ****************************************************************
+* Copyright (c) by Tamara Pavlovic                                 *
+******************************************************************** -->*/
+
+.produkt-bild {
+    width: 200px;
+}
+
+
+
+.platzhalter {
+    height: 120px;
+
+}
+.platzhalter_eins {
+    height: 100px;
+
+}
+.platzhalter_zwei {
+    height: 50px;
+
+}
+
+}
+.inputtag{
+  height: 40px;
+}
+.box{
+  height: 300px;
+   background: #83c4c2;
+   color: #222222;
+   text-align: center;
+   font-size:20pt;
+  font-weight: 600;
+  justify-content: center;
+  align-content: center;
+}
+
+#logingrid{
+  margin-right:50px;
+}
+
+#FarbGrid{
+  display:grid;
+    background-color: #333333;
+    justify-content: center;
+    column-gap: 25px;
+    box-shadow: 5px 5px 5px rgba(104, 104, 104, 0.8);
+    grid-template-areas:
+        "s MustHaveArea s";
+
+  
+}
+
+#Musthaves{
+  grid-area: MustHaveArea;
+  width: 600px;
+  height:350px;
+ 
+ 
+}
+
+
+/* Außen Grid für Produkte*/
+#waren {
+  
+    grid-gap: 40px;
+    display: grid;
+    width: 100%;
+    grid-template-columns: 30% 30% 30%;
+    grid-template-areas:
+        "a1 b1 c1";
+
+}
+
+.item-zelle-11 {
+    grid-area: a1;
+
+}
+
+.item-zelle-11 {
+    grid-area: b1;
+
+}
+
+.item-zelle-11 {
+    grid-area: c1;
+
+
+}
+
+#GridEingabe{
+    display: grid;
+    width: 60%;
+    grid-gap: 15px;
+    background-color:  #83C4C2;
+    border: 0.5px solid #333333;
+    border-radius: 40px;
+    justify-content: center;
+    column-gap: 45px;
+    box-shadow: 23px 23px 18px rgba(104, 104, 104, 0.8);
+    grid-template-columns: 20% 35% 15%;
+    margin-left: 310px;
+    grid-template-areas:
+        "ueberschrift ueberschrift ueberschrift"
+        "labelbil value_bil . "
+        "labelbez value_bez ."
+        "labelart value_art errorArt"
+        "labelpre value_pre errorPre"
+        "labelgro value_gro ." 
+        "labelver value_ver ."
+        ". speichern ."
+        ". . .";
+}
+
+.eingabeUeberschrift{
+  grid-area: ueberschrift;
+  color:#222222;
+}
+.labelBild{
+  grid-area: labelbil;
+}
+.labelBezeichnung{
+  grid-area: labelbez;
+}
+.labelArtikelnummer{
+  grid-area: labelart;
+}
+.labelPreis{
+  grid-area: labelpre;
+}
+.labelGroesse{
+  grid-area: labelgro;
+}
+.labelVerfuegbarkeit{
+  grid-area: labelver;
+}
+#eingabeBild{
+  grid-area: value_bil;
+}
+#eingabeBezeichnung{
+  grid-area: value_bez;
+}
+#eingabeArtikelnummer{
+  grid-area: value_art;
+}
+#eingabePreis{
+  grid-area: value_pre;
+}
+#eingabeGroesse{
+  grid-area: value_gro; 
+ 
+}
+#eingabeVerfuegbar{
+  grid-area: value_ver;
+   
+ 
+}
+.btn-grey{
+  grid-area: speichern;
+}
+  
+}
+#eingabeArtikelnummer-error{
+  grid-area:errorArt;
+}
+#eingabePreis-error{
+  grid-area:errorPre;
+}
+
+
+
+
+/* innerestes Grid für Produktinformationen*/
+.ware {
+    display: grid;
+    width: 85%;
+    grid-gap: 5px;
+  margin-top: 20px;
+    background-color: #fdfdfd;
+   border-color grey;
+    border-radius: 40px;
+    justify-content: center;
+    column-gap: 45px;
+    box-shadow: 0 1px 5px rgba(104, 104, 104, 0.8);
+    grid-template-columns: 30% 35%;
+    grid-template-areas:
+        "bild1 . "
+        "bild1-value . "
+        "bezeichnung1 b1-value"
+        "preis1 p1-value"
+        "groesse1 g1-value" 
+        "artikelnummer1 a1-value"
+        "verfuegbar1 v1-value"
+        "buttons buttons";
+  
+}
+
+.item-bild {
+    grid-area: bild1;
+    font-size: 5pt;
+    font-weight: lighter;
+}
+
+.bild-value {
+    grid-area: bild1-value;
+}
+
+.item-bezeichnung {
+    grid-area: bezeichnung1;
+    font-weight: bold;
+
+}
+
+.b-value {
+    grid-area: b1-value;
+    font-weight: bold;
+
+}
+
+.item-artikelnummer {
+    grid-area: artikelnummer1;
+}
+
+.a-value {
+    grid-area: a1-value;
+}
+
+.item-verfuegbar {
+    grid-area: verfuegbar1;
+}
+
+.v-value {
+    grid-area: v1-value;
+}
+
+.item-preis {
+    grid-area: preis1;
+    font-weight: bold;
+
+}
+
+.p-value {
+    grid-area: p1-value;
+    font-weight: bold;
+
+}
+.item-groesse {
+    grid-area: groesse1;
+   
+
+}
+
+.g-value {
+    grid-area: g1-value;
+}
+  
+
+.item-buttons {
+    grid-area: buttons;
+}
+
+

@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+<!-- ***************************************************************
+* Diese Datei gehört zum  WebEng-Kurs an der HNU
+* Copyright (c) by Tamara Pavlovic                         
+* Licensed under GPL3, see http://www.gnu.org/licenses/gpl.html
+******************************************************************** -->
+<html>
+  <head>
+    <title>Shop</title>
+    <!-- Bestimme den vom Browser zu benutzenden Zeichensatz -->
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="stylesheets/css-style(1).css" />
+    <link rel="stylesheet" href="stylesheets/Waren.css" />
+    <script type="text/javascript" src="client-js/jquery-3.5.1.min.js"></script>
+    <script
+      type="text/javascript"
+      src="client-js/jquery.validate.min.js"
+    ></script>
+    <script src="client-js/jquery-ui-1.12.1/jquery-ui.js"></script>
+    <script
+      type="text/javascript"
+      src="client-js/jquery-extensions.js"
+    ></script>
+    <link rel="stylesheet" href="client-js/jquery-ui-1.12.1/jquery-ui.css" />
+  </head>
+
+  <body>
+    <!------------Navigation---------------------->
+    <header>
+      <nav class="navigation">
+        <a href="index-dyn.html">
+          <img id="logo" src="pics/logo_StrongHeart.png" />
+        </a>
+        <ul>
+          <li><a href="Waren-dyn.html">Shop</a></li>
+          <li><a href="aktionen.html">Aktionen</a></li>
+          <li><a href="teammitglieder.html">Teammitglieder</a></li>
+          <li><a href="partner-dyn-modell.html">Partner</a></li>
+          <li><a href="Kontaktanfragen.html">Kontaktanfragen</a></li>
+          <li><a href="coaches.html">Coaches Anmeldungen</a></li>
+          <li><a href="umbau.html">Showcase Videos</a></li>
+          <li>
+            <button id="logKnopf">Einloggen</button>
+          </li>
+        </ul>
+      </nav>
+    </header>
+
+    <div id="main">
+      <div id="mainWare">
+        <!--LISTENANSICHT -->
+        <div class="platzhalter_eins"></div>
+
+        <div id="liste" class="view">
+          <div id="FarbGrid">
+            <img id="Musthaves" src="pics/produkte/MustHaves2.1.png" />
+          </div>
+
+          <h2 class="item-header">Willkommen zur Bekleidung für Herren</h2>
+
+          <div>
+            <!-- Liste aller waren -->
+            <div id="waren"></div>
+            
+          </div>
+            
+         
+        </div>
+
+        <!-- LOGINMASKE -->
+        <div id="loginMaske" class="view">
+          <form action="javascript:einloggen()" method="post">
+            <div id="logingrid">
+              <h2 class="ueberschriftlogin">Logg dich ein!</h2>
+
+              <div class="item-labelBenutzer"><label>Benutzername</label></div>
+              <input
+                id="item-eingabeBenutzer"
+                type="text"
+                placeholder="Benutzernamen eingeben"
+              />
+
+              <div class="item-labelPasswort"><label>Passwort</label></div>
+
+              <input
+                class="item-eingabePasswort"
+                id="password"
+                type="password"
+                placeholder="Passwort eingeben"
+              />
+
+              <input
+                class="btn-grey"
+                id="loginButton"
+                type="submit"
+                value="Login"
+              />
+            </div>
+          </form>
+        </div>
+
+        <div class="platzhalter"></div>
+
+        <!-- EINGABEMASKE -->
+        <form id="eingabe" class="view" action="">
+          <div id="GridEingabe">
+            <h2 class="eingabeUeberschrift"></h2>
+
+            <div class="labelBild">
+              <label>Bild</label>
+            </div>
+            <input
+              class="inputtag"
+              id="eingabeBild"
+              type="text"
+              placeholder="Bildpfad angeben: pics/produkte/produkt-0.jpg"
+              name="bild"
+            />
+
+            <div class="labelBezeichnung">
+              <label>Bezeichnung</label>
+            </div>
+            <input
+              class="inputtag"
+              id="eingabeBezeichnung"
+              type="text"
+              placeholder="Bezeichnung eingeben"
+              name="bezeichnung"
+            />
+
+            <div class="labelArtikelnummer">
+              <label>Artikelnummer</label>
+            </div>
+            <input
+              class="inputtag"
+              id="eingabeArtikelnummer"
+              type="text"
+              placeholder="Artikelnummer eingeben"
+              name="artikelnummer"
+            />
+
+            <div class="labelPreis">
+              <label>Preis in €</label>
+            </div>
+            <input
+              class="inputtag"
+              id="eingabePreis"
+              type="number"
+              placeholder="Preis eingeben"
+              name="preis"
+            />
+
+            <div class="labelGroesse">
+              <label>Groesse</label>
+            </div>
+
+            <select
+              class="inputtag"
+              placeholder="Größe auswählen"
+              id="eingabeGroesse"
+              name="groesse"
+            >
+              <option disabled selected>Wählen Sie die Größe aus</option>
+              <option>S</option>
+              <option>M</option>
+              <option>L</option>
+              <option>XL</option>
+            </select>
+
+            <div class="labelVerfuegbarkeit">
+              <label>Verfuegbarkeit</label>
+            </div>
+
+            <select class="inputtag" id="eingabeVerfuegbar" name="verfuegbar">
+              <option disabled selected>Ist die Ware verfügbar?</option>
+              <option>ja</option>
+              <option>nein</option>
+            </select>
+
+            <input
+              class="btn-grey"
+              id="speichernknopf"
+              type="submit"
+              value="Speichern"
+              onclick="save()"
+            />
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <div  class="platzhalter ">
+    </div>
+    <div  class="platzhalter_zwei ">
+    </div>
+   
+    
+    
+          <div class="box">Die Fitness Bekleidung für den guten Zweck
+            <br>
+              <div class="platzhalter_zwei">
+            </div>
+           <img src="pics/produkte/bvhk.jpg"> 
+            
+          </div>
+       <div class="platzhalter">
+       </div>
+
+    <div>
+      <footer>
+        <nav>
+          <ul>
+            <li><a href="umbau.html">Impressum</a></li>
+            <li><a href="umbau.html">Datenschutz</a></li>
+            <li><a href="umbau.html">Cookie-Einstellungen</a></li>
+            <li><a href="umbau.html">Widerrufsbelehrung</a></li>
+            <li><a href="umbau.html">AGB</a></li>
+          </ul>
+        </nav>
+
+        <div class="platzhalter"></div>
+       
+      </footer>
+    </div>
+
+    <script type="text/javascript">
+      //Die Datenstruktur eines Wareneintrags
+      function Ware(
+        id,
+        bild,
+        bezeichnung,
+        artikelnummer,
+        preis,
+        groesse,
+        verfuegbar
+      ) {
+        console.log(
+          "Funktion Ware mit " +
+            id +
+            bezeichnung +
+            artikelnummer +
+            preis +
+            groesse +
+            verfuegbar
+        );
+        this.id = "";
+        this.bild = bild;
+        this.bezeichnung = bezeichnung;
+        this.artikelnummer = artikelnummer;
+        this.preis = preis;
+        this.groesse = groesse;
+        this.verfuegbar = verfuegbar;
+      }
+
+      //Dieses Array dient der Speicherung aller Waren
+      var arrWaren = new Array();
+
+      /**** CRUD-FUNKTIONEN *****/
+
+      //ANZEIGEN
+
+      function warenAnzeigen(ort) {
+        //wird aufgerufen in WarenAnzeigen funktion
+        console.log(" warenAnzeigen: " + ort);
+
+        //Anlegen-Knopf erzeugen
+        if ($("#ware").length == 0) {
+          console.log("\t Anlegeknopf wird erzeugt");
+          $("#liste").prepend(
+            erzeugeButton(
+              "",
+              "zeigeEingabemaske",
+              "pics/glyphicons-7-user-add.png",
+              "adminButton meinButton"
+            )
+          );
+        }
+
+        $.get("/ware", "", function (res) {
+          console.log(
+            "Callbackfunktion des get-Requests (lesen): \n" +
+              JSON.stringify(res).toString()
+          );
+
+          //Listen der Waren leeren
+          $("#" + ort).empty();
+          arrWaren = res;
+          //Array-Schleife: für jeden Eintrag Erzeugung eines Warenintrags in die Listenansicht
+          for (var i = 0; i < arrWaren.length; i++) {
+            erzeugeWareElem(i, ort);
+          }
+
+          //nur Listenansicht sichtbar machen
+          $(".view").hide();
+
+          $("#liste").show();
+          checkeBerechtigungen();
+        })
+        .fail(function (xhr) {
+          console.log(
+            "/t Afruf der get.fail-Funktion mit dem Parameter err=" +
+              xhr.responseText
+          );
+          errorAlert(xhr.responseText);
+        });
+      }
+
+      //ANLEGEN und ÄNDERN
+      function wareBearbeiten(index) {
+        console.log("Funktion warenBearbeiten mit " + index);
+
+        //Lesen der Benutzereingaben
+        var bild = $("#eingabeBild").val();
+        var bezeichnung = $("#eingabeBezeichnung").val();
+        var artikelnummer = $("#eingabeArtikelnummer").val();
+        var preis = $("#eingabePreis").val();
+        var groesse = $("#eingabeGroesse").val();
+        var verfuegbar = $("#eingabeVerfuegbar").val();
+        var ware = new Ware(
+          "",
+          bild,
+          bezeichnung,
+          artikelnummer,
+          preis,
+          groesse,
+          verfuegbar
+        );
+
+        if (index != "") {
+          //ändern
+
+          $("#eingabe h2").html("Ändern Sie die Daten des Wareneintrags");
+
+          console.log("\t ändern mit " + index);
+
+          // put-Request (jquery extensions.js muss man hier einbinden)
+          $.put("/ware/" + arrWaren[index].id, ware, function (res) {
+            console.log(
+              "Callbackfunktion des put-Requests (ändern): \n" +
+                JSON.stringify(res).toString()
+            );
+            arrWaren = res;
+
+            warenAnzeigen("waren");
+          }).fail(function (xhr) {
+            console.log(
+              "/t Aufruf von put.fail-Funktion mit Parameter err=" +
+                xhr.responseText
+            );
+            errorAlert(xhr.responseText);
+          });
+        } else {
+          //anlegen
+
+          $("#eingabe h2").html(
+            "Erweitern Sie das Angebot um einen Wareneintrag"
+          );
+          console.log("\t anlegen ");
+          //post Request
+          $.post("/ware", ware, function (res) {
+            console.log(
+              "\t Callbackfunktion des post-Requests (anlegen): \n" +
+                JSON.stringify(res).toString()
+            );
+            arrWaren = res;
+
+            warenAnzeigen("waren");
+          }).fail(function (xhr) {
+            console.log(
+              "/t Aufruf von post.fail-Funktion mit Parameter err=" +
+                xhr.responseText
+            );
+            errorAlert(xhr.responseText);
+          });
+        }
+
+        warenAnzeigen("waren");
+      }
+
+      //LOESCHEN
+      function wareLoeschen(index) {
+        //bei Sicherhietsfrage nochmal Aufruf
+        console.log("Funktion wareLoeschen mit " + index);
+
+        $.delete("/ware/" + arrWaren[index].id, function (res) {
+          console.log(
+            "Callbackfunktion des delete-Requests (löschen): \n" +
+              JSON.stringify(res).toString()
+          );
+          arrWaren = res;
+
+          warenAnzeigen("waren");
+        }).fail(function (xhr) {
+          console.log(
+            "/t Aufruf von delete.fail-Funktion mit Parameter err=" +
+              xhr.responseText
+          );
+          errorAlert(xhr.responseText);
+        });
+      }
+
+      //HILFSFUNKTIONEN
+      //neu für Listenansicht-Grid:
+      function berechneKlasse(index) {
+        // In dieser Funktion wird die Gridklasse berechnet zur Anzeige der Waren
+        console.log("Funktion berechneKlasse mit " + index);
+        var klasse = "item-zelle-1";
+        klasse = klasse + ((index % 3) + 1);
+        console.log("Klasse: " + klasse);
+        return klasse;
+      }
+
+      function erzeugeWareElem(index, ort) {
+        console.log("Funktion erzeugeWareElem mit " + index + ", " + ort);
+
+        //neu für Listenansicht-Grid ist die Unterscheidung, ob die Gridklasse schon im DOM existiert
+        var klasse = berechneKlasse(index);
+        //Wenn ein Element dieser Klasse schon existiert, dann wird neue Ware erzeugt, ansonsten wird ein Element dieser Klasse im ort-Tag erzeugt
+        if ($("." + klasse).length) {
+          console.log("Klasse " + klasse + " existiert schon!");
+          $("." + klasse).append(erzeugeWare(index));
+        } else {
+          $("#" + ort).append(
+            '<div class="' + klasse + '">' + erzeugeWare(index) + "</div>"
+          );
+        }
+      }
+
+      function erzeugeWare(index) {
+        return (
+          '<div id="' +
+          index +
+          '"' +
+          'class="ware">' +
+          erzeugeWareInhalt(index) +
+          //neu für Produkt-Grid ist ein div-Tag, welches die Buttons enthält
+          '<div class="item-buttons">' +
+          erzeugeButton(
+            index,
+            "zeigeEingabemaske",
+            "pics/glyphicons-31-pencil.png",
+            " adminButton "
+          ) +
+          erzeugeButton(
+            index,
+            "zeigeSicherheitsabfrage",
+            "pics/glyphicons-17-bin.png",
+            " adminButton meinButton"
+          ) +
+          "</div>" +
+          "</div>"
+        );
+      }
+
+      function save() {
+        if ($("#eingabe").valid()) {
+          console.log("\t Eingabe ist gültig");
+
+          //Bestätigung wenn es validiert ist
+          alert("Alle Eingaben sind valide!");
+        } else {
+          //Diese Fehlermeldung popt auf wenn es nicht validiert ist
+          alert("Achtung-nicht alle Eingaben sind valide!");
+        }
+      }
+
+      function myRules() {
+        console.log("Aufruf von Funktion myRules()");
+
+        $("input[name='artikelnummer']").rules("add", {
+          required: true, //Das Feld immer ausfüllen
+          minlength: 6,
+
+          //Diese Fehlermeldung wenn man Regeln nicht einhält
+          messages: {
+            required: "Bitte geben Sie eine Artikelnummer ein.",
+            minlength:
+              "Bitte geben Sie eine Artikelnummer (mind. 6 Zeichen)ein.",
+          },
+        });
+        $("input[name='preis']").rules("add", {
+          required: true, //Das Feld immer ausfüllen
+          messages: {
+            required: "Bitte geben Sie einen Preis ein.",
+          },
+        });
+      }
+
+      $("#eingabe").validate({
+        errorElement: "span",
+      });
+      myRules();
+
+      function erzeugeWareInhalt(index) {
+        console.log("Funktion erzeugeWareInhalt mit " + index);
+        /* In dieser Funktion wird jeweils der Arrayeintrag der index-ten Stelle als Ast erzeugt (der später in die Baumstruktur des DOM als Ast gehängt werden kann)
+         */
+        var ware = "";
+        //Erzeuge bild-Ast
+        var bild = "";
+        //neu für das Produkt-Grid ist die Klasse (gilt für alle Elemente)
+        bild = "<label class='item-bild' ></label>";
+        bild =
+          bild + "<img class='bild-value' src= " + arrWaren[index].bild + ">";
+
+        //Erzeuge bezeichnung-Ast
+        var bezeichnung = "";
+        bezeichnung = "<label class='item-bezeichnung' >Bezeichnung</label>";
+        bezeichnung =
+          bezeichnung +
+          "<div class='b-value'>" +
+          arrWaren[index].bezeichnung +
+          "</div>";
+
+        //Erzeuge artikelnummer
+        var artikelnummer = "";
+        artikelnummer =
+          "<label class='item-artikelnummer' >Artikelnummer</label>";
+        artikelnummer =
+          artikelnummer +
+          "<div class='a-value'>" +
+          arrWaren[index].artikelnummer +
+          "</div>";
+
+        //Erzeuge Preis
+        var preis = 0;
+        preis = "<label class='item-preis' >Preis in Euro</label>";
+        preis =
+          preis + "<div class='p-value'>" + arrWaren[index].preis + "</div>";
+
+        //Erzeuge Groesse
+        var groesse = "";
+        groesse = "<label class='item-groesse' >Groesse</label>";
+        groesse =
+          groesse +
+          "<div class='g-value'>" +
+          arrWaren[index].groesse +
+          "</div>";
+
+        //Erzeuge verfügbar
+        var verfuegbar = "";
+        verfuegbar = "<label class='item-verfuegbar' >Verfuegbar</label>";
+        verfuegbar =
+          verfuegbar +
+          "<div class='v-value'>" +
+          arrWaren[index].verfuegbar +
+          "</div>";
+
+        //neu für Produktgrid: die strukturierenden divs entfallen
+        ware =
+          bild + bezeichnung + artikelnummer + preis + groesse + verfuegbar;
+
+        return ware;
+      }
+
+      function erzeugeButton(id, func, bildpfad, berechtigungsKlassen) {
+        console.log(
+          "Funktion erzeugeButton mit " +
+            id +
+            ", " +
+            func +
+            ", " +
+            bildpfad +
+            ", " +
+            berechtigungsKlassen
+        );
+
+        var vButton = "";
+
+        vButton =
+          "<img id='ware" +
+          id +
+          "'" +
+          "onclick='" +
+          func +
+          '("' +
+          id +
+          "\")'" +
+          "class='bildknopf " +
+          berechtigungsKlassen +
+          "'" +
+          "src='" +
+          bildpfad +
+          "'/>";
+        return vButton;
+      }
+
+      // ********* FUNKTIONEN ZUM LOGIN UND LOGOUT **********
+      function checkeBerechtigungen() {
+        console.log("Funktion checkeBerechtigungen");
+        //Alle Knöpfe auf unsichtbar setzen
+        $(".adminButton, .maButton").hide();
+        leseRolle(callback);
+
+        function callback(roles) {
+          console.log(
+            "Funktion callback mit " + JSON.stringify(roles).toString()
+          );
+          var rolesArray = roles.toString().split(",");
+          for (var i = 0; i < rolesArray.length; i++) {
+            if (rolesArray[i] == "admin") {
+              console.log("\t admin-Button wird gezeigt");
+              $(".adminButton").show();
+            } else if (rolesArray[i] == "mitarbeiter") {
+              console.log("\t mitarbeiter-Button wird gezeigt");
+              $(".maButton").show();
+            } else {
+              console.log("\t Unbekannte Rolle: " + rolesArray[i]);
+            }
+          }
+          console.log("Achtung Achtung");
+        }
+      }
+
+      function leseRolle(func) {
+        console.log("Funktion leseRolle");
+        //Beim Server wird nachgefragt, ob der Benutzer eingeloggt ist
+        $.get("/service_istEingelogged", function (data) {
+          console.log("eingeloggt: " + data.toString());
+
+          //Falls User eingeloggt ist, dann werden Sichtbarkeiten in Abhängigkeit von den Rollen gesetzt
+          if (data === true) {
+            //Benutzer ist eingeloggt
+            console.log("\t eingeloggt");
+            setloginButton("ausloggen");
+            //Berechtigungen werden erfragt und bei erfolgreichem Lesen wird whatToDo ausgeführt
+            $.get("/service_rollenAbfrage", function (roles) {
+              func(roles);
+            });
+          } else {
+            //Benutzer ist nicht eingeloggt
+            console.log("\t nicht eingeloggt");
+            setLogoutButton("zeigeLoginmaske");
+          }
+        });
+      }
+
+      function einloggen() {
+        console.log("Funktion einloggen");
+
+        //Einloggen
+        var loginDaten = {
+          user: $("#item-eingabeBenutzer").val(),
+          password: $("#password").val(),
+        };
+        $.post("/login", loginDaten, function (data) {
+          if (data === false) {
+            console.log("\t POST: falscher login");
+            alert(
+              "Ihre Benutzerdaten waren nicht richtig, bitte versuchen Sie es noch einmal."
+            );
+          } else {
+            console.log("\t POST: richtiger login");
+
+            //Richtige Ansicht nach dem Einloggen anzeigen
+            warenAnzeigen("waren");
+          }
+        });
+      }
+
+      function ausloggen() {
+        console.log("Funktion ausloggen");
+        //Ausloggen
+        $.get("/logout", function (res) {
+          console.log("\t get: logout success");
+          //Berechtigungen anpassen
+          checkeBerechtigungen();
+          //Loggen-Knopf setzen
+          setLogoutButton("zeigeLoginmaske");
+          //Richtige Ansicht nach dem Ausloggen anzeigen
+          warenAnzeigen("waren");
+        }).fail(function (xhr) {
+          console.log("\t get: logout failure");
+          //xhr steht für XML-HTTP-Request, also das HTTP-Objekt
+          console.log(
+            "/t Aufruf von get.fail-Funktion mit Parameter err=" +
+              xhr.responseText
+          );
+          errorAlert(xhr.responseText);
+        });
+      }
+
+      function setloginButton(func) {
+        console.log("Funktion setloginButton mit " + func);
+        //Loggen-Knopf zu Logout-Knopf machen
+        $("#logKnopf")
+          .html("Ausloggen")
+          .attr("onclick", func + "()");
+      }
+
+      function setLogoutButton(func) {
+        console.log("Funktion setLogoutButton mit " + func);
+        //Loggen-Knopf zu Login-Knopf machen
+        $("#logKnopf")
+          .html("Einloggen")
+          .attr("onclick", func + "()");
+      }
+
+      function zeigeEingabemaske(index) {
+        $("#eingabe h2").html(
+          "Erweitern Sie das Angebot um einen Wareneintrag"
+        );
+
+        console.log("zeigeEingabemaske " + index);
+
+        //Alle Eingabefelder leeren
+        $("#eingabe input[type='text']").val("");
+        $("#eingabe input[type=text]").val("");
+        $("#eingabe input[type=number]").val("");
+        $("#eingabe select").val("");
+
+        //Wenn der index-Parameter ungleich dem leeren String ist ...
+        if (index != "") {
+          console.log("\t ändern");
+
+          //Daten in die Eingabemaske eintragen
+
+          $("#eingabeBild").val(arrWaren[index].bild);
+          $("#eingabeBezeichnung").val(arrWaren[index].bezeichnung);
+          $("#eingabeArtikelnummer").val(arrWaren[index].artikelnummer);
+          $("#eingabePreis").val(arrWaren[index].preis);
+          $("#eingabeGroesse").val(arrWaren[index].groesse);
+          $("#eingabeVerfuegbar").val(arrWaren[index].verfuegbar);
+
+          $("#eingabe").attr(
+            "action",
+            "javascript:wareBearbeiten('" + index + "')"
+          );
+        } else {
+          console.log("\t anlegen");
+
+          $("#eingabe").attr("action", "javascript:wareBearbeiten('')");
+        }
+
+        //Abschluss: nur Eingabemaske sichtbar machen
+        $(".view").hide();
+        $("#eingabe").show();
+      }
+
+      function zeigeSicherheitsabfrage(index) {
+        console.log("Funktion zeigeSicherheitsabfrage mit " + index);
+
+        $(function () {
+          $(
+            "<div titel ='Sicherheitsabfrage'> <p>  Wollen Sie wirklich die Ware mit der Bezeichnung: '" +
+              arrWaren[index].bezeichnung +
+              "'löschen? </p> </div>"
+          ).dialog({
+            resizable: false,
+            height: "auto",
+            modal: true,
+            buttons: {
+              Löschen: function () {
+                $(this).dialog("close");
+                wareLoeschen(index);
+                warenAnzeigen("waren");
+              },
+              abbrechen: function () {
+                $(this).dialog("close");
+              },
+            },
+          });
+        });
+      }
+
+      function zeigeLoginmaske() {
+        console.log("zeigeLoginmaske");
+        //nur Loginansicht sichtbar machen
+        $(".view").hide();
+        $("#loginMaske").show();
+      }
+
+      function errorAlert(data) {
+        console.log("Server Error Message: " + JSON.stringify(data).toString());
+        alert("Fehler auf dem Server: " + JSON.stringify(data).toString());
+      }
+
+      //Ansicht beim Aufruf der Webseite
+      warenAnzeigen("waren");
+    </script>
+  </body>
+</html>
