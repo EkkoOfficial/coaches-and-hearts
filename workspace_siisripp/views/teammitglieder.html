@@ -1,0 +1,797 @@
+<!DOCTYPE html>
+<!-- ***************************************************************
+*    Diese Datei gehört zum  WebEng-Kurs an der HNU
+*    Copyright (c) by Isabell Ripple                     
+*    Licensed under GPL3, see http://www.gnu.org/licenses/gpl.html
+******************************************************************** -->
+<html>
+
+<head>
+    <title>Teammitglieder anlegen</title>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="stylesheets/teammitglieder.css">
+    <link rel="stylesheet" href="stylesheets/css-style.css">
+  
+  
+  <!-- Verlinkung der jquery-->
+    <script type="text/javascript" src="client-js/jquery-3.5.1.min.js"></script>
+    <script type="text/javascript" src="client-js/jquery.validate.min.js"></script>
+    <script type="text/javascript" src="client-js/jquery-extensions.js"></script>
+    <script src="client-js/jquery-ui-1.12.1/jquery-ui.js"></script>
+    <link rel="stylesheet" href="client-js/jquery-ui-1.12.1/jquery-ui.css">
+
+
+
+
+
+</head>
+
+
+
+<body>
+    <div id="leererBlock"></div>
+
+    <header>
+        <nav class="navigation">
+
+            <a href="index-dyn.html"> <img id="logo" src="pics/logo_StrongHeart.png" /> </a>
+            <ul>
+
+                <li><a href="Waren-dyn.html">Shop</a></li>
+                <li><a href="aktionen.html">Aktionen</a></li>
+                <li><a href="teammitglieder.html">Team</a></li>
+                <li><a href="partner-dyn-modell.html">Partner</a></li>
+                <li><a href="Kontaktanfragen.html">Kontaktanfragen</a></li>
+                <li><a href="coaches.html">Coaches Anmeldungen</a></li>
+                <li><a href="umbau.html">Showcase Videos</a></li>
+                <li>
+                    <button id="logKnopf">Einloggen</button>
+                </li>
+            </ul>
+
+        </nav>
+
+    </header>
+
+
+    <br />
+
+    <div id="main">
+
+        <div id="mainTeammitglieder">
+
+            <div class="abstand"></div>     
+
+        
+          
+          
+            <!--LISTENANSICHT -->
+            <div class="container">
+                <div id="liste" class="view">
+                    <!--Überschrift der Liste-->
+                  <h2 class="item-header">Unser Team: </h2>  
+                
+                  <img id= "teambild" src="pics/teammitglieder/strongHeartTeam.jpg" />
+                  <h3 class="item-header">Strong Heart ist ein Gemeinschaftsprojekt unserer kleinen Patchwork- Familie </h3> 
+                  <h4 class="item-header"> Also lerne uns kennen!</h4> 
+                  
+                    <div>
+                        <!-- Liste aller Teammitglieder -->
+                        <div id="teammitglieder"></div>
+                      
+                       <div class="abstand"></div>
+                  <h5 class="item-header"> Unterstützen Sie mit uns den Bundesverband Herzkranke Kinder eV</h5>
+                    
+                  <img id= "bvhkbild" src="pics/teammitglieder/bVHK.png" />
+                    </div>
+                  
+                  
+                  <div class="abstand"></div>
+                  
+                  
+                </div>
+            </div>
+
+
+
+            
+                <!-- LOGINMASKE, um weitere Berechtigungen zu erhalten -->
+                <div id="loginMaske" class="view">
+                   
+                      
+                  
+                    <form action="javascript:einloggen()" method="post">
+                       <div id="logingrid">
+                       <h2 class=ueberschriftlogin>Logg dich ein!</h2>
+                           <div class="item-labelBenutzer"><label>Benutzername</label></div>
+                            <input id="item-eingabeBenutzer" type="text" placeholder="Benutzernamen eingeben" />
+                    
+                    
+                           <div class="item-labelPasswort"> <label>Passwort</label></div>
+                            <input class="item-eingabePasswort" id="passwort" type="password" placeholder="Passwort eingeben" />
+                      
+                       
+                        <input id="loginButton" class= "btn-grey" type="submit" value="Login" />
+                    </form>
+
+                </div>
+                  </div>
+
+                 
+          
+          
+          
+          
+
+                <!-- EINGABEMASKE -->
+                <form id="eingabe" class="view" action="">
+                <h2 class="ueberschriftEingabe">Hier können Sie Teammitglieder neuanlegen oder bearbeiten</h2>
+                  
+                  <div id="eingabemaskeGrid" >
+                
+                 
+
+                    <div class="attributBild">
+                        <label>Bild</label> </div>                   <!--Bildpfadangabe, damit Sie meine passenden Bilder finden-->
+                        <input id="eingabeBild" type="text" placeholder="Bildpfad:pics/teammitglieder/strongHeartMarion.png" name='bild' />
+                    
+                    <div class="attributName">
+                        <label>Name</label>  </div>
+                        <input id="eingabeName" type="text" placeholder="Name eingeben" name='teammitgliedname' />
+                   
+                    <div class="attributStrasse">
+                        <label>Strasse</label>  </div>
+                        <input id="eingabeStrasse" type="text" placeholder="Strasse eingeben" name='strasse' />
+                   
+                    <div class="attributOrt">
+                        <label>Ort</label>  </div>
+                        <input id="eingabeOrt" type="text" placeholder="Ort eingeben" name='ort' />
+                    
+                    <div class="attributGeburtsdatum">
+                        <label>Geburtsdatum</label>  </div>
+                        <input id="eingabeGeburtsdatum" type="text" placeholder="Geburtsdatum eingeben" name='geburtsdatum' />
+                    
+                    <div class="attributBeruf">
+                        <label>Beruf</label>  </div>
+                        <input id="eingabeBeruf" type="text" placeholder="Beruf eingeben" name='beruf' />
+                    
+                    <div class="attributTelefonnummer">
+                        <label>Telefonnummer</label>  </div>
+                        <input id="eingabeTelefonnummer" type="text" placeholder="Telefonnummer eingeben" name='telefonnummer' />
+                   
+
+                  <input id= "button1" class="btn-grey" type="submit" value="Speichern" onclick="save()" />
+                    </div>  
+                </form>
+
+            </div>
+      
+
+ 
+     
+        <script type="text/javascript">
+            //Die Datenstruktur eines Teammitglieds
+            function Teammitglied(id,bild, name, strasse, ort, geburtsdatum, beruf, telefonnummer) {
+                console.log("Funktion Teammitglied mit " + id + bild + name + strasse + ort + geburtsdatum + beruf + telefonnummer)
+                this.id="";
+                this.bild = bild;
+                this.name = name;
+                this.strasse = strasse;
+                this.ort = ort;
+                this.geburtsdatum = geburtsdatum;
+                this.beruf = beruf;
+                this.telefonnummer = telefonnummer;
+            }
+
+
+            //Dieses Array dient der Speicherung aller Teammitglieder, welche selbst ausgewählt werden können
+          
+            var arrTeammitglieder = new Array();
+    
+
+
+
+            /* CRUD-FUNKTIONEN */
+
+
+            //ANZEIGEN
+
+            function teammitgliederAnzeigen(ort) {
+                console.log('teammitgliederAnzeigen: ' + ort);
+
+
+                //Anlegen-Knopf erzeugen.Dieser wurde mit inDesign und Photoshop gestaltet
+
+                if ($("#teammitglied").length == 0) {
+                    console.log("\t Anlegeknopf wird erzeugt");
+                    $("#liste").prepend(
+                        erzeugeButton("",
+                            "zeigeEingabemaske", "pics/icons/add.png",
+                            "adminButton")
+                    )
+                }
+$.get("/teammitglied","",function(res){
+  console.log("Callbackfunktion des get-Requests (lesen): \n" + JSON.stringify(res).toString());
+
+
+                //Listenansicht initialisieren
+
+                $('#' + ort).empty();
+               arrTeammitglieder=res;
+
+                //Array-Schleife: für jeden Eintrag Erzeugung eines Teammitglied-Eintrags in die Listenansicht
+
+                for (var i = 0; i < arrTeammitglieder.length; i++) {
+                    erzeugeTeammitgliedElem(i, ort);
+                }
+              
+                //nur Listenansicht sichtbar machen
+                $(".view").hide();
+                $("#liste").show();
+                checkeBerechtigungen();
+            })
+          .fail(function(xhr){
+            console.log(" /t Aufruf von get.fail-Funktion mit Parameter err=" + xhr.responseText);
+            errorAlert(xhr.responseText);
+          });
+          
+            } 
+//Datepicker mit jquery-ui
+          $(function() {
+            $("#eingabeGeburtsdatum").datepicker();
+        });
+        $("#eingabeGeburtsdatum").datepicker({
+            changeMonth: true,
+            changeYear: true,
+            yearRange: '1000:' + 'new Date().getFullYear()',
+            dateFormat: "dd-mm-yy",
+            monthNames: ["Januar", "Februar", "März", "April", "Mai", "Juni", "Juli", "August", "September", "Oktober", "November", "Dezember"],
+            monthNamesShort: ["Jan", "Feb", "Mär", "Apr", "Mai", "Jun", "Jul", "Aug", "Sep", "Okt", "Nov", "Dez"],
+            dayNames: ["Sonntag", "Montag", "Dienstag", "Mittwoch", "Donnerstag", "Freitag", "Samstag"],
+            dayNamesShort: ["So", "Mo", "Di", "Mi", "Do", "Fr", "Sa"],
+            dayNamesMin: ["So", "Mo", "Di", "Mi", "Do", "Fr", "Sa"],
+            weekHeader: "KW",
+            firstDay: 1,
+            isRTL: false,
+            showMonthAfterYear: false,
+        })
+          
+          
+            //ANLEGEN  und Ändern der Teammitglieder 
+            function teammitgliedBearbeiten(index) {
+                console.log("Funktion TeammitgliedBearbeiten mit " + index);
+              
+                //Lesen der Benutzereingaben
+                var bild = $("#eingabeBild").val();
+                var name = $("#eingabeName").val();
+                var strasse = $("#eingabeStrasse").val();
+                var ort = $("#eingabeOrt").val();
+                var geburtsdatum = $("#eingabeGeburtsdatum").val();
+                var beruf = $("#eingabeBeruf").val();
+                var telefonnummer = $("#eingabeTelefonnummer").val();
+                var teammitglied = new Teammitglied("", bild, name, strasse, ort, geburtsdatum, beruf, telefonnummer);
+              
+              if (index==""){
+                console.log("\t anlegen")
+              
+//Post-Request
+$.post("/teammitglied",teammitglied,function(res){
+  console.log("\t Callbackfunktion des post-Requests (anlegen): \n "+ JSON.stringify(res).toString());
+  arrTeammitglieder=res;
+  teammitgliederAnzeigen("teammitglieder");
+})
+              
+  .fail(function(xhr){
+            console.log("\t Aufruf von post.fail-Funktion mit Parameter err=" + xhr.responseText);
+            errorAlert(xhr.responseText);
+          });            
+
+                } else {
+                    //Aendern
+                    console.log("\t ändern mit " + index);
+                  
+                  //PUT-Request (jquery-extensions.js einbinden!)
+$.put("/teammitglied/" + arrTeammitglieder[index].id, teammitglied, function(res){
+  console.log("Callbackfunktion des put-Requests (ändern): \n "+ JSON.stringify(res).toString());
+  arrTeammitglieder=res;
+  teammitgliederAnzeigen("teammitglieder");
+})
+   .fail(function(xhr){
+            console.log("\t Aufruf von put.fail-Funktion mit Parameter err=" + xhr.responseText);
+            errorAlert(xhr.responseText);
+          });   
+                }
+            }
+          
+                  
+       
+
+            //LOESCHEN der Teammitglieder
+            function teammitgliedLoeschen(index) {
+                console.log("Funktion teammitgliedLoeschen mit " + index);
+          
+                //DELETE-Request (jquery-extensions.js einbinden!)
+$.delete("/teammitglied/" + arrTeammitglieder[index].id, function(res){
+  console.log("Callbackfunktion des delete-Requests (löschen): \n" + JSON.stringify(res).toString());
+  arrTeammitglieder=res;
+  teammitgliederAnzeigen("teammitglieder");
+})
+   .fail(function(xhr){
+            console.log("/t Aufruf von delete.fail-Funktion mit Parameter err=" + xhr.responseText);
+            errorAlert(xhr.responseText);
+          }); 
+              
+                }
+            
+            
+
+
+
+            //HILFSFUNKTIONEN
+
+            //neu für Listenansicht-Grid:
+            function berechneKlasse(index) {
+                // In dieser Funktion wird die Gridklasse berechnet zur Anzeige der Teammitglieder
+                console.log("Funktion berechneKlasse mit " + index);
+                var klasse = "item-zelle-1";
+                klasse = klasse + (((index) % 3) + 1);
+                console.log("Klasse: " + klasse);
+                return klasse;
+            }
+
+
+
+            function erzeugeTeammitgliedElem(index, ort) {
+                console.log("Funktion erzeugeTeammitgliedElem mit " + index + ", " + ort);
+
+
+                //Unterscheidung, ob die Gridklasse schon im DOM existiert
+                var klasse = berechneKlasse(index);
+                //Wenn ein Element dieser Klasse schon existiert, dann wird darein eine neue Person des Teams erzeugt, ansonsten wird ein Element dieser Klasse im ort-Tag erzeugt
+                if ($("." + klasse).length) {
+                    console.log("Klasse " + klasse + " existiert schon!")
+                    $("." + klasse).append(
+                        erzeugeTeammitglied(index)
+                    );
+                } else {
+                    $("#" + ort).append(
+                        '<div class="' + klasse + '">' +
+                        erzeugeTeammitglied(index) +
+                        '</div>'
+                    );
+                }
+
+
+
+            }
+
+            function erzeugeTeammitglied(index) {
+                return '<div id="' + index + '"' +
+                    'class="teammitglied">' +
+                    erzeugeTeammitgliedInhalt(index)
+                    // div-Tag, welches die Buttons enthält
+                    +
+                    '<div class="item-buttons">' +
+                    erzeugeButton(index, "zeigeEingabemaske", "pics/icons/edit.png", " adminButton maButton")
+
+                    +
+                    erzeugeButton(index, "zeigeSicherheitsabfrage", "pics/icons/delete.png", " adminButton") +
+                    '</div>' +
+                    '</div>';
+              
+ 
+            }
+
+
+
+
+
+
+//Arrayeintraege
+
+            function erzeugeTeammitgliedInhalt(index) {
+                console.log("Funktion erzeugeTeammitgliedInhalt mit " + index);
+                /* In dieser Funktion wird jeweils der Arrayeintrag der index-ten Stelle als Ast erzeugt (der später in die Baumstruktur des DOM als Ast gehängt werden kann)
+                 */
+                var teammitglied = "";
+                var bild = "";
+                bild = "<label class='item-bild'></label>";
+                bild = bild + "<img class='item-bb-value' src=" + arrTeammitglieder[index].bild + ">";
+
+
+                //Erzeuge name-Ast 
+                var name = "";
+                name = "<label class='item-name' >Name</label>";
+                name = name + "<div class='item-n-value'>" + arrTeammitglieder[index].name + "</div>";
+
+
+                //Erzeuge strasse
+                var strasse = "";
+                strasse = "<label class='item-strasse'>Strasse</label>";
+                strasse = strasse + "<div class='item-s-value'>" + arrTeammitglieder[index].strasse + "</div>";
+
+
+                //Erzeuge ort
+                var ort = "";
+                ort = "<label class='item-ort'>Ort</label>";
+                ort = ort + "<div class='item-o-value'>" + arrTeammitglieder[index].ort + "</div>";
+
+
+
+                //Erzeuge geburtsdatum
+                var geburtsdatum = "";
+                geburtsdatum = "<label class='item-geburtsdatum'>Geburtsdatum</label>";
+                geburtsdatum = geburtsdatum + "<div class='item-g-value'>" + arrTeammitglieder[index].geburtsdatum + "</div>";
+
+
+                //Erzeuge Beruf
+                var beruf = "";
+                beruf = "<label class='item-beruf'>Beruf</label>";
+                beruf = beruf + "<div class='item-b-value'>" + arrTeammitglieder[index].beruf + "</div>";
+
+
+
+                //Erzeuge Telefonnummer
+                var telefonnummer = "";
+                telefonnummer = "<label class='item-telefonnummer'>Telefonnummer</label>";
+                telefonnummer = telefonnummer + "<div class='item-t-value'>" + arrTeammitglieder[index].telefonnummer + "</div>";
+
+
+
+                teammitglied =
+                    bild +
+                    name +
+                    strasse +
+                    ort +
+                    geburtsdatum +
+                    beruf +
+                    telefonnummer;
+
+
+                return teammitglied;
+            }
+
+
+
+
+            function erzeugeButton(id, func, bildpfad, berechtigungsKlassen) {
+
+                console.log("Funktion erzeugeButton mit " +
+                    id + ", " +
+                    func + ", " +
+                    bildpfad + ", " +
+                    berechtigungsKlassen
+                );
+
+
+                var vButton = "";
+                //Das mit \ "maskierte" Anführungszeichen ist die dritte verschachtelte Ebene für Anführungszeichen
+                vButton = "<img id='teammitglied" + id + "'" +
+                    "onclick='" +
+                    func + "(\"" + id + "\")'" +
+                    "class='bildknopf " + berechtigungsKlassen + "'" +
+                    "src='" + bildpfad + "'/>";
+                return vButton;
+
+            }
+
+            function zeigeLoginmaske() {
+                console.log('zeigeLoginmaske');
+                //nur Loginansicht sichtbar machen
+                $(".view").hide();
+                $("#loginMaske").show();
+            }
+
+            function zeigeEingabemaske(index) {
+                console.log('zeigeEingabemaske ' + index);
+
+                //nur Eingabemaske sichtbar machen
+                $(".view").hide();
+                $("#eingabe").show();
+
+                if (index != "") {
+                    //Eingabemaske initialisieren
+                    $("#eingabe input").val("");
+                    $("#eingabe input[type='submit']").val("Speichern");
+
+                    //Daten in die Eingabemaske eintragen
+                    $("#eingabeBild").val(arrTeammitglieder[index].bild);
+                    $("#eingabeName").val(arrTeammitglieder[index].name);
+                    $("#eingabeStrasse").val(arrTeammitglieder[index].strasse);
+                    $("#eingabeOrt").val(arrTeammitglieder[index].ort);
+                    $("#eingabeGeburtsdatum").val(arrTeammitglieder[index].geburtsdatum);
+                    $("#eingabeBeruf").val(arrTeammitglieder[index].beruf);
+                    $("#eingabeTelefonnummer").val(arrTeammitglieder[index].telefonnummer);
+                    //Wenn nicht, dann:
+                    $("#eingabe").attr("action", "javascript:teammitgliedBearbeiten('" + index + "')");
+                } else {
+                    //Eingabemaske initialisieren
+                    $("#eingabe input").val("");
+                    $("#eingabe input[type='submit']").val("Speichern");
+                    $("#eingabe").attr("action", "javascript:teammitgliedBearbeiten('')");
+                }
+            }
+          
+            // Hier wird die Dialogbox erstellt
+            function zeigeSicherheitsabfrage(index) {
+                console.log("Funktion zeigeSicherheitsabfrage mit " + index);
+
+                $(function() {
+                    $("<div id ='dialog-confirm' title ='Sicherheitsabfrage'> <p> Sind Sie sicher, dass sie dieses Teammitglied mit dem Namen '" + arrTeammitglieder[index].name + "'wirklich löschen wollen?</p></div>").dialog({
+                        resizable: false,
+                        height: "auto",
+                        width: 400,
+                        modal: true,
+                        buttons: {
+                            "Löschen": function() {
+                                $(this).dialog("close");
+                                teammitgliedLoeschen(index);
+                                teammitgliederAnzeigen('teammitglieder');
+                            },
+                            abbrechen: function() {
+                                $(this).dialog("close");
+                            }
+                        }
+                    });
+                });
+            }
+
+
+
+
+
+
+
+
+
+              // ********* FUNKTIONEN ZUM LOGIN UND LOGOUT **********
+        function checkeBerechtigungen() {
+            console.log("Funktion checkeBerechtigungen")
+            //Alle Knöpfe auf unsichtbar setzen
+            $('.adminButton, .maButton').hide();
+	        leseRolle(callback);
+			  function callback(roles){
+					console.log("Funktion callback mit " + JSON.stringify(roles).toString());
+					var rolesArray=roles.toString().split(',');
+					for (var i = 0; i < rolesArray.length; i++) {
+						if (rolesArray[i] == 'admin') {
+							console.log("\t admin-Button wird gezeigt");
+							$('.adminButton').show();
+						} else if (rolesArray[i] == 'mitarbeiter') {
+							console.log('\t mitarbeiter-Button wird gezeigt');
+							$('.maButton').show();
+						} else {
+							console.log("\t Unbekannte Rolle: " + rolesArray[i]);
+						}           
+					}
+				console.log("Achtung Achtung")
+				}
+		 }
+        function leseRolle(func){
+             console.log("Funktion leseRolle");
+             //Beim Server wird nachgefragt, ob der Benutzer eingeloggt ist
+             $.get("/service_istEingelogged", function(data) {
+               console.log("eingeloggt: " + data.toString());
+
+                //Falls User eingeloggt ist, dann werden Sichtbarkeiten in Abhängigkeit von den Rollen gesetzt
+                if (data === true) {
+						 //Benutzer ist eingeloggt
+                   console.log("\t eingeloggt");
+						 setLoginButton("ausloggen");
+                   //Berechtigungen werden erfragt und bei erfolgreichem Lesen wird whatToDo ausgeführt
+                   $.get("/service_rollenAbfrage", function(roles){
+                      func(roles);
+                   })} 
+                 else {
+                   //Benutzer ist nicht eingeloggt
+                   console.log("\t nicht eingeloggt");
+						 setLogoutButton("zeigeLoginmaske");
+                 }
+            })
+        }
+        function einloggen(){
+            console.log("Funktion einloggen");           
+            
+            //Einloggen
+            var loginDaten = {"user": $("#item-eingabeBenutzer").val(),
+                              "password": $("#passwort").val()
+            }
+            $.post('/login', loginDaten, function(data) {
+                if (data === false) {
+			         console.log("\t POST: falscher login");
+                     alert("Ihre Benutzerdaten waren nicht richtig, bitte versuchen Sie es noch einmal.");
+                }
+                else {
+			         console.log("\t POST: richtiger login");
+                  
+            		//Richtige Ansicht nach dem Einloggen anzeigen
+            		 teammitgliederAnzeigen('teammitglieder');
+
+                }
+            })
+            
+        }
+        function ausloggen(){
+            console.log("Funktion ausloggen");
+            //Ausloggen
+             $.get('/logout', function(res) {
+                console.log("\t GET: logout success");
+					 //Berechtigungen anpassen
+               checkeBerechtigungen();
+               //Loggen-Knopf setzen
+               setLogoutButton('zeigeLoginmaske');
+               //Richtige Ansicht nach dem Ausloggen anzeigen
+               teammitgliederAnzeigen('teammitglieder');
+
+             })
+        	  .fail(function(xhr){
+                console.log("\t GET: logout failure");
+           	    //xhr steht für XML-HTTP-Request, also das HTTP-Objekt
+           	    console.log("/t Aufruf von get.fail-Funktion mit Parameter err=" + xhr.responseText);
+           	    errorAlert(xhr.responseText);
+            });
+            
+        }
+            function setLoginButton(func) {
+                console.log("Funktion setLoginButton mit " + func)
+                //Loggen-Knopf zu Logout-Knopf machen
+                $("#logKnopf").html("Ausloggen")
+                    .attr("onclick", func + "()");
+            }
+
+            function setLogoutButton(func) {
+                console.log("Funktion setLogoutButton mit " + func)
+                //Loggen-Knopf zu Login-Knopf machen
+                $("#logKnopf").html("Einloggen")
+                    .attr("onclick", func + "()");
+            }
+
+            function zeigeLoginmaske() {
+                console.log("zeigeLoginmaske");
+                //nur Loginansicht sichtbar machen
+                $(".view").hide();
+                $("#loginMaske").show();
+            }
+            function errorAlert(data) {
+   			console.log("Server Error Message: " + JSON.stringify(data).toString());
+   			alert("Fehler auf dem Server: " + JSON.stringify(data).toString());
+		  }
+
+
+
+
+
+            //Validation
+            function save() {
+                if ($("#eingabe").valid()) {
+                    console.log("/t Eingabe ist gültig");
+
+                    //Wenn alle Daten validiert wurden
+                    alert("Alle Eingaben sind valide!");
+                    //sonst:
+                } else {
+                    //Diese Fehlermeldung kommt, wenn nicht alle Daten validiert sind
+                    alert("Achtung nicht alle Eingaben sind valide!");
+                }
+            }
+            //Ansicht beim Aufrufen der Webseite
+
+
+
+
+
+            function myRules() {
+                console.log("Aufruf von Funktion myRules()");
+
+                $("input [name='teammitgliedname']").rules("add", {
+                    required: true, //Feld muss ausgefüllt werden
+                    minlength: 4,
+                    //Fehlermeldung bei Regelbruch, also wenn weniger als 4 Buchstaben verwendet wurden
+
+                    messages: {
+                        required: 'Bitte geben Sie den Namen ein',
+                        minlength: 'Bitte geben Sie den vollständigen Namen ein(mind.4 Zeichen)',
+                    }
+                });
+
+                $("input[name='strasse']").rules("add", {
+                    required: true, //Feld muss ausgefüllt werden
+                    minlength: 4,
+                    //Fehlermeldung bei Verstoß
+
+                    messages: {
+                        required: 'Bitte geben Sie die Straße ein',
+                        minlength: 'Bitte gebebn Sie die vollständige Straße ein(mind.4 Zeichen)',
+                    }
+                });
+
+                $("input[name='ort']").rules("add", {
+                    required: true, //Feld muss ausgefüllt werden
+                    minlength: 3,
+                    //Fehlermeldung bei Verstoß
+                    messages: {
+                        required: 'Bitte geben Sie den Ort ein',
+                        minlength: 'Bitte geben Sie den vollständigen Ortsnamen ein(mind.3 Zeichen)',
+                    }
+                });
+              $("input[name='geburtsdatum']").rules("add", {
+                    required: true, //Feld muss ausgefüllt werden
+                    minlength: 6,
+                    //Fehlermeldung bei Verstoß
+
+                    messages: {
+                        required: 'Bitte geben Sie das Geburtsdatum ein',
+                        minlength: 'Bitte geben Sie das vollständige Geburtsdatum ein(mind.6 Zeichen)',
+                    }
+                });
+              
+                $("input[name='beruf']").rules("add", {
+                    required: true, //Feld muss ausgefüllt werden
+                    minlength: 5,
+                    //Fehlermeldung bei Verstoß
+
+                    messages: {
+                        required: 'Bitte geben Sie den Beruf ein',
+                        minlength: 'Bitte geben Sie die vollständige Berufsbezeichnung ein(mind.5 Zeichen)',
+                    }
+                });
+                $("input[name='telefonnummer']").rules("add", {
+                    required: true, //Feld muss ausgefüllt werden
+                    minlength: 12,
+                    //Fehlermeldung bei Verstoß
+                    messages: {
+                        required: 'Bitte geben Sie die Telefonnumer ein',
+                        minlength: 'Bitte geben Sie die vollständige Telefonnummer ein(mind.12 Zeichen)',
+                    }
+                });
+            }
+
+            //Validate Funktion
+            $("#eingabe").validate({
+                errorElement: 'span'
+            });
+
+          
+          
+          
+          
+            //Aufruf der Funktion myRules 
+            myRules();
+
+          
+           function errorAlert(data) {
+   			console.log("Server Error Message: " + JSON.stringify(data).toString());
+   			alert("Fehler auf dem Server: " + JSON.stringify(data).toString());
+		  }
+
+            teammitgliederAnzeigen("teammitglieder");
+
+          
+
+        </script>
+
+        <div>
+            <footer>
+                <!--footer Verlinkungen-->
+
+                <nav>
+
+                    <ul>
+                        <li><a href="umbau.html">Impressum</a></li>
+                        <li><a href="umbau.html">Datenschutz</a></li>
+                        <li><a href="umbau.html">Cookie-Einstellungen</a></li>
+                        <li><a href="umbau.html">Widerrufsbelehrung</a></li>
+                        <li><a href="umbau.html">AGB</a></li>
+
+
+                    </ul>
+
+                </nav>
+
+            </footer>
+        </div>
+
+    </div>
+</body>
+
+</html>

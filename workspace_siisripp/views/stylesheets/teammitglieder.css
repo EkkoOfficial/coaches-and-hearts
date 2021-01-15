@@ -1,0 +1,336 @@
+/*<!-- ***************************************************************
+* Diese Datei gehört zum imuk3-WebEng-Musterprojekt                *
+* Copyright (c) by Isabell Ripple                              *                                  *
+* Licensed under GPL3, see http://www.gnu.org/licenses/gpl.html    *
+******************************************************************** -->*/
+html,
+
+#erzeugeTeammitgliedInhalt {
+    width: 600px;
+}
+
+
+#teammitglieder li {
+    border: 1px black;
+    margin: 10px;
+    border: 1px solid black;
+
+}
+
+
+
+/*Damit Bezeichnungen fett sind*/
+label {
+    font-weight: bold;
+    font-family: sans-serif;
+}
+
+.bildknopf {
+    max-width: 25px;
+}
+
+
+
+/* Äußeres Grid mit main-Bereich */
+.breite {
+    margin: 2%;
+    width: 96%;
+}
+
+#main {
+    display: grid;
+    grid-template-columns: 20% 60% 20%;
+    grid-template-rows: auto;
+    grid-template-areas:
+        "left-1 main right-1"
+        "left-2 main right-2"
+        "left-3 main right-3"
+        "footer-1 footer-2 footer-3"
+ 
+    
+}
+
+
+
+#mainTeammitglieder {
+    grid-area: main;
+}
+
+.item-footer-1 {
+    grid-area: footer-1;
+}
+
+.item-footer-2 {
+    grid-area: footer-2;
+}
+
+.item-footer-3 {
+    grid-area: footer-3;
+}
+
+/* Inneres Grid für Listenansicht */
+#teammitglieder {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-template-rows: auto;
+    grid-template-areas:
+        "zelle-11 zelle-12" ;
+}
+
+.item-zelle-11 {
+    grid-area: zelle-11;
+
+
+}
+
+.item-zelle-12 {
+ grid-area: zelle-12;
+padding:40px;
+}
+
+
+/* Innerstes Grid für Teammitglied-Grid */
+.teammitglied {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-template-rows: auto;
+    grid-template-areas:
+       "header header"
+      "bild bb-value"
+        "name n-value"
+        "strasse  s-value"
+        "ort  o-value"
+        "geburtsdatum g-value"
+        "beruf b-value"
+        "telefonnummer t-value"
+        "buttons buttons";
+   
+    width: 100%;
+    overflow: hidden;
+}
+
+.item-header{
+  grid-area:header;
+}
+
+.item-bild {
+    grid-area: bild;
+}
+
+.item-bb-value {
+    grid-area: bb-value;
+    max-width: 80%;
+    height: auto;
+}
+
+.item-name {
+    grid-area: name;
+}
+
+.item-n-value {
+    grid-area: n-value;
+}
+
+.item-strasse {
+    grid-area: strasse;
+}
+
+.item-s-value {
+    grid-area: s-value;
+}
+
+.item-ort {
+    grid-area: ort;
+}
+
+.item-o-value {
+    grid-area: o-value;
+}
+
+.item-geburtsdatum {
+    grid-area: geburtsdatum;
+}
+
+.item-g-value {
+    grid-area: g-value;
+}
+
+.item-beruf {
+    grid-area: beruf;
+}
+
+.item-b-value {
+    grid-area: b-value;
+}
+
+.item-telefonnummer {
+    grid-area: telefonnummer;
+}
+
+.item-t-value {
+    grid-area: t-value;
+}
+
+/*Damit Dialogbox roten Hintergrund hat*/
+#dialog-confirm {
+    background-color: darkred;
+    color: black;
+}
+
+/* Platzhalter, um mehr Zwischenraum bzw Abstand zu haben*/
+ .abstand {
+   height: 120px;
+}
+
+/*Bild des Teams*/
+#teambild{
+  width:80%;
+}
+/*Bild des BVHK Vereins an den Strong Heart spendet*/
+#bvhkbild{
+  width:30%;
+}
+
+/* um die Eingabemaske in einem grid zu haben mit 3 Spalten */
+#eingabemaskeGrid{
+  display: grid;
+   background-color: lightcyan;
+    grid-template-columns: 30% 30% 40%;
+    grid-template-rows: auto;
+    grid-template-areas:
+       "ueberschriftEingabe ueberschriftEingabe ."
+       "attributBild valueBild ."
+        "attributName valueName errorName"
+        "attributStrasse valueStrasse errorStrasse"
+        "attributOrt valueOrt errorOrt"
+        "attributGeburtsdatum valueGeburtsdatum errorGeburtsdatum"
+        "attributBeruf valueBeruf errorBeruf"
+        "attributTelefonnummer valueTelefonnummer errorTelefonnummer"
+        "button1 button1 .";
+   
+    width: 100%;
+}
+
+.uberschriftEingabe{
+  grid-area:uberschriftEingabe;
+}
+/* Attributbezeichnungen, damit Benutzer weiß was er eintragen soll*/
+.attributBild{
+  grid-area:attributBild;
+  margin-right:50px;
+}
+
+.attributName{
+  grid-area:attributName;
+  margin-right:50px;
+}
+
+.attributStrasse{
+  grid-area:attributStrasse;
+  margin-right:50px;
+}
+
+.attributOrt{
+  grid-area:attributOrt;
+  margin-right:50px;
+}
+
+.attributGeburtsdatum{
+  grid-area:attributGeburtsdatum;
+  margin-right:50px;
+}
+
+.attributBeruf{
+  grid-area:attributBeruf;
+  margin-right:50px;
+}
+
+.attributTelefonnummer{
+  grid-area:attributTelefonnummer;
+  margin-right:50px;
+}
+
+ /* Eingabefelder der zu befüllenden Daten*/
+
+#eingabeBild{
+  grid-area:valueBild;
+  width:150px;
+  margin-top:10px;
+  margin-left:50px;
+}
+#eingabeName{
+  grid-area:valueName;
+  width:150px;
+  margin-top:10px;
+  margin-left:50px;
+}
+#eingabeStrasse{
+  grid-area:valueStrasse;
+  width:150px;
+  margin-top:10px;
+  margin-left:50px;
+}
+#eingabeOrt{
+  grid-area:valueOrt;
+  width:150px;
+  margin-top:10px;
+  margin-left:50px;
+}
+
+#eingabeGeburtsdatum{
+  grid-area:valueGeburtsdatum;
+  width:150px;
+  margin-top:10px;
+  margin-left:50px;
+}
+
+#eingabeBeruf{
+  grid-area:valueBeruf;
+  width:150px;
+  margin-top:10px;
+  margin-left:50px;
+}
+
+#eingabeTelefonnummer{
+  grid-area:valueTelefonnummer;
+  width:150px;
+  margin-top:10px;
+  margin-left:50px;
+}
+
+/* Validierung, d.h bei falscher Eingabe erscheint eine Fehlermeldung*/
+#button1{
+  grid-area: button1;
+}
+
+#eingabeName-error.error{
+  grid-area:errorName;
+  margin-left:10px;
+}
+
+#eingabeStrasse-error.error{
+  grid-area:errorStrasse;
+   margin-left:10px;
+}
+
+#eingabeOrt-error.error{
+  grid-area:errorOrt;
+   margin-left:10px;
+}
+
+#eingabeGeburtsdatum-error.error{
+  grid-area:errorGeburtsdatum;
+   margin-left:10px;
+}
+#eingabeBeruf-error.error{
+  grid-area:errorBeruf;
+   margin-left:10px;
+}
+
+#eingabeTelefonnummer-error.error{
+  grid-area:errorTelefonnummer;
+   margin-left:10px;
+}
+
+
