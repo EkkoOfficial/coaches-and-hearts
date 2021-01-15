@@ -1,0 +1,617 @@
+/*<!-- ***************************************************************
+* Diese Datei gehört zum imuk3-WebEng-Musterprojekt                *
+* Copyright (c) by Laura Moreno                                    *                               
+* Licensed under GPL3, see http://www.gnu.org/licenses/gpl.html    *
+******************************************************************** -->*/
+
+
+/****Grid für Listeansicht *******/
+.grid-package {
+  display: grid;
+  grid-template-columns: 8% 10% 18% 12% 30% 10% 3%;
+  grid-template-areas: 
+    "ueb ueb ueb ueb ueb ueb ueb" 
+    "header header header header header header add"
+    "anrede name email betreff nachricht telefonnummer roles";
+  grid-template-rows:auto;
+
+ 
+    
+}
+
+.grid-header{
+  grid-area:header;
+   border: 1px solid black;
+  width:100%;
+}
+
+.spalte0 {
+    grid-area: anrede;
+    border: 1px solid black;
+   font-weight: bold;
+  background-color:azure;
+    
+}
+
+.spalte1 {
+    grid-area: name;
+    border: 1px solid black;  
+    border-left:none; 
+   font-weight: bold;
+   background-color:azure;
+}
+
+.spalte2 {
+   grid-area: email;
+    border: 1px solid black;
+    border-left:none;
+   font-weight: bold;
+   background-color:azure;
+}
+
+.spalte3 {
+    grid-area: betreff;
+    border: 1px solid black;
+    border-left:none;
+   font-weight: bold;
+   background-color:azure;
+}
+
+.spalte4 {
+   grid-area:nachricht;
+    border: 1px solid black;
+    border-left:none;
+    font-weight: bold;
+   background-color:azure;
+}
+
+.spalte5 {
+    grid-area:telefonnummer;
+    border: 1px solid black;
+    border-left:none;
+   font-weight: bold;
+   background-color:azure;
+
+}
+
+.spalte6 {
+   grid-area:roles;
+    border: 2px solid black;
+    border-left:none;
+    width: 300%;
+   font-weight: bold;
+   background-color:azure;
+
+}
+
+
+.ueberschrift{
+  grid-area:ueb;
+ border: 2px solid black;
+  background-color:var(--signal-color);
+    width: 94%;
+    height:40%;
+  margin-left:40px;
+
+}
+
+
+.grid-0 {
+  grid-area: anrede;
+  border: 1px solid black;
+}
+
+.grid-1 {
+  grid-area: name;
+  border: 1px solid black;
+  border-left: none;
+}
+
+.grid-2 {
+  grid-area: email;
+  border: 1px solid black;
+  border-left: none;
+}
+
+.grid-3 {
+  grid-area: betreff;
+  border: 1px solid black;
+  border-left: none;
+}
+
+.grid-4 {
+  grid-area: nachricht;
+  border: 1px solid black;
+  border-left: none;
+ overflow: scroll;
+list-style-type:disc;
+  outline: none;
+}
+
+.grid-5 {
+  grid-area: telefonnummer;
+  border: 1px solid black;
+  border-left: none;
+}
+
+.grid-6 {
+  grid-area: roles;
+  border-left: none;
+  width: 300%;
+}
+
+
+#liste {
+  background-size: 100%;
+overflow-wrap:20px;
+  
+}
+
+
+/****Grid für EingabeMaske*******/
+
+#bilder1{
+   border-radius: 2px;
+  border: 1px solid black;
+ margin-top:40px;
+ font-size:20px;
+ padding: 10px 15px;
+ margin-left: 80px;
+ display: grid;
+  width:18%;
+  
+
+  grid-template-columns: 0% 5% ;
+  grid-template-rows: auto;
+  "bild-1 text1";
+}
+
+.bild-1{
+  grid-area:bild-1;
+ 
+}
+.text1{
+ grid-area:text1;
+margin-top:20px;
+  margin-left: 100px;
+}
+
+
+
+  #bilder2{
+  border-radius: 2px;
+  border: 1px solid black;
+ margin-top:-102px;
+ font-size:20px;
+ padding: 10px 15px;
+ margin-left: 520px;
+ display: grid;
+ width:18%;
+
+  grid-template-columns: 0% 5% ;
+  grid-template-rows: auto;
+  "bild-2 text2";
+}
+  
+
+.bild-2{
+  grid-area:bild-2;
+}
+.text2{
+  grid-area:text1;
+ margin-top:20px;
+ margin-left: 100px;
+  
+}
+
+#bilder3{
+  border-radius: 2px;
+  border: 1px solid black;
+ margin-top:-102px;
+ font-size:20px;
+ padding: 10px 15px;
+ margin-left: 960px;
+ display: grid;
+ width:18%;
+  grid-template-columns: 0% 5%;
+  grid-template-rows: auto;
+  "bild-3 text3";
+}
+.bild-3{
+  grid-area:bild-3;
+  
+}
+.text3{
+  grid-area:text3;
+  margin-top:20px;
+   margin-left: 100px;
+   
+  
+}
+
+
+
+#titel{
+  border-radius: 2px;
+  width: 100%;
+  padding: 20px 60px;
+  margin-left: 10px;
+  margin-top:40px;
+  display: grid;
+  grid-template-columns: 10% 40% 80%;
+  grid-template-rows: auto;
+  grid-template-areas: 
+    "willkommen willkommen willkommen"
+    "subtitel subtitel subtitel "
+  
+}
+.willkommen{
+  grid-area:willkommen;
+  font-size:50px;
+}
+.subtitel{
+   grid-area:subtitel;
+  font-size:15px;
+  margin-left:5px;
+}
+
+#formularKontakt {
+  background-color:var(--signal-color);
+  border-radius: 2px;
+  width: 60%;
+  padding: 20px 60px;
+  margin-left:80px;
+  display: grid;
+  border: 1px solid black;
+
+  margin-top:40px;
+  
+ 
+ 
+  grid-template-columns: 15% 30% 70%;
+  grid-template-rows: auto;
+  grid-template-areas: 
+   
+    "headerEin headerEin headerEin"
+    "labelAnrede eingabeAnrede kontaktbild"
+    "labelName eingabeName kontaktbild"
+    ". fehlerName kontaktbild " 
+    "labelEmail eingabeE-mail kontaktbild" 
+    ". fehlerE-mail kontaktbild"
+    "labelBetreff eingabeBetreff kontaktbild" 
+    ". fehlerBetreff kontaktbild" 
+    "labelNachricht eingabeNachricht kontaktbild" 
+    "labelTelefonnummer eingabeTelefonnummer. " 
+    ". fehlerTelefonnummer. " 
+    ". buttonAbsenden. ";
+}
+
+
+.kontaktanfrageAnlegentitelanmeldung {
+  grid-area: headerEin;
+  font-size: 20px;
+
+  margin-bottom: 5px;
+   
+    margin-right: 220px;
+  
+}
+
+#anredeLabel {
+  grid-area: labelAnrede;
+  width: 4%;
+  padding: 9px 2px;
+  border: none;
+  border-radius: 2px;
+  box-sizing: content-box;
+  margin-top: 30px;
+}
+
+#nameLabel {
+  grid-area: labelName;
+  width: 4%;
+  padding: 9px 2px;
+  border: none;
+  border-radius: 2px;
+  box-sizing: content-box;
+  margin-top: 20px;
+}
+
+#emailLabel {
+  grid-area: labelEmail;
+  width: 4%;
+  padding: 9px 2px;
+  border: none;
+  border-radius: 2px;
+  box-sizing: content-box;
+  margin-top: 20px;
+}
+
+#betreffLabel {
+  grid-area: labelBetreff;
+  width: 4%;
+  padding: 9px 2px;
+  border: none;
+  border-radius: 2px;
+  box-sizing: content-box;
+  margin-top: 20px;
+}
+
+#nachrichtLabel {
+  grid-area: labelNachricht;
+  width: 4%;
+  padding: 9px 2px;
+  border: none;
+  border-radius: 2px;
+  box-sizing: content-box;
+  margin-top: 20px;
+}
+
+#telefonnummerLabel {
+  grid-area: labelTelefonnummer;
+  width: 4%;
+  padding: 9px 2px;
+  border: none;
+  border-radius: 2px;
+  box-sizing: content-box;
+  margin-top: 20px;
+}
+
+#eingabeAnrede {
+  grid-area: eingabeAnrede;
+  padding: 8px 10px;
+  outline: none;
+  font-size: 12px;
+  width: 150px;
+  display: block;
+  margin-top: 30px;
+}
+
+#eingabeName {
+  grid-area: eingabeName;
+  padding: 8px 10px;
+  outline: none;
+  font-size: 12px;
+  width: 200px;
+  display: block;
+  margin-top: 20px;
+}
+
+#eingabeName-error {
+  grid-area: fehlerName;
+  font-size:12px;
+}
+
+#eingabeE-mail {
+  grid-area: eingabeE-mail;
+  padding: 8px 10px;
+  outline: none;
+  font-size: 12px;
+  width: 200px;
+  display: block;
+  margin-top: 20px;
+}
+
+#eingabeE-mail-error {
+  grid-area: fehlerE-mail;
+  font-size:12px;
+}
+
+#eingabeBetreff {
+  grid-area: eingabeBetreff;
+ padding: 8px 10px;
+  outline: none;
+  font-size: 12px;
+  width: 225px;
+  display: block;
+  margin-top: 20px;
+}
+
+#eingabeBetreff-error {
+  grid-area: fehlerBetreff;
+}
+
+#eingabeNachricht {
+  grid-area: eingabeNachricht;
+  width: 90%;
+  height: 150px;
+  font-family: 'ARIAL';
+  resize: none;
+  font-size: 12px;
+  padding: 8px 10px;
+  outline: none;
+  display: block;
+  margin-top: 20px;
+}
+
+
+#eingabeNachricht-error {
+  grid-area: fehlerNachricht;
+  font-size:12px;
+}
+
+#eingabeTelefonnummer {
+  grid-area: eingabeTelefonnummer;
+  padding: 8px 10px;
+  font-size: 12px;
+  width: 200px;
+  display: block;
+  margin-top: 20px;
+}
+
+#eingabeTelefonnummer-error {
+  grid-area: fehlerTelefonnummer;
+  font-size:12px;
+}
+
+#mappe{
+  grid-area:kontaktbild;
+  width:500px;
+  margin-top:140px;
+  margin-left:80px;
+ 
+}
+
+.btn-blue1{
+  grid-area:buttonAbsenden;
+   padding: 10px 15px;
+   margin-right:500px;
+  margin-top:30px;
+    background-color:var(--bg-color-secondary);
+    border-radius: 5px;
+    color: #ffffff;
+    text-decoration: none;
+  width:30%
+}
+
+#logKnopf1 {
+    font-size: 18px;
+    top: 45px;
+    margin-left: 40px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    background-color: var(--signal-color);
+    color: var(--text-color-secondary);
+    border: none;
+    border-radius: 5px;
+}
+#logKnopf1:hover {
+    background-color: var(--button-bg-color-primary);
+    color: var(--text-color-primary);
+}
+
+
+
+.platzhalter {
+  height: 110px;
+}
+
+#ansprechpartner{
+  border-radius: 2px;
+ 
+ margin-top:20px;
+ font-size:30px;
+ padding: 10px 15px;
+ margin-left: 70px;
+ 
+display: grid;
+  grid-template-columns: 20% 40% 60%;
+  grid-template-rows: auto;
+   grid-template-areas:
+  "textanspre textanspre textanspre"
+  "bildanspre bildanspre ."
+  "infoanspre infoanspre .";
+  
+  
+}
+.nachrichtansprech{
+  grid-area:textanspre;
+  width:
+}
+.bildansprech{
+  grid-area:bildanspre;
+  width:25%;
+  margin-top:20px;
+}
+.ansprechInfo{
+    grid-area:infoanspre;
+  font-size:20px;
+  line-height: 0.8;
+  }
+
+
+/****LoginButton *******/
+#logingrid1 {
+    margin-top: 100px;
+    margin-left: 400px;
+  margin-right:400px;
+    background-color: var(--signal-color);
+    display: grid;
+    grid-template-columns: 30% 70%;
+    grid-template-rows: auto;
+    grid-template-areas:
+
+        "loginUeb loginUeb"
+        "labelBenutzer benutzerEingabe"
+        ". fehlerBenutzer"
+        "labelPasswort passwortEingabe"
+        ".fehlerPasswort"
+        ". buttonLogin";
+}
+
+.ueberschriftlogin {
+    grid-area: loginUeb;
+    font-size: 200%;
+    text-align: center;
+    color: var(--text-color-secondary);
+}
+
+
+.item-labelBenutzer {
+    grid-area: labelBenutzer;
+    font-weight: bold;
+    margin-left: 50px;
+    margin-top: 15px;
+    color: var(--text-color-secondary);
+}
+
+.item-labelPasswort {
+    grid-area: labelPasswort;
+    font-weight: bold;
+    margin-left: 50px;
+    margin-top: 15px;
+    color: var(--text-color-secondary);
+}
+
+#item-eingabeBenutzer {
+    grid-area: benutzerEingabe;
+    padding: 15px 10px;
+    outline: none;
+    font-size: 14px;
+    width: 400px;
+    display: block;
+
+}
+
+#item-eingabeBenutzer-error {
+    grid-area: fehlerBenutzer;
+}
+
+.item-eingabePasswort {
+    grid-area: passwortEingabe;
+    margin-bottom: 20px;
+    padding: 15px 10px;
+    outline: none;
+    font-size: 14px;
+    width: 400px;
+    display: block;
+
+}
+
+.item-eingabePasswort-error {
+    grid-area: fehlerPasswort;
+}
+
+#buttonlogin {
+    grid-area: buttonLogin;
+    padding: 15px 10px;
+    outline: none;
+    font-size: 14px;
+    width: 300px;
+    display: block;
+  margin-left:70px;
+
+}
+
+
+#uebersicht {
+  margin-left: 100px;
+}
+
+Label {
+  font-weight: bold;
+}
+
+

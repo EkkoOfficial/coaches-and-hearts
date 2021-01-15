@@ -1,0 +1,879 @@
+<!DOCTYPE html>
+<!-- ***************************************************************
+*    Diese Datei gehört zum  WebEng-Kurs an der HNU
+*    Copyright (c) by Laura Moreno                    
+*    Licensed under GPL3, see http://www.gnu.org/licenses/gpl.html
+******************************************************************** -->
+<html>
+
+<head>
+  <title>Kontaktanfragen anlegen</title>
+  <meta charset="UTF-8" />
+  <link rel="stylesheet" href="stylesheets/css-styleKontakt.css">
+  <link rel="stylesheet" href="stylesheets/css-style.css">
+
+
+  <script type="text/javascript" src="client-js/jquery-3.5.1.min.js"></script>
+  <script type="text/javascript" src="client-js/jquery.validate.min.js"></script>
+  <script src="client-js/jquery-ui-1.12.1/jquery-ui.js"></script>
+  <script type="text/javascript" src="client-js/jquery-extensions.js"></script>
+  <link rel="stylesheet" href="client-js/jquery-ui-1.12.1/jquery-ui.css">
+
+
+</head>
+
+
+
+
+<body>
+  <!--style=background-image:url(pics/hand-painted-watercolor-background-with-sky-clouds-shape.jpg)-->
+  <div id="leererBlock"></div>
+
+  <header>
+    <nav class="navigation">
+
+      <a href="umbau.html"> <img id="logo" src="pics/logo_StrongHeart.png" /> </a>
+      <ul>
+        <li><a href="umbau.html">Shop</a></li>
+        <li><a href="umbau.html">Aktionen</a></li>
+        <li><a href="umbau.html">Teammitglieder</a></li>
+        <li><a href="umbau.html">Partner</a></li>
+        <li><a href="Kontaktanfragen.html" class="active">Kontaktanfragen</a></li>
+        <li><a href="umbau.html">Coaches Anmeldungen</a></li>
+        <li><a href="umbau.html">Showcase Videos</a></li>
+        <li><button id="logKnopf1" class="button">Einloggen</button>
+        </li>
+      </ul>
+
+    </nav>
+
+  </header>
+
+
+  <br />
+
+  <div id="main">
+ <div class="platzhalter"></div>
+
+    <!-- EINGABEMASKE -->
+
+
+    <form id="eingabe" class="view" action="">
+     
+      <div id="titel">
+        
+    
+  <div class= "willkommen"><label>Willkommen in ihrem Kundenservice-Center.</label></div>
+          <div  class= "subtitel"><label>Sie können hier schnell das Kontaktformular ausfüllen, oder wir verbinden Sie mit einem Mitarbeiter, wenn notwendig.</label></div>
+  </div>
+    
+        
+        <div id="bilder1">
+        <img class="bild-1" src="pics/kontaktpics/package.png" />
+      <div  class="text1"><label>Meine Bestellungen</label></div>
+    </div>
+        
+       <div id="bilder2">
+         <img class="bild-2" src="pics/kontaktpics/profile.png" />
+         <div  class="text2"><label>Mein Konto</label></div>
+      </div>
+        
+          <div id="bilder3">
+         <img class="bild-3" src="pics/kontaktpics/credit-card.png" />
+            <div  class="text3"><label>Zahlungsarten</label></div>
+     
+      </div>
+    
+
+      <div id="formularKontakt">
+      
+              <h2 class="kontaktanfrageAnlegentitelanmeldung"> Kontaktformular</h2>
+
+        <div id="anredeLabel"><label>Anrede</label></div>
+        <!--  <input id="eingabeAnrede" name="anrede" type="text" placeholder="Anrede eingeben" />-->
+        <select id="eingabeAnrede" name="anrede" type="text"  placeholder="Auswahl">
+                    <option value="">Auswahl..</option>
+                    <option value="Frau">Frau</option>
+                    <option value="Herr">Herr</option>
+         
+                </select>
+
+        <div  id="nameLabel"><label>Name</label></div>
+        <input id="eingabeName" name="name" type="text" placeholder="Name eingeben" />
+
+        <div  id="emailLabel"><label>EMail</label></div>
+        <input id="eingabeE-mail" name="email" type="text" placeholder="E-Mail eingeben" />
+
+        <div  id="betreffLabel"><label>Betreff</label> </div>
+            <select id="eingabeBetreff" name="betreff" type="text" placeholder="Betreff eingeben" >
+               <option value="">Wählen Sie einen Betreff</option>
+        <option value="Bestellvorgang">Bestellvorgang</option>
+          <option value="Reklamation">Reklamation</option>
+          <option value="Lieferung">Lieferung</option>
+          <option value="Retoure">Retoure</option>  
+        <option value="">Zahlung</option>
+          <option value="Beanstandungen zum Online Shop">Beanstandungen zum Online Shop</option>
+         <option value="Andere...">Andere...</option>
+        </select>
+       
+
+        <div  id="nachrichtLabel"><label>Nachricht</label> </div>
+        <textarea id="eingabeNachricht"  name="nachricht" type="text" placeholder="Nachricht eingeben"></textarea>
+
+
+        <div  id="telefonnummerLabel"><label>Telefonnummer</label></div>
+        <input id="eingabeTelefonnummer" name="telefonnummer" type="text" placeholder="Tel. eingeben" />
+
+
+        
+   <img id="mappe" src="pics/kontaktpics/Mappe.png" />
+    
+      <input class="btn-blue1" type="submit" value="Absenden" onclick="save()" />
+        
+        
+      </div>
+          <div id="ansprechpartner"> 
+       <div class="nachrichtansprech"><label>Falls Sie noch Fragen haben, kontaktieren Sie mit unserem Ansprechpartnern:</label></div>
+      <img class="bildansprech" src="pics/kontaktpics/young-man.jpg" />
+      <div  class="ansprechInfo">
+        <h1>Michael Müller</h1>
+                <h1> +49 0175 285 452</h1>
+                <h1>müllerm@strongheart.de</h1>
+         </div>
+    </div>
+        <div class="platzhalter"></div>
+</form>
+
+    
+      
+
+  <!--LISTENANSICHT -->
+  
+    
+
+  <div id="liste"  class="view">
+    
+    
+  <div class="grid-package"><h2 class="ueberschrift"> Übersicht über die Kontaktanfragen: </h2> </div>
+  
+   
+    <div>
+ 
+      <!-- Liste aller Kontaktanfragen -->
+      <ul id="kontaktanfragen">
+        
+
+      </ul>
+    </div>
+  </div>
+   
+
+
+
+
+  <!-- LOGINMASKE -->
+ 
+    
+  <div id="loginMaske"  class="view">
+    <div class="platzhalter"></div>
+
+    <form  id="loginform" action="javascript:einloggen()" method="post">
+
+      <div id="logingrid1">
+
+
+
+        <h2 class="ueberschriftlogin">Logge dich ein! </h2>
+
+        <div class="item-labelBenutzer"><label>Benutzername</label></div>
+
+        <input id="item-eingabeBenutzer" type="text" placeholder='Benutzernamen eingeben' />
+
+        <div class="item-labelPasswort"><label>Passwort</label></div>
+
+
+        <input class="item-eingabePasswort" id="password" type="password" placeholder='Passwort eingeben' />
+
+ 
+
+        <input id="buttonlogin" class="btn-grey" type="submit" value="Login"  />
+      </div>
+  
+  </form>
+
+  </div>
+  
+  </div>
+ 
+ 
+
+  <script type="text/javascript">
+    //Die Datenstruktur einer Kontaktanfrage
+    function Kontaktanfrage(id, anrede, name, email, betreff, nachricht, telefonnummer) {
+      console.log("Funktion Kontaktanfrage mit " +
+
+        id + "," +
+        anrede + ", " +
+        name + ", " +
+        email + ", " +
+        betreff + ", " +
+        nachricht + ", " +
+        telefonnummer)
+      this.id = "";
+      this.anrede = anrede;
+      this.name = name;
+      this.email = email;
+      this.betreff = betreff;
+      this.nachricht = nachricht;
+      this.telefonnummer = telefonnummer;
+    }
+
+     arrKontaktanfragenHeader = [
+
+        "Anrede",
+        "Name",
+        "E-mail",
+        "Betreff",
+        "Nachricht",
+        "Telefonnummer",
+      ];
+
+
+
+    //Dieses Array dient der Speicherung aller Kontaktanfragen.
+    // hier wird alle Information in der Liste gespeichert
+
+    var arrKontaktanfragen = new Array();
+
+
+
+    /* CRUD-FUNKTIONEN */
+
+
+    //ANLEGEN 
+    function kontaktanfrageBearbeiten(index) {
+      console.log("Funktion KontaktanfrageBearbeiten mit " + index);
+      // Benutzereingaben
+      var anrede = $("#eingabeAnrede").val();
+      var name = $("#eingabeName").val();
+      var email = $("#eingabeE-mail").val();
+      var betreff = $("#eingabeBetreff").val();
+      var nachricht = $("#eingabeNachricht").val();
+      var telefonnummer = $("#eingabeTelefonnummer").val();
+      var kontaktanfrage = new Kontaktanfrage("", anrede, name, email, betreff, nachricht, telefonnummer);
+
+
+      if (index != "") {
+
+        //ändern
+        console.log("\t ändern mit " + index);
+
+        // PUT-Request (jquery-extensions.js einbinden!)
+        $.put("/kontaktanfrage/" + arrKontaktanfragen[index].id, kontaktanfrage, function(res) {
+          console.log("Callbackfunktion des put-Requests (ändern): \n" +
+            JSON.stringify(res).toString());
+          arrKontaktanfragen = res;
+          kontaktanfragenAnzeigen("kontaktanfragen");
+
+
+        });
+
+      } else {
+
+        //anlegen
+        console.log("\t anlegen");
+
+        // POST-Request
+        //Message-Box von allen richtigen Eingabe bei der Kontaktformular
+        $.post("/kontaktanfrage", kontaktanfrage, function(res) {
+            console.log("\t Callbackfunktion des post-Requests (anlegen): \n" + JSON.stringify(res).toString());
+            arrKontaktanfragen = res;
+            $(function() {
+              $("<div title ='Anfrage'>Vielen Dank für Ihre Anfrage :D"+"</div>").dialog({
+               
+                height: "auto",
+                width: 400,
+                modal: true,
+                buttons: {
+                  "Ok": function() {
+                    $(this).dialog("close");
+
+                  },
+
+                }
+              });
+            });
+            zeigeEingabemaske("");
+
+
+          })
+          .fail(function(xhr) {
+            console.log("\t Aufruf von post.fail-Funktion mit Parameter err=" + xhr.responseText);
+            errorAlert(xhr.responseText);
+            // arrKontaktanfragen[arrKontaktanfragen.length] = new Kontaktanfrage(anrede, name, email, betreff, nachricht, telefonnummer);
+
+
+
+
+
+          })
+          .fail(function(xhr) {
+            console.log("/t Aufruf von put.fail-Funktion mit Parameter err=" + xhr.responseText);
+            errorAlert(xhr.responseText);
+          });
+
+      }
+    }
+
+
+    //ANZEIGEN
+    function kontaktanfragenAnzeigen(ort) {
+      console.log('kontaktanfragenAnzeigen: ' + ort);
+
+
+      //Anlegen-Knopf erzeugen
+      if ($("#kontaktanfrage").length == 0) {
+        console.log("\t Anlegeknopf wird erzeugt");
+        $("#liste").prepend(
+          erzeugeButton("",
+            "zeigeEingabemaske", "pics/add.png",
+            "adminButton maButton")
+        )
+      }
+
+      $.get("/kontaktanfrage", "", function(res) {
+          console.log("Callbackfunktion des get-Requests (lesen): \n" + JSON.stringify(res).toString());
+
+
+          //Listenansicht initialisieren
+          $('#' + ort).empty();
+          arrKontaktanfragen = res;
+          $('#' + ort).empty();
+                headers = '<div class="grid-package">'
+                for (var i = 0; i < arrKontaktanfragenHeader.length; i++) {
+                    headers += '<div class="grid-header spalte' + i + '">' + arrKontaktanfragenHeader[i] + "</div>"
+                }
+                $('#' + ort).append(headers + "</div>");
+
+
+          for (var i = 0; i < arrKontaktanfragen.length; i++) {
+            erzeugeKontaktanfrageElem(i, ort);
+          }
+          //Liste ansicht 
+          $(".view").hide();
+          $("#liste").show();
+           //Berechtigungen anpassen
+          checkeBerechtigungen();
+
+
+        })
+        .fail(function(xhr) {
+          console.log("/t Aufruf von get.fail-Funktion mit Parameter err=" + xhr.responseText);
+          errorAlert(xhr.responseText);
+        });
+
+
+    }
+
+    //LOESCHEN
+    function kontaktanfrageLoeschen(index) {
+      console.log("Funktion kontaktanfrageLoeschen mit " + index);
+
+      // DELETE-Request (jquery-extensions.js einbinden!)
+      $.delete("/kontaktanfrage/" + arrKontaktanfragen[index].id, function(res) {
+          console.log("Callbackfunktion des delete-Requests (löschen): \n" + JSON.stringify(res).toString());
+          arrKontaktanfragen = res;
+          kontaktanfragenAnzeigen("kontaktanfragen");
+          /*
+						Hier kommen die Funktionen hin, die Sie im Erfolgsfall aufrufen wollen
+					*/
+        })
+        .fail(function(xhr) {
+          console.log("/t Aufruf von delete.fail-Funktion mit Parameter err=" + xhr.responseText);
+          errorAlert(xhr.responseText);
+        });
+    }
+
+
+
+    //HILFSFUNKTIONEN
+    function erzeugeKontaktanfrageElem(index, ort) {
+      console.log("Funktion erzeugeKontaktanfrageElem mit " + index + ", " + ort);
+      // Erzeugung eines HTML-Strings für eine Zeile
+
+
+      $("#" + ort).append('<div class="grid-package">' +
+        erzeugeKontaktanfrageInhalt(index) + '<div class="grid-6">' + erzeugeButton(index,
+          "zeigeEingabemaske",
+          "pics/edit.png",
+          " adminButton "
+        ) + erzeugeButton(index,
+          "zeigeSicherheitsabfrage",
+          "pics/delete.png",
+          " adminButton maButton "
+        ) +
+        '</div>' +
+        "</div>"
+      );
+
+
+    }
+
+    function erzeugeKontaktanfrageInhalt(index) {
+      console.log("Funktion erzeugeKontaktanfrageInhalt mit " + index);
+      /* In dieser Funktion wird jeweils der Arrayeintrag der index-ten Stelle als Ast erzeugt (der später in die Baumstruktur des DOM als Ast gehängt werden kann)
+       */
+      var kontaktanfrage = "";
+      //Erzeuge Anrede
+      
+      anrede = '<div class="grid-0">' + arrKontaktanfragen[index].anrede + "</div>";
+
+      //Erzeuge Name 
+
+     
+      name = '<div class="grid-1">' + arrKontaktanfragen[index].name + "</div>";
+
+      //Erzeuge E-mail
+
+    
+      email = '<div class="grid-2">' + arrKontaktanfragen[index].email + "</div>";
+      //Erzeuge Betreff
+
+
+      betreff = '<div class="grid-3">' + arrKontaktanfragen[index].betreff + "</div>";
+
+      //Erzeuge Nachricht
+
+
+      nachricht = '<div class="grid-4">' + arrKontaktanfragen[index].nachricht + "</div>";
+
+      //Erzeuge Telefonnummer
+
+
+      telefonnummer = '<div class="grid-5">' + arrKontaktanfragen[index].telefonnummer + "</div>";
+
+
+      kontaktanfrage =
+        anrede + name + email + betreff + nachricht + telefonnummer;
+
+
+
+      return kontaktanfrage;
+    }
+
+    function erzeugeButton(id, func, bildpfad, berechtigungsKlassen) {
+
+
+      console.log("Funktion erzeugeButton mit " +
+        id + ", " +
+        func + ", " +
+        bildpfad + ", " +
+        berechtigungsKlassen
+      );
+
+
+      var vButton = "";
+      // Anführungszeichen Ebene für Anführungszeichen
+      vButton = "<img id='kontaktanfrage" + id + "'" +
+        "onclick='" +
+        func + "(\"" + id + "\")'" +
+        "class='bildknopf " + berechtigungsKlassen + "'" +
+        "src='" + bildpfad + "'/>";
+      return vButton;
+
+    }
+
+
+    function zeigeEingabemaske(index) {
+      console.log('zeigeEingabemaske ' + index);
+
+
+
+      //Alle Eingabefelder leeren
+      $("#eingabe input[type='text']").val("");
+      $("#eingabe select[type='text']").val("");
+      $("#eingabe textarea[type='text']").val("");
+
+      //Wenn der index-Parameter ungleich dem leeren String ist ...
+      if (index != "") {
+        console.log("\t ändern");
+        $("#eingabe h2").html("Kontaktanfrage bearbeiten");
+
+        $("#eingabeAnrede").val(arrKontaktanfragen[index].anrede);
+        $("#eingabeName").val(arrKontaktanfragen[index].name);
+        $("#eingabeE-mail").val(arrKontaktanfragen[index].email);
+        $("#eingabeBetreff").val(arrKontaktanfragen[index].betreff);
+        $("#eingabeNachricht").val(arrKontaktanfragen[index].nachricht);
+        $("#eingabeTelefonnummer").val(arrKontaktanfragen[index].telefonnummer);
+        $("#eingabe").attr("action", "javascript:kontaktanfrageBearbeiten('" + index + "')");
+
+      } else {
+        console.log("\t anlegen");
+        //Eingabemaske initialisieren
+        // $("#eingabe input").val("");
+        // $("#eingabe h2[type='submit']").val("Absenden");
+        //$("#eingabe").attr("action", "javascript:kontaktanfrageBearbeiten('')");
+        $("#eingabe h2").html("Kontaktformular");
+        $("#eingabe").attr("action", "javascript:kontaktanfrageBearbeiten('')");
+
+
+      }
+
+      //Speziell für Verkaufen
+      //Listenansicht-Knopf erzeugen, wenn er noch nicht existiert und Berechtigungen prüfen
+      if ($("#kontaktanfrageSpez").length == 0) {
+        console.log("\t Listen-Knopf wird erzeugt");
+        $("#eingabe").prepend(
+          erzeugeButton("Spez",
+            "zeigeListenansicht", "pics/kontaktpics/user.png",
+            "adminButton")
+
+
+
+
+
+        )
+           //Berechtigungen anpassen
+        checkeBerechtigungen();
+
+
+      }
+      $(".view").hide();
+      $("#eingabe").show();
+
+    }
+
+
+
+
+
+// Hier wird ein Message-box für die Sicherheitsabfrage gestellt ob man die Info wirklich löschen möchte 
+    function zeigeSicherheitsabfrage(index) {
+      console.log("Funktion zeigeSicherheitsabfrage mit " + index);
+
+
+      $(function() {
+        $("<div title ='Sicherheitsabfrage'>Sind Sie sicher, dass Sie die Anfrage '" + arrKontaktanfragen[index].name + "' löschen möchten? </div>").dialog({
+        
+       resizable: false,
+          height: "auto",
+          width: 400,
+          modal: true,
+          buttons: {
+            "Löschen": function() {
+              $(this).dialog("close");
+              kontaktanfrageLoeschen(index);
+              kontaktanfragenAnzeigen('kontaktanfragen');
+            },
+            Abbrechen: function() {
+              $(this).dialog("close");
+            }
+          }
+        });
+      });
+
+    }
+
+    function zeigeLoginmaske() {
+      console.log('zeigeLoginmaske');
+      //nur Loginansicht sichtbar machen
+      $(".view").hide();
+      $("#loginMaske").show();
+    }
+
+    function zeigeListenansicht() {
+      console.log('Funktion zeigeListenansicht');
+      //nur Standardsicht sichtbar machen
+      $(".view").hide();
+      $("#liste").show();
+
+      //Richtige Ansicht nach dem Einloggen anzeigen
+      kontaktanfragenAnzeigen("kontaktanfragen");
+         //Berechtigungen anpassen
+      checkeBerechtigungen();
+    }
+
+
+    // ********* FUNKTIONEN ZUM LOGIN UND LOGOUT **********
+    function checkeBerechtigungen() {
+      console.log("Funktion checkeBerechtigungen")
+      //Alle Knöpfe auf unsichtbar setzen
+      $('.adminButton, .maButton').hide();
+      leseRolle(callback);
+
+      function callback(roles) {
+        console.log("Funktion callback mit " + JSON.stringify(roles).toString());
+        var rolesArray = roles.toString().split(',');
+        for (var i = 0; i < rolesArray.length; i++) {
+          if (rolesArray[i] == 'admin') {
+            console.log("\t admin-Button wird gezeigt");
+            $('.adminButton').show();
+          } else if (rolesArray[i] == 'mitarbeiter') {
+            console.log('\t mitarbeiter-Button wird gezeigt');
+            $('.maButton').show();
+
+            /*** Teammitglieder und aushilfe wurden als Rollen hinzugefügt **/
+
+          } else if (rolesArray[i] == 'Teammitglieder') {
+            console.log('\t Teammitgliedansicht wird gezeigt');
+
+          } else if (rolesArray[i] == 'aushilfe') {
+            console.log('\t n wird gezeigt');
+          } else {
+            console.log("\t Unbekannte Rolle: " + rolesArray[i]);
+          }
+        }
+        console.log("Achtung!!!")
+
+      }
+    }
+  
+
+
+    function leseRolle(func) {
+      console.log("Funktion leseRolle");
+      //Beim Server wird gefragt, ob der Nutzer eingeloggt ist 
+      $.get("/service_istEingelogged", function(data) {
+        console.log("eingeloggt: " + data.toString());
+        // Falls eingeloggt ist,dann werden Sichbarkeiten in Abhängigkeit von de Rollen benutzt
+        if (data === true) {
+          //Benutzer eingeloggt
+          console.log("\t eingeloggt");
+          setLoginButton("ausloggen");
+          $.get("/service_rollenAbfrage", function(roles) {
+            func(roles);
+          })
+        } else {
+          //Benutzer ist nicht Eingeloggt
+          console.log("\ nicht eingeloggt");
+          setLogoutButton("zeigeLoginmaske");
+        }
+      })
+    }
+
+    function einloggen() {
+      console.log("Funktion einloggen");
+
+      //Einloggen mit den Daten user und Passwort 
+      var loginDaten = {
+        "user": $("#item-eingabeBenutzer").val(),
+        "password": $("#password").val()
+      }
+
+      $.post('/login', loginDaten, function(data) {
+        if (data === false) {
+          console.log("\t POST: falscher Login");
+          // Falsche Eingabe wird durch eiN Fenster J.Query eingezeigt
+          alert("Ihrer Benutzer ist nicht richtig eingefügt, Bitte Versuche Sie nochmal.");
+        } else {
+          console.log("\t POST: Richtige Daten eingefügt.");
+
+          // RichtigE Daten nach dem Einloggen werden eingezeigt 
+          //für die Eingabemaske
+          kontaktanfragenAnzeigen("kontaktanfragen");
+
+        }
+      })
+    }
+
+ 
+
+    function ausloggen() {
+      console.log("Funktion ausloggen");
+
+      //Ausloggen
+      $.get('/logout', function(res) {
+          console.log("\t GET: logout success");
+          //Berechtigungen anpassen
+          checkeBerechtigungen();
+          //Loggen-Knopf setzen
+          setLogoutButton('zeigeLoginmaske');
+
+          //Richtige Ansicht nach dem Ausloggen anzeigen
+          // kontaktanfragenAnzeigen("kontaktanfragen");
+
+          zeigeEingabemaske("");
+
+        })
+        .fail(function(xhr) {
+
+          console.log("\t GET: logout failure");
+          //xhr steht für XML-HTTP-Request, also das HTTP-Objekt
+          console.log("/t Aufruf von get.fail-Funktion mit Parameter err=" + xhr.responseText);
+          errorAlert(xhr.responseText);
+
+        });
+    }
+
+    function setLoginButton(func) {
+      console.log("Funktion setLoginButton mit " + func)
+      //Loggen-Knopf zu Logout-Knopf machen
+      $("#logKnopf1").html("Ausloggen")
+        .attr("onclick", func + "()");
+    }
+
+    function setLogoutButton(func) {
+      console.log("Funktion setLogoutButton mit " + func)
+      //Loggen-Knopf zu Login-Knopf machen
+      $("#logKnopf1").html("Einloggen")
+        .attr("onclick", func + "()");
+    };
+
+    function errorAlert(data) {
+      console.log("Server Error Message: " + JSON.stringify(data).toString());
+      alert("Fehler auf dem Server: " + JSON.stringify(data).toString());
+    }
+
+    zeigeEingabemaske("");
+
+
+    //validation - ob alle Eingabe sind valide
+    function save() {
+      if ($("#eingabe").valid()) {
+        console.log("\t Eingabe ist gültig");
+        //validierung der Daten
+        alert("Alle Eingabe sind valide!.");
+      } else {
+        // sonst kommt fehlermeldung 
+        alert("Bitte geben Sie die richtige Eingabe ein, nicht alle sind valide");
+
+      }
+    }
+    
+  
+
+    function myRules() {
+      console.log("Aufruft von Fuktionen myRules()");
+      // Validation Anrede
+      $("input[name='anrede']").rules("add", {
+        required: true,
+        minlength: 2,
+
+
+        //Fehlermeldungen bei Nichteinhalten dr Funktion
+        messages: {
+          required: 'Bitte wählen Sie eine Anrede aus.',
+          minlength: 'Die Anrede wurde nicht ausgewählt.',
+
+
+        }
+
+      });
+      // Validation Name
+      $("input[name='name']").rules("add", {
+        required: true, //Das Feld muss ausgefüllt werden
+        minlength: 2,
+
+
+
+        //Diese Fehlermeldung kommt bei Nichteinhaltung der Regeln vor
+        messages: {
+          required: 'Bitte geben Sie Ihren Name ein.',
+          minlength: 'Der Name muss mindestens 5 Zeichen haben.',
+        }
+
+      });
+      /// Validation Email
+      $("input[name='email']").rules("add", {
+        required: true, //Das Feld muss ausgefüllt werden
+        minlength: 2,
+
+        //Diese Fehlermeldung kommt bei Nichteinhaltung der Regeln vor
+        messages: {
+          required: 'Bitte geben Sie Ihre E-Mail ein.',
+          minlength: 'Die E-Mail muss mindestens 5 Zeichen haben.',
+        }
+
+      });
+
+      // / Validation betreff
+      $("input[name='betreff']").rules("add", {
+        required: true,
+        minlength: 2,
+
+        //Diese Fehlermeldung kommt bei Nichteinhaltung der Regeln vor
+        messages: {
+          required: 'Bitte wählen Sie Ihrer Betreff aus',
+          minlength: 'Der Betreff wurde nicht ausgewählt.',
+        }
+
+      });
+      
+      //Validation Nachricht
+      $("input[name='nachricht']").rules("add", {
+        required: true, //Das Feld muss ausgefüllt werden
+        minlength: 5,
+        maxlength: 299,
+        //Diese Fehlermeldung kommt bei Nichteinhaltung der Regeln vor
+        messages:{
+          required: 'Bitte geben Sie Ihre Nachricht ein..',
+          minlength: 'Die Nachricht muss mindestens 5 Ziffern haben',
+          maxilength: 'Die Nachricht muss maximal 299 Ziffern haben', 
+        }
+      });
+     
+
+       //Validation Telefonnummer
+      $("input[name='telefonnummer']").rules("add", {
+        required: true, //Das Feld muss ausgefüllt werden
+        minlength: 3,
+        maxlength: 12,
+
+
+        //Diese Fehlermeldung kommt bei Nichteinhaltung der Regeln vor
+        messages: {
+          required: 'Bitte geben Sie Ihre Telefonnummer ein..',
+          minlength: 'Die Telefonnummer muss mindestens 3 Ziffern haben',
+          maxilength: 'Die Telefonnummer muss maximal 12 Ziffern haben',
+        }
+
+      });
+      
+      
+    }
+    //Hier befindet sich die Validate Funktion
+
+    $("#eingabe").validate({
+      errorElement: 'span'
+
+    });
+     
+
+    //Hier wird die Funktion myrules aufgerufen
+    myRules();
+
+    //Ansicht beim Aufrufen der Webseite
+
+
+   
+
+    zeigeEingabemaske("");
+    ausloggen();
+   
+  </script>
+
+  <div class="platzhalter"></div>
+  <div>
+    <footer>
+
+      <nav>
+
+        <ul>
+          <li><a href="umbau.html">Impressum</a></li>
+          <li><a href="umbau.html">Datenschutz</a></li>
+          <li><a href="umbau.html">Cookie-Einstellungen</a></li>
+          <li><a href="umbau.html">Widerrufsbelehrung</a></li>
+          <li><a href="umbau.html">AGB</a></li>
+
+
+        </ul>
+
+      </nav>
+
+    </footer>
+
+  </div>
+
+
+
+</html>
