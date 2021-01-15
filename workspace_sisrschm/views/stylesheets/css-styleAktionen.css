@@ -1,0 +1,590 @@
+/*<!-- ***************************************************************
+* Diese Datei gehört zum imuk3-WebEng-Musterprojekt                *
+* Copyright (c) by Sarah Schmirander                               *                                  *
+* Licensed under GPL3, see http://www.gnu.org/licenses/gpl.html    *
+******************************************************************** -->*/
+
+
+
+
+
+
+#mainAktionen {
+    display: grid;
+    grid-template-columns: 2% 45% 45% 8%;
+    grid-template-rows: auto;
+    grid-template-areas:
+       "space space space space "
+        "bild bild bild bild"
+        "info info info info"
+        ". neuanlegen neuanlegen ."
+        "border1 main main border2"
+        "anmelden anmelden anmelden anmelden"
+    ;
+}
+.platzhalternav {
+  grid-area:space;
+  height:100px;
+}
+
+.eingabeButtonzurueck {
+  grid-area: neuanlegen;
+
+}
+.neuanlegenInfo {
+  grid-area: neuanlegen;
+  margin-top:50px;
+  margin-left: 30%;
+  width: 40%;
+  background-color: var(--secondary-signal-color);
+  border-radius: 15px 15px 15px 15px;
+  text-align: center;
+  color:var(--text-color-primary);
+ 
+}
+
+#squarelogin {
+    grid-area: main;
+}
+
+#loginMaske {
+    grid-area: main;
+}
+
+#eingabe {
+    grid-area: main;
+  
+}
+
+.item-ueb {
+    grid-area: bild;
+
+}
+
+.runbild {
+    grid-area: bild;
+}
+
+.aktionbeschreibung {
+    grid-area: info;
+}
+
+/*****blauer Hintergrund zur Aktionsbeschreibung***/
+.square {
+    grid-area: info;
+}
+
+
+.item-Listenansicht {
+    grid-area: main;
+}
+
+
+/**blauer Hintergrund zur Anmeldung unten**/
+.square2 {
+grid-area: anmelden;
+}
+
+.aktionAnmelden {
+  grid-area:anmelden;
+}
+
+
+
+
+/* Innerstes Grid für aktion-Grid / Das Grid ist in mehrere Spalten aufgeteilt. links immer das bid und dann kommt die Info rechts */
+.aktion {
+    background: var(--signal-color);
+    display: grid;
+    grid-template-columns: 50% 15% 35%;
+    grid-template-rows: auto;
+    grid-template-areas:
+        "n-value n-value n-value"
+        "ppic ort  o-value"
+        "ppic datum  d-value"
+        "ppic spendengeld s-value"
+        "ppic veranstalter  v-value"
+        "ppic i-value  i-value"
+        "ppic . buttons";
+    width: 100%;
+    color: white;
+    height: 400px;
+    margin-bottom:20px;
+    border-radius: 10px;
+
+    /***Die einzelnen Einträge bekommen einen Rahmen, sodass sie weiter auseinander sind*****/
+    padding-right: 3%;
+    padding-left: 3%;
+    padding-bottom: 10%;
+    padding-top: 5%;
+
+}
+
+#item-f-value {
+    grid-area: ppic;
+  
+}
+
+.item-n-value {
+    grid-area: n-value;
+
+}
+
+.item-ort {
+    grid-area: ort;
+    margin-top: 0px;
+    font-weight: bold;
+}
+
+.item-o-value {
+    grid-area: o-value;
+}
+
+/****Datum wird positioniert ins Grid/ Datum wird nach oben geschoben/ datum wird fett gemacht ***/
+.item-datum {
+    grid-area: datum;
+    margin-top: 0px;
+    font-weight: bold;
+}
+
+.item-d-value {
+    grid-area: d-value;
+}
+
+
+
+.item-i-value {
+    grid-area: i-value;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.item-spendengeld {
+    grid-area: spendengeld;
+    margin-top: 0px;
+    font-weight: bold;
+}
+
+.item-s-value {
+    grid-area: s-value;
+}
+
+.item-veranstalter {
+    grid-area: veranstalter;
+    margin-top: 0px;
+    font-weight: bold;
+}
+
+.item-v-value {
+    grid-area: v-value;
+}
+
+.item-buttons {
+    grid-area: buttons;
+}
+
+
+
+
+
+/*****Grid für Eingabemaske/ soll dreispaltig sein, linnks Eingabemaske rechts ein Bild *****/
+
+#eingabe {
+    background-color: var(--signal-color);;
+    margin-left: 10%;
+     border-radius: 10px;
+    display: grid;
+    grid-template-columns: 20% 80%;
+    grid-template-rows: auto;
+    grid-template-areas:
+       
+        ". eingabeUeb"
+        "aktionsName aktionsNameFeld"
+        ". fehlerName"
+        "aktionsOrt aktionsOrtFeld"
+        "aktionsDatum aktionsDatumFeld"
+        ". fehlerDatum"
+        "aktionsInfo aktionsInfoFeld"
+        "aktionsSpende aktionsSpendeFeld"
+        "aktionsVeranstalter aktionsVeranstalterFeld"
+        ". fehlerVeranstalter"
+        "aktionsFoto aktionsFotoFeld"
+        "buttonzurueck  buttonSpeichern"
+        "space1 space1"
+    ;
+}
+
+.platzhalter {
+  grid-area: space1;
+  height:50px;
+}
+
+.eingabemaskeUeberschrift{
+    grid-area: eingabeUeb;
+    margin-top: 10%;
+}
+
+.item-aktionsname {
+    grid-area: aktionsName;
+
+}
+
+#eingabeAktionsname {
+    grid-area: aktionsNameFeld;
+    margin-left: 20px;
+    margin-bottom: 5px;
+}
+
+/***bei Falscher Eingabe erscheint der Fehlerbehebungstext unterhalb des eingabefeldes**/
+#eingabeAktionsname-error {
+    grid-area: fehlerName;
+    margin-left: 20px;
+    margin-bottom: 20px;
+}
+
+.item-aktionsort {
+    grid-area: aktionsOrt;
+}
+
+#eingabeOrt {
+    grid-area: aktionsOrtFeld;
+    margin-left: 20px;
+    margin-bottom: 5px;
+}
+
+
+
+.item-aktionsdatum {
+    grid-area: aktionsDatum;
+}
+
+#eingabeDatum {
+    grid-area: aktionsDatumFeld;
+    margin-left: 20px;
+    margin-bottom: 5px;
+}
+
+#eingabeDatum-error {
+    grid-area: fehlerDatum;
+    margin-left: 20px;
+    margin-bottom: 20px;
+}
+
+.item-aktionsinfo {
+    grid-area: aktionsInfo;
+}
+
+#eingabeAktionsinfo {
+    grid-area: aktionsInfoFeld;
+    margin-left: 20px;
+    margin-bottom: 5px;
+}
+
+
+.item-aktionsspende {
+    grid-area: aktionsSpende;
+}
+
+#eingabeSpendengeld {
+    grid-area: aktionsSpendeFeld;
+    margin-left: 20px;
+    margin-bottom: 5px;
+}
+
+
+
+.item-aktionsveranstalter {
+    grid-area: aktionsVeranstalter;
+}
+
+#eingabeVeranstalter {
+    grid-area: aktionsVeranstalterFeld;
+    margin-left: 20px;
+    margin-bottom: 5px;
+}
+
+#eingabeVeranstalter-error {
+    grid-area: fehlerVeranstalter;
+    margin-left: 20px;
+    margin-bottom: 20px;
+}
+
+.item-aktionsfoto {
+    grid-area: aktionsFoto;
+}
+
+#eingabeFoto {
+    grid-area: aktionsFotoFeld;
+    margin-left: 20px;
+    margin-bottom: 5px;
+    margin-bottom: 20px;
+}
+
+.eingabeButtonspeichern {
+    grid-area: buttonSpeichern;
+ 
+}
+
+
+
+
+
+/****Grid für LoginMaske*******/
+
+#logingrid {
+ 
+    margin-left: 50px;
+    background-color: var(--signal-color);
+    display: grid;
+    grid-template-columns: 20% 80%;
+    grid-template-rows: auto;
+    grid-template-areas:
+
+        "loginUeb loginUeb"
+        "labelBenutzer benutzerEingabe"
+        ". fehlerBenutzer"
+        "labelPasswort passwortEingabe"
+        ".fehlerPasswort"
+        ". buttonLogin";
+}
+
+
+.ueberschriftlogin {
+    grid-area: loginUeb;
+    font-size: 200%;
+    text-align: center;
+    color: var(--text-color-secondary);
+}
+
+
+
+.item-labelBenutzer {
+    grid-area: labelBenutzer;
+    font-weight: bold;
+    margin-left: 50px;
+    margin-top: 15px;
+    color: var(--text-color-secondary);
+}
+
+.item-labelPasswort {
+    grid-area: labelPasswort;
+    font-weight: bold;
+    margin-left: 50px;
+    margin-top: 15px;
+   color: var(--text-color-secondary);
+}
+
+#item-eingabeBenutzer {
+    grid-area: benutzerEingabe;
+
+}
+
+#item-eingabeBenutzer-error {
+    grid-area: fehlerBenutzer;
+}
+
+.item-eingabePasswort {
+    grid-area: passwortEingabe;
+    margin-bottom: 20px;
+}
+
+ #password-error {
+    grid-area: fehlerPasswort;
+}
+.loginButton {
+  grid-area: buttonLogin;
+}
+
+
+
+
+/***********************************mainAktionen werden gestyled:***********************/
+
+
+
+
+/********1. UeberschriftAktionenseite wird gestyled*************/
+.item-ueb {
+    font-size: 70px;
+    color:  var(--text-color-secondary);
+    margin-left: 50%;
+    margin-left: 30%;
+    margin-top: 15%;
+
+}
+
+/*********2. Bild auf aktionenseite wird gestyled******/
+.runbild {
+    width: 100%;
+
+
+}
+
+/********3. Aktionsbeschreibung wird gestyled***********/
+.aktionbeschreibung {
+    margin: 10%;
+    color:  var(--text-color-secondary);
+   
+
+}
+
+/**BKHV Bild style **/
+#bkhv {
+  width:20%;
+  margin-top: 20px;
+}
+
+/*****4. blauer Hintergrund hinter Aktionsbeschreibung*****/
+.square {
+    background-color: var(--signal-color);
+}
+
+
+/****5. Listenansicht wird gestyled*****/
+
+.item-n-value {
+    text-align: center;
+    font-size: 270%;
+    margin-bottom: 5%;
+ 
+}
+
+
+
+/***Fotos von Listenansicht wird gestyled*****/
+
+.fotogroesse {
+    width: 90%;
+    /***Ecken werden abgerundet*****/
+    border-radius: 15px 15px 15px 15px;
+    /****creme-farbener Rand um das Foto****/
+    border: 8px solid var(--secondary-signal-color);
+    position: absolute;
+    max-width: 500px;
+    margin-top: 75px;
+    max-height: 300px;
+    height: auto;
+    width: auto;
+
+}
+
+
+
+/**Informationstext unten wird gestyled**/
+.square2 {
+      background-color: var(--signal-color);
+}
+
+/**aktionAnmelden unten wird gestyled**/
+.aktionAnmelden {
+  margin: 5%;
+  color:  var(--text-color-secondary);
+  text-align: center;
+  list-style-type: none;
+
+}
+.aktionAnmelden a {
+  color: var(--text-color-secondary);
+}
+
+/*******Button größe wird eingestellt********/
+.anlegenButton {
+  width: 40px;
+  margin-left: 20px;
+
+
+
+}
+
+
+/*****Login und Eingabefelder werden größer angezeigt********/
+.gr {
+    padding: 15px 10px;
+    outline: none;
+    font-size: 14px;
+    width: 400px;
+    display: block;
+
+}
+
+
+
+/**Bei Falscher Eingabe: Validierung Schrift erscheint rot****/
+span.error {
+    color: #c20000;
+    font-size: 12px;
+}
+
+
+
+
+/****Eingabe Maske wird gestyled**********/
+
+.eingabemaskeUeberschrift {
+    font-size: 40px;
+  margin-left:20px;
+  color: var(--text-color-secondary);
+}
+
+.labelstyle {
+    font-weight: bold;
+    display: block;
+    margin: 10px 0px 10px 50px;
+    color: var(--text-color-secondary);
+}
+
+/** textarea bekommt schriftart/ wird eingestellt, dass man größe nicht ändern kann **/
+textarea {
+    resize: none;
+    font-family: 'Arial';
+
+}
+
+
+
+/****buttons werden gestyled****/
+/**loginbutton*/
+.loginButton {
+    width: 40%;
+    margin-bottom:20px;
+
+}
+
+/**eingabespeicherbutton wird gestyled + anderer style in gemeinsamer css  */
+.eingabeButtonspeichern {
+    width: 20%;
+    margin-left: 20px;
+    margin-bottom: 20px;
+
+}
+.eingabeButtonzurueck {
+  margin-left: 135px;;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  width: 15%;
+
+}
+
+
+/*****Sicherheitsabfrage wird gestyled*****/
+/**alertbild wird kleiner gemacht*/
+.alertbild {
+  width: 20%;
+}
+/**Aktionsname wird rot gemacht in sicherheitsabfrage*/
+#abfragename {
+  color:red;
+}
+
+
+/***aktive noch bei anderen machen!!!***/ 
+nav ul li a.active {
+    background: var(--signal-color);
+}
+
+/*** Header wird immer vorne angezeigt***/
+.navigation {
+	z-index: 9999;
+}
+
+
