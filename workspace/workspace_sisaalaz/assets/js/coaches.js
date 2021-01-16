@@ -13,12 +13,15 @@ var env = window.env = {
                 $('#indexView'),
                 $('#loginView'),
                 $('#anmeldungView'),
-                $('#coachListeView'),
+                $('#coachesListeView'),
                 $('#coachBearbeitenView'),
             ],
             current: null,
             show: function (viewName) {
-                this._views.map(function (view) {
+                this._views.map(function (view, index, arr) {
+                    if (!view.length) {
+                        console.error('view selector error at index:' + index, arr[index]);
+                    }
                     if ($(view).attr('id') === viewName) {
                         this.current = $(view);
                         this.current.removeClass('view-hidden');
@@ -55,7 +58,7 @@ var env = window.env = {
             });
 
             var url = env.apiUrl + '/auth/login';
-            
+
             $.post(url, postData)
                 .done(function (response) {
                     console.log(response);
