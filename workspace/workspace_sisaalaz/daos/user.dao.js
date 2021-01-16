@@ -1,4 +1,3 @@
-
 module.exports = {
 
     getAll: function (req, res, next) {
@@ -39,7 +38,8 @@ module.exports = {
                 .omit('passwort')
                 .run(function (err, results) {
                     if (err) return next(err);
-                    if (results.length === 0) return next(err);
+                    if (results.length === 0)
+                        return res.status(404).json({status: 404, message: 'user not found'});
                     return next(null, results[0]);
                 });
         };

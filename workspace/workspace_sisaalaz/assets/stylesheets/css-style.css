@@ -21,8 +21,8 @@ body {
     font-family: 'Poppins';
 }
 
-.view.view-hidden {
-    display: none !important;
+#viewContent .view.hidden {
+    display: none;
 }
 
 /*******navigation***********/

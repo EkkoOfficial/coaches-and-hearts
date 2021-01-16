@@ -9,9 +9,9 @@ module.exports = {
         });
     },
 
-    getAll: function (req, res, next) {
+    getAll: function (req, res) {
         coachDAO.getAll(req, res, function (err, data) {
-            if (err) return next(err);
+            if (err) return res.status(500).send(err);
             res.json(data);
         });
     },

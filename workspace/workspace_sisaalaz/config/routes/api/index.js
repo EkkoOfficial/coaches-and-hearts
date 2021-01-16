@@ -3,7 +3,7 @@ var router = express.Router();
 
 router.use('/auth', require('./auth.routes'));
 router.use('/user', require('./user.routes'));
-router.use('/coach', require('./coach.routes'));
+router.use('/coaches', require('./coach.routes'));
 
 router.get('/', function (req, res) {
     var route, routes = [];

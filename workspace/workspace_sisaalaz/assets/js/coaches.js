@@ -8,50 +8,40 @@ var env = window.env = {
         /**
          * view management
          */
-        var views = {
-            _views: [
-                $('#indexView'),
-                $('#loginView'),
-                $('#anmeldungView'),
-                $('#coachesListeView'),
-                $('#coachBearbeitenView'),
-            ],
-            current: null,
-            show: function (viewName) {
-                this._views.map(function (view, index, arr) {
-                    if (!view.length) {
-                        console.error('view selector error at index:' + index, arr[index]);
-                    }
-                    if ($(view).attr('id') === viewName) {
-                        this.current = $(view);
-                        this.current.removeClass('view-hidden');
-                    } else {
-                        $(view).addClass('view-hidden');
-                    }
-                });
-                window.sessionStorage.setItem('view', viewName);
-            },
-            init: function () {
-                if (window.sessionStorage.getItem('view')) {
-                    views.show(window.sessionStorage.getItem('view'));
+
+        var $views = $('#viewContent > .view');
+        $views.on('show', function (event) {
+            console.info('view', event.target.id);
+            $views.each(function (index, view) {
+                if (event.target === view) {
+                    $(view).removeClass('hidden');
+                    $(view).addClass('active');
+                    window.sessionStorage.setItem('view', view.id);
                 } else {
-                    views.show('indexView');
+                    $(view).addClass('hidden');
+                    $(view).removeClass('active');
                 }
-            }
-        };
-        views.init();
+            })
+        });
+
+        var storedView = window.sessionStorage.getItem('view');
+        if (storedView) {
+            $('#' + storedView).trigger('show');
+        } else {
+            $views.first().trigger('show');
+        }
 
         $('#logKnopf').click(function () {
-            views.show('loginView');
+            $('#loginView').trigger('show');
         });
 
         /**
          * loginForm
          */
         var $loginForm = $('#loginForm');
+
         $loginForm.submit(function (e) {
             e.preventDefault();
-
             var postData = {};
             $loginForm.serializeArray().forEach(function (field) {
                 postData[field.name] = field.value;
@@ -61,13 +51,15 @@ var env = window.env = {
 
             $.post(url, postData)
                 .done(function (response) {
-                    console.log(response);
-
+                    if (response.authenticated) {
+                        window.sessionStorage.setItem('user', JSON.stringify(response.user));
+                        window.user = response.user;
+                        $('#coachesListeView').trigger('show');
+                    }
                 })
                 .fail(function (error) {
-                    console.log(error);
-                });
 
+                });
         });
 
     });
