@@ -1,5 +1,5 @@
-/node_modules
-/.idea
+workspace/node_modules
+.idea
 .project
 .classpath
 .c9/
