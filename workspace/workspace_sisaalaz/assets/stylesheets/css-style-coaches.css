@@ -5,31 +5,67 @@
 ******************************************************************** -->*/
 
 /* ********** GESTALTUNGSRASTER mit GRID-Layout der kompletten Seite  *************/
-paket {
+#viewContent {
+    margin: 100px 10px 80px 10px;
+    display: block;
+    min-height: 80vh;
+    color: var(--text-color-primary);
+    background-color: var(--bg-color-primary);
+}
+
+
+
+.view.anmeldung-view{
+    background-color: var(--signal-color);
     display: grid;
-    grid-template-columns: 10% 10% 20% 20% 20% 10% 10%;
+    grid-template-columns: 5% 40% 40% 5%;
     grid-template-rows: auto;
-    /* Zeilenhöhe wird automatisch ermittelt*/
     grid-template-areas:
-        "nav nav nav nav nav nav nav "
-        "main main main main main main main "
-        "footer footer footer footer footer footer";
+            "border formHeader . border"
+            "border anmeldungLabel anmeldungInput border"
+            "border . anmeldungError"
 }
 
-/***********main *************/
+.formHeader{
+    grid-area: formHeader;
+}
 
-.grid-container {
+.formGroup label{
+    grid-area: anmeldungLabel;
+    margin-left: 20px;
+    background-color: var(--bg-color-primary);
+}
+.formGroup input{
+    grid-area: anmeldungInput;
+    margin-left: 20px;
+}
+.formGroup select{
+    grid-area: anmeldungInput;
+    margin-left: 20px;
+}
+
+
+
+
+#logingrid {
+    margin-top: 100px;
+    margin-left: 50px;
+    background-color: var(--signal-color);
     display: grid;
-    grid-template-columns: 33% 33%;
+    grid-template-columns: 20% 30% 30% 20%;
+    grid-template-rows: auto;
+    grid-template-areas:
 
-}
-.grid-container .col-left {
-    padding: 1.25em;
+        "border loginUeb loginUeb border"
+        "border labelBenutzer benutzerEingabe border"
+        "border . fehlerBenutzer border"
+        "border labelPasswort passwortEingabe border"
+        "border .fehlerPasswort border"
+        "border .buttonLogin border";
 }
 
-.grid-container > div {
 
+#logingrid input[type="submit"]{
+    grid-area: buttonLogin;
 }
-.grid-container .col-right {
 
-}

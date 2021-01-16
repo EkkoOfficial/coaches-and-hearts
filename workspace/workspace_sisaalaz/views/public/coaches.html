@@ -9,6 +9,7 @@
     <title>Coaches + Hearts</title>
     <meta charset="UTF-8"/>
     <link rel="stylesheet" href="assets/stylesheets/css-style.css">
+    <link rel="stylesheet" href="assets/stylesheets/css-style-coaches.css">
 
 </head>
 
@@ -43,49 +44,57 @@
 
 <main id="viewContent">
 
-    <div id="indexView"></div>
-    <div id="loginView">
+    <div class="view index-view" id="indexView"></div>
+    <div class="view login-view" id="loginView">
+        <!-- LOGINMASKE -->
 
-        <form action="javascript:einloggen()" method="post" id="validateForm">
-            <div id="logingrid">
+        <div id="loginMaske" class="view">
 
-                <h2 class="ueberschriftlogin">Logg dich ein!</h2>
+            <form action="javascript:einloggen()" method="post" id="validateForm">
+                <div id="logingrid">
 
-                <div class="item-labelBenutzer"><label>Benutzername</label></div>
-                <input id="item-eingabeBenutzer" type="text" name='benutzernameEingeben'
-                       placeholder="Benutzernamen eingeben"/>
+                    <h2 class="ueberschriftlogin">Logg dich ein!</h2>
 
-                <div class="item-labelPasswort"><label>Passwort</label></div>
-                <input id="password" class="item-eingabePasswort" type="password" name='passwortEingeben'
-                       placeholder="Passwort eingeben"/>
+                    <div class="item-labelBenutzer"><label>Benutzername</label></div>
+                    <input  id="item-eingabeBenutzer" type="text" name='benutzernameEingeben' placeholder="Benutzernamen eingeben" />
 
-                <input class="loginButton btn-grey" type="submit" value="Login" onclick="savelogin()"/>
+                    <div class="item-labelPasswort"> <label>Passwort</label></div>
+                    <input id="password" class="item-eingabePasswort" type="password" name='passwortEingeben' placeholder="Passwort eingeben" />
 
-            </div>
+                    <input class="loginButton btn-grey" type="submit" value="Login" onclick="savelogin()" />
+
+                </div>
 
 
-        </form>
-        <div class="platzhalter"></div>
+            </form>
+            <div class="platzhalter"></div>
+        </div>
+
     </div>
-    <div id="anmeldungView"></div>
-    <div id="coachListeView"></div>
-    <div id="coachBearbeitenView"></div>
+    <div class="view anmeldung-view" id="anmeldungView">
+        <h1 class="formHeader">Anmeldeformular</h1>
+        <div class="formPlaceholder"></div>
+
+    </div>
+    <div class="view coachesListe-view" id="coachesListeView"></div>
+    <div class="view coachBearbeiten-view" id="coachBearbeitenView"></div>
 
 </main>
+<!--
 
+    <div id="mainCoaches">
+        <div class="platzhalternav"></div>
+        <div id="liste" class="view item-Listenansicht">
+            <div>
+                <ul id="coaches">
 
-<div id="mainCoaches">
-    <div class="platzhalternav"></div>
-    <div id="liste" class="view item-Listenansicht">
-        <div>
-            <ul id="coaches">
-
-            </ul>
+                </ul>
+            </div>
         </div>
+
     </div>
 
-
-    <!-- EINGABEMASKE -->
+ EINGABEMASKE
     <button class="gr eingabeButtonzurueck btn-grey" onclick="coachesAnzeigen('coaches')">zurÃ¼ck</button>
     <form id="eingabe" class="view" action="">
 
@@ -111,11 +120,13 @@
 
 
         <div class="item-anrede labelstyle"><label>Spendengeld</label></div>
-        <input class="gr" id="eingabeSpendengeld" type="text" name='spendengeld' placeholder="Spendengeld eingeben"/>
+        <input class="gr" id="eingabeSpendengeld" type="text" name='spendengeld'
+               placeholder="Spendengeld eingeben"/>
 
 
         <div class="item-titel labelstyle"><label>Veranstalter</label></div>
-        <input class="gr" id="eingabeVeranstalter" type="text" name='veranstalter' placeholder="Veranstalter eingeben"/>
+        <input class="gr" id="eingabeVeranstalter" type="text" name='veranstalter'
+               placeholder="Veranstalter eingeben"/>
 
 
         <input class="gr btn-grey eingabeButtonspeichern" type="submit" value="Speichern" onclick="save()"/>
@@ -125,38 +136,37 @@
 
 
     <div class="platzhalter"></div>
-</div>
+
+    <div class="view view-hidden" id="coachesListe">
 
 
+    </div>
+-->
 
-<div class="view view-hidden" id="coachesListe">
-
-
-</div>
-
-
-<!-- Footer -->
-<footer>
+    <!-- Footer -->
+    <footer>
 
 
-    <nav>
+        <nav>
 
-        <ul>
-            <li><a href="umbau.html">Impressum</a></li>
-            <li><a href="umbau.html">Datenschutz</a></li>
-            <li><a href="umbau.html">Cookie-Einstellungen</a></li>
-            <li><a href="umbau.html">Widerrufsbelehrung</a></li>
-            <li><a href="umbau.html">AGB</a></li>
-        </ul>
-    </nav>
+            <ul>
+                <li><a href="umbau.html">Impressum</a></li>
+                <li><a href="umbau.html">Datenschutz</a></li>
+                <li><a href="umbau.html">Cookie-Einstellungen</a></li>
+                <li><a href="umbau.html">Widerrufsbelehrung</a></li>
+                <li><a href="umbau.html">AGB</a></li>
+            </ul>
+        </nav>
 
 
-</footer>
-<script src="assets/lib/jquery-3.5.1.min.js"></script>
-<script src="assets/lib/jquery.validate.min.js"></script>
-<script src="assets/lib/jquery-extensions.js"></script>
-<script src="assets/lib/jquery-ui-1.12.1/jquery-ui.min.js"></script>
-<script src="../../assets/js/coaches.js"></script>
+    </footer>
+    <script src="assets/lib/jquery-3.5.1.min.js"></script>
+    <script src="assets/lib/jquery.validate.min.js"></script>
+    <script src="assets/lib/jquery-extensions.js"></script>
+    <script src="assets/lib/jquery-ui-1.12.1/jquery-ui.min.js"></script>
+    <script src="../../assets/js/coaches.js"></script>
+    <script src="../../assets/js/coaches-anmeldung.form.js"></script>
+    <script src="../../assets/js/coaches-liste.js"></script>
 
 </body>
 </html>
