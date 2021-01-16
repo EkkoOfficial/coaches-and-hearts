@@ -1,7 +1,7 @@
 (function ($) {
     $(document).ready(function () {
 
-        function renderAnmeldenForm() {
+        function renderBearbeitenForm(coach) {
             var formular = [
                 {
                     label: 'Empfänger',
@@ -154,8 +154,8 @@
                 $divTag.addClass('formGroup');
 
                 var $labelTag = $(document.createElement('label'));
-                    $labelTag.text(formField.label + ':');
-                    $labelTag.attr('for',  'anmeldenForm-' + formField.name);
+                $labelTag.text(formField.label + ':');
+                $labelTag.attr('for',  'anmeldenForm-' + formField.name);
 
                 switch (formField.type) {
                     case 'submit':
@@ -183,18 +183,18 @@
                         $divTag.append($inputTag);
                         break;
                     case 'radio':
-                    formField.options.forEach(function (option, index){
-                        $labelTag = $(document.createElement('label'));
-                        $labelTag.attr('for', 'anmeldenForm-' + formField.name + index);
-                        $labelTag.text(option);
+                        formField.options.forEach(function (option, index){
+                            $labelTag = $(document.createElement('label'));
+                            $labelTag.attr('for', 'anmeldenForm-' + formField.name + index);
+                            $labelTag.text(option);
 
-                        var $inputTag = $(document.createElement('input'));
-                        $inputTag.attr('id', 'anmeldenForm-' + formField.name + index);
-                        $inputTag.attr('name', formField.name);
-                        $inputTag.attr('type', formField.type);
-                        $divTag.append($labelTag);
-                        $divTag.append($inputTag);
-                    });
+                            var $inputTag = $(document.createElement('input'));
+                            $inputTag.attr('id', 'anmeldenForm-' + formField.name + index);
+                            $inputTag.attr('name', formField.name);
+                            $inputTag.attr('type', formField.type);
+                            $divTag.append($labelTag);
+                            $divTag.append($inputTag);
+                        });
                         break;
                     default:
                         var $inputTag = $(document.createElement('input'));
@@ -215,6 +215,6 @@
             /*        $.post('', formular, succes, error); */
         }
 
-        renderAnmeldenForm();
+        renderBearbeitenForm();
     });
 })(jQuery)
