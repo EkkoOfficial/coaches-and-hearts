@@ -1,17 +1,10 @@
-/* *****************************************************************
-* Diese Datei gehört zum webeng-Musterprojekt                      *
-* Copyright (c) by Andrea Kohlhase                                 *
-* Licensed under GPL3, see http://www.gnu.org/licenses/gpl.html    *
-******************************************************************** */
-
-
-var coachDAO=require('../daos/coachesDAO.js');
+var coachDAO = require('../daos/coach.dao');
 
 module.exports = {
     
     get: function (req, res, next) {
         console.log("serviceCoaches.js --> get");
-        var data=buchDAO.get(req,res, function(err,data){
+        var data= buchDAO.get(req,res, function(err,data){
             if(err) return next(err);
             res.send(data);
         });
@@ -49,7 +42,7 @@ module.exports = {
             res.send(data);
             res.end();
         });
-    },
+    }
     
 };
 

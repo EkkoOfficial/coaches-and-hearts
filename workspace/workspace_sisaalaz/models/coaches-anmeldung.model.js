@@ -16,10 +16,6 @@ module.exports = function (orm, db) {
             ort: String,
             land: String,
             zahlungsmethode: {type: "object"}
-
-
-
-
         }
     )
 }

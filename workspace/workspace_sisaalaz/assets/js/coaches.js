@@ -1,7 +1,13 @@
+var env = window.env = {
+    apiUrl: 'http://localhost:8080/api'
+};
+
 (function ($) {
 
     $(document).ready(function () {
-
+        /**
+         * view management
+         */
         var views = {
             _views: [
                 $('#indexView'),
@@ -11,30 +17,53 @@
                 $('#coachBearbeitenView'),
             ],
             current: null,
-            show: function (viewName = 'indexView') {
+            show: function (viewName) {
                 this._views.map(function (view) {
                     if ($(view).attr('id') === viewName) {
-                        $(view).removeClass('view-hidden');
+                        this.current = $(view);
+                        this.current.removeClass('view-hidden');
                     } else {
                         $(view).addClass('view-hidden');
                     }
                 });
-
-                /*if (this.$_views.hasOwnProperty(viewName)) {
-                    this.$current = this.$_views[viewName];
+                window.sessionStorage.setItem('view', viewName);
+            },
+            init: function () {
+                if (window.sessionStorage.getItem('view')) {
+                    views.show(window.sessionStorage.getItem('view'));
                 } else {
-                    console.error('Error', 'view' + viewName + ' does not exist, switching to index');
-                    this.$current = this.$_views.index;
-                }*/
-
-                /*console.log();*/
+                    views.show('indexView');
+                }
             }
         };
-
-        views.show('loginView');
+        views.init();
 
         $('#logKnopf').click(function () {
+            views.show('loginView');
+        });
 
+        /**
+         * loginForm
+         */
+        var $loginForm = $('#loginForm');
+        $loginForm.submit(function (e) {
+            e.preventDefault();
+
+            var postData = {};
+            $loginForm.serializeArray().forEach(function (field) {
+                postData[field.name] = field.value;
+            });
+
+            var url = env.apiUrl + '/auth/login';
+            
+            $.post(url, postData)
+                .done(function (response) {
+                    console.log(response);
+
+                })
+                .fail(function (error) {
+                    console.log(error);
+                });
 
         });
 
