@@ -1,24 +1,20 @@
 module.exports = {
-    /**
-     * @param {number} coachId
-     * @returns {function(Request, Response, fn): void}
-     */
-    getById: function (coachId) {
-        return function (req, res, next) {
-            req.models.coach_anmeldung
-                .find({id: coachId}, function (err, data) {
-                    if (err) return next(err);
-                    if (data.length === 0) {
-                        console.log("Keinen Eintrag gefunden (id= " + req.params.id + ")");
-                        return next(err);
-                    } else {
-                        return next(null, data[0]);
-                    }
-                });
-        }
+
+    get: function (req, res, next) {
+        req.models.coaches
+            .find({id: req.params.coachId}, function (err, data) {
+                if (err) return next(err);
+                if (data.length === 0) {
+                    console.log("Keinen Eintrag gefunden (id= " + req.params.id + ")");
+                    return next(err);
+                } else {
+                    return next(null, data[0]);
+                }
+            });
     },
+
     getAll: function (req, res, next) {
-        req.models.coach_anmeldung.find(function (err, data) {
+        req.models.coaches.find(function (err, data) {
             if (err) return next(err);
             return next(null, data);
         });
@@ -50,7 +46,7 @@ module.exports = {
             + "\t mit empfaenger=" + myRequest.empfaenger + "!");
 
 
-        req.models.coach_anmeldung.find({
+        req.models.coaches.find({
             id: req.params.id
         }).each(function (coach) {
             //myRequest-Parameter lesbar, weil wir den urlencoded-body-parser eingebunden haben

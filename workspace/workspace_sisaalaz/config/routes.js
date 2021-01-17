@@ -7,6 +7,8 @@ var router = express.Router();
 module.exports = function (app, controllers) {
     app.get('/api/auth', controllers.auth.check);
     app.post('/api/login', controllers.auth.login);
+    app.get('/api/coaches', controllers.coaches.getAll);
+    app.get('/api/coaches/:coachId', controllers.coaches.get);
 }
 /*console.log(controllers);*/
 

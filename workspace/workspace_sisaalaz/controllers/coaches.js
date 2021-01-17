@@ -3,7 +3,7 @@ var coachDAO = require('../daos/coach.dao');
 module.exports = {
 
     get: function (req, res, next) {
-        coachDAO.getById(req.params.coachId)(req, res, function (err, data) {
+        coachDAO.get(req, res, function (err, data) {
             if (err) return next(err);
             res.json(data);
         });
