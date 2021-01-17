@@ -34,9 +34,7 @@ td{
 #viewContent .view.hidden {
     display: none;
 }
-img{
-    width: 10%;
-}
+
 
 #indexView{
     display:grid;
@@ -143,6 +141,43 @@ img{
     max-height: 20px;
     margin: 10px;
 }
+#coachesEditView > h1 {
+    color: var(--text-color-primary);
+    margin: 50px;
+    font-size: 40px;
+}
+
+#coachesEditForm {
+    width: border-box;
+    margin: 10px;
+    padding: 80px;
+    background-color: var(--bg-color-secondary);
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-template-rows: auto;
+
+}
+
+#coachesEditForm > label{
+    color: var(--bg-color-primary);
+    grid-column: 1 / 2;
+    margin: 10px;
+    max-width: 200px;
+    max-height: 20px;
+}
+#coachesEditForm > input{
+    grid-column: 2 / 2;
+    margin: 10px;
+    max-width: 200px;
+    max-height: 20px;
+}
+#coachesEditForm > select {
+    grid-column: 2 / 2;
+    max-width: 200px;
+    max-height: 20px;
+    margin: 10px;
+}
+
 
 .btn-blue{
     margin-top: 50px
