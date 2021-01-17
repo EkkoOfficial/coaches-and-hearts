@@ -9,6 +9,7 @@ module.exports = function (app, controllers) {
     app.post('/api/login', controllers.auth.login);
     app.get('/api/coaches', controllers.coaches.getAll);
     app.get('/api/coaches/:coachId', controllers.coaches.get);
+    app.delete('/api/coaches/:coachId', controllers.coaches.delete);
 }
 /*console.log(controllers);*/
 

@@ -26,7 +26,7 @@ module.exports = {
 
     update: function (req, res, next) {
         console.log("serviceCoaches.js --> update");
-        buchDAO.update(req, res, function (err, data) {
+        coachDAO.update(req, res, function (err, data) {
             if (err) return next(err);
             if (data) {
                 res.send(data)
@@ -38,7 +38,7 @@ module.exports = {
 
     delete: function (req, res, next) {
         console.log("serviceCoaches.js --> delete");
-        buchDAO.delete(req, res, function (err, data) {
+        coachDAO.delete(req, res, function (err, data) {
             if (err) return next(err);
             res.send(data);
             res.end();

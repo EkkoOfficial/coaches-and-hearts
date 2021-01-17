@@ -16,6 +16,10 @@ var env = window.env = {
                 return this._ajax('POST', url, data, extraOptions);
             },
 
+            _delete(url, extraOptions) {
+                return this._ajax('DELETE', url, null, extraOptions);
+            },
+
             _ajax: function (method, url, data, extraOptions) {
 
                 var options = Object.assign({
@@ -29,7 +33,6 @@ var env = window.env = {
                         console.log(error);
                     })
             }
-
         },
 
         login: function (credentials) {
@@ -57,7 +60,7 @@ var env = window.env = {
             return this._request._get(env.apiUrl + '/coaches');
         },
         deleteCoach(coachId) {
-
+            return this._request._delete(env.apiUrl + '/coaches/' + coachId);
         },
         getCoach(coachId) {
             return this._request._get(env.apiUrl + '/coaches/' + coachId);
@@ -181,7 +184,7 @@ var env = window.env = {
                 }
             ];
 
-            var $table = $('#coachesListTable');
+            var $table = $('#coachesListTable').html('');
 
             var $tr = $('<tr></tr>');
 
@@ -195,6 +198,18 @@ var env = window.env = {
 
             $table.append($tr);
 
+            if (coaches.length === 0) {
+
+                $table.append(
+                    $('<tr></tr>').append(
+                        $('<td></td>')
+                            .text('keine Einträge vorhanden')
+                            .attr('colspan', tableColumns.length)
+                    )
+                );
+
+            }
+
             coaches.forEach(function (coach) {
 
                 $tr = $('<tr></tr>');
@@ -206,7 +221,6 @@ var env = window.env = {
                     }
 
                     $tr.append($('<td></td>').text(coach[col.data]));
-
 
                 });
 
@@ -237,7 +251,9 @@ var env = window.env = {
 
                     $deleteButton.click(function (e) {
                         var id = $(e.currentTarget).attr('data-id');
-                        api.deleteCoach(id);
+                        api.deleteCoach(id).done(function (response) {
+                            $('#coachesListView').trigger('show');
+                        });
                     });
 
                     $td.append($editButton).append($deleteButton);
@@ -245,9 +261,7 @@ var env = window.env = {
                 }
 
                 $table.append($tr);
-
             });
-
 
         }
 
@@ -258,11 +272,264 @@ var env = window.env = {
      */
 
     $('#coachesEditView').on('show', function (event, data) {
-        console.log(data);
+
+        function renderCoachesEditForm(coach) {
+            var formular = [
+                {
+                    label: 'Empfänger',
+                    name: 'empfaenger',
+                    type: 'text',
+                    required: false,
+                    className: '',
+                    value: null
+                },
+                {
+                    label: 'Betrag',
+                    name: 'betrag',
+                    type: 'text',
+                    required: false,
+                    className: '',
+                    value: null
+                },
+                {
+                    label: 'Soll eine Quittung erstellt werden?',
+                    name: 'quittung',
+                    type: 'select',
+                    required: false,
+                    className: '',
+                    value: null,
+                    options: {
+                        'true': 'Ja',
+                        'false': 'Nein'
+                    }
+                },
+                {
+                    label: 'Anrede',
+                    name: 'anrede',
+                    type: 'select',
+                    required: false,
+                    className: '',
+                    value: null,
+                    options: ['Herr', 'Frau']
+                },
+                {
+                    label: 'Titel',
+                    name: 'titel',
+                    type: 'text',
+                    required: false,
+                    className: '',
+                    value: null
+                },
+                {
+                    label: 'Vorname',
+                    name: 'vorname',
+                    type: 'text',
+                    required: false,
+                    className: '',
+                    value: null
+                },
+                {
+                    label: 'Nachname',
+                    name: 'nachname',
+                    type: 'text',
+                    required: false,
+                    className: '',
+                    value: null
+                },
+                {
+                    label: 'Firma',
+                    name: 'firma',
+                    type: 'text',
+                    required: false,
+                    className: '',
+                    value: null
+                },
+                {
+                    label: 'Firmenzusatz',
+                    name: 'firmenzusatz',
+                    type: 'select',
+                    required: false,
+                    className: '',
+                    value: 'GbR',
+                    options: ['GbR', 'KG', 'e.V', 'AG', 'GmbH', 'gGmbH', 'GmbH & Co. KG', 'KGaA', 'andere']
+                },
+                {
+                    label: 'Email',
+                    name: 'email',
+                    type: 'text',
+                    required: false,
+                    className: '',
+                    value: null
+                },
+                {
+                    label: 'Straße',
+                    name: 'strasse',
+                    type: 'text',
+                    required: false,
+                    className: '',
+                    value: null
+                },
+                {
+                    label: 'Hausnummer',
+                    name: 'hausnummer',
+                    type: 'text',
+                    required: false,
+                    className: '',
+                    value: null
+                },
+                {
+                    label: 'Postleitzahl',
+                    name: 'plz',
+                    type: 'text',
+                    required: false,
+                    className: '',
+                    value: null
+                },
+                {
+                    label: 'Ort',
+                    name: 'ort',
+                    type: 'text',
+                    required: false,
+                    className: '',
+                    value: null
+                },
+                {
+                    label: 'Land',
+                    name: 'land',
+                    type: 'text',
+                    required: false,
+                    className: '',
+                    value: null
+                },
+                {
+                    label: 'Zahlungsmethode',
+                    name: 'zahlungsmethode',
+                    type: 'radio',
+                    required: false,
+                    className: '',
+                    value: null,
+                    options: ['PayPal', 'Lastschrift', 'Kreditkarte']
+                },
+                {
+                    name: 'anmelden',
+                    type: 'submit',
+                    label: 'Anmelden',
+                    required: false,
+                    className: '',
+                    value: null
+                },
+            ];
+
+            var $form = $('#coachesEditForm');
+
+            $.each(formular, function (index, formField) {
+
+                var $label, $input, $select, $div;
+
+                $div = $('<div></div>')
+                    .attr('class', formField.className)
+                    .addClass('formGroup');
+
+                if (formField.type === 'text') {
+
+                    $label = $('<label></label>')
+                        .text(formField.label + ':')
+                        .attr('for', 'coachEditForm-' + formField.name);
+
+                    $input = $('<input/>')
+                        .addClass('formInput')
+                        .attr('placeholder', formField.label + ' eingeben')
+                        .attr('id', 'coachEditForm-' + formField.name)
+                        .attr('type', formField.type)
+                        .attr('required', formField.required)
+                        .attr('value', coach[formField.name]);
+
+                    $div.append($input).append($label);
+                }
+
+                if (formField.type === 'select') {
+
+                    $label = $('<label></label>')
+                        .text(formField.label + ':')
+                        .attr('for', 'anmeldenForm-' + formField.name);
+
+                    $select = $('<select></select>')
+                        .addClass('formInput');
+
+                    /*formField.options.forEach(function (index, option) {
+
+                        console.log(index);
+                        console.log(option);
+                        $opt = $('<option></option>');
+                        $opt.attr('value', option);
+                        $opt.text(option);
+                        $select.append($opt);
+                    });*/
+
+                    $.each(formField.options, function (value, name) {
+                        $option = $('<option></option>');
+
+                        if (formField.options.length > 0) {
+                            value = name;
+                        }
+
+                        $option.attr('value', value);
+                        $option.text(name);
+
+                        if (value === coach[formField.name]) {
+                            $option.attr('selected', 'selected')
+                        }
+
+                        $select.append($option);
+                    });
+
+                    $div.append($label).append($select);
+
+                }
+
+                if (formField.type === 'submit') {
+                    $input = $('<button></button>')
+                        .addClass('btn-grey')
+                        .text(formField.label);
+                    $div.append($input);
+                }
+
+                if (formField.type === 'radio') {
+
+                    $.each(formField.options, function (value, name) {
+
+                        if (formField.options.length > 0) {
+                            value = name;
+                        }
+
+                        $label = $('<label></label>')
+                            .attr('for', 'coachEditForm-' + formField.name + value)
+                            .text(name);
+
+                        $input = $('<input />')
+                            .attr('id', 'coachEditForm-' + formField.name + value)
+                            .attr('name', formField.name)
+                            .attr('type', formField.type)
+                            .attr('value', coach[formField.name]);
+
+                        if (value === coach[formField.name]) {
+                            $input.attr('selected', 'selected');
+                        }
+
+                        $div.append($label).append($input);
+                    });
+                }
+
+
+                $form.append($div);
+            })
+
+        }
+
+
         api.getCoach(data.coachId).done(function (response) {
-
             console.log(response);
-
+            renderCoachesEditForm(response);
         });
 
     })

@@ -74,10 +74,10 @@ module.exports = {
         });
     },
     delete: function (req, res, next) {
-        console.log("coachesDAO.js --> delete (id=" + req.params.id + ")");
-        req.models.coach_anmeldung.find({id: req.params.id}).remove(function (err, data) {
+        console.log("coachesDAO.js --> delete (id=" + req.params.coachId + ")");
+        req.models.coaches.find({id: req.params.coachId}).remove(function (err, data) {
             if (err) return next(err);
-            console.log("\t Zeile entfernt (id= " + req.params.id + ")");
+            console.log("\t Zeile entfernt (id= " + req.params.coachId + ")");
             return next(null, data);
         });
     },
