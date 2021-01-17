@@ -16,7 +16,9 @@ var env = window.env = {
                 if (event.target === view) {
                     $(view).removeClass('hidden');
                     $(view).addClass('active');
-                    window.sessionStorage.setItem('view', view.id);
+                    window.history.pushState({
+                        view: event.target.id
+                    }, event.target.id);
                 } else {
                     $(view).addClass('hidden');
                     $(view).removeClass('active');
@@ -24,12 +26,20 @@ var env = window.env = {
             })
         });
 
-        var storedView = window.sessionStorage.getItem('view');
-        if (storedView) {
-            $('#' + storedView).trigger('show');
+        console.log(window.history.state);
+
+        if (window.history.state && window.history.state.view) {
+            $('#' + window.history.state.view).trigger('show');
         } else {
-            $views.first().trigger('show');
+            $('#indexView').trigger('show');
         }
+
+        /* var storedView = window.sessionStorage.getItem('view');
+         if (storedView) {
+             $('#' + storedView).trigger('show');
+         } else {
+             $views.first().trigger('show');
+         }*/
 
         $('#logKnopf').click(function () {
             $('#loginView').trigger('show');
@@ -47,7 +57,7 @@ var env = window.env = {
                 postData[field.name] = field.value;
             });
 
-            var url = env.apiUrl + '/auth/login';
+            var url = env.apiUrl + '/login';
 
             $.post(url, postData)
                 .done(function (response) {

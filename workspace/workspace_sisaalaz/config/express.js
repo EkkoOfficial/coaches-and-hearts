@@ -3,25 +3,20 @@ var logger = require('morgan');
 var error_handler = require('errorhandler');
 //Für geschützte Bereiche werden Sessions benutzt:
 var session = require('express-session');
+var path = require('path');
 
+module.exports = function (app, express) {
 
-module.exports = function(app, express) {
-    
     app.use(body_parser.urlencoded({
         extended: false
     }));
     //akoNew: parse application/json
     app.use(body_parser.json());
-    
+
     app.use(logger('dev'));
     app.use(error_handler());
 
-    /*app.use('/api', require('./routes/api/index'));*/
-
-    //app.use(express.static('/views/client-js'));
-    //app.use(express.static('/views/stylesheets'));
-    //app.use(express.static(__dirname + "/views/stylesheets/"));
-        
+    app.use('/', express.static(path.join(APP_ROOT_DIR, 'views')));
 
     //Ermöglicht verschlüsselte Sessions 
     app.use(session({
@@ -29,5 +24,5 @@ module.exports = function(app, express) {
         resave: true,
         saveUninitialized: true
     }));
-    
+
 };

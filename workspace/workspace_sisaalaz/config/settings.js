@@ -2,25 +2,26 @@ console.log("\n \n \n settings.js: \n Start des Servers beginnt ...")
 //Achtung: HNU-Arbeitsumgebung (bzw. lokal) benutzt den HNU-mySQL-Server 'guerillacamp.hs-neu-ulm.de' als dbHOST
 //var dbHost = process.env.HOST || 'guerillacamp.hs-neu-ulm.de';
 //         CODEANYWHERE benutzt eigenen Container-mySQL-Server als dbHOST
-var dbHost = process.env.HOST || 'localhost';
+var dbHost = process.env.DB_HOST || 'localhost';
 
 
 //Achtung: HNU-Arbeitsumgebung (bzw. lokal) benutzt Ihre selbstangelegte Datenbank WebEng-x 
 //var dbName = "WebEng-x";
 //         CODEANYWHERE benutzt vorkonfigurierte Datenbank WebEng
-var dbName = "WebEng";
+var dbName = process.env.DB_NAME || "WebEng";
 
 //Benutzer der mySQL-Datenbank
-var dbUser = 'root';
-dbUser=dbUser.substring(0,16);
+var dbUser = process.env.DB_USER || 'root';
+dbUser = dbUser.substring(0, 16);
 //Passwort für den root-User der mySQL-Datenbank an der HNU
-var dbPasswd="webeng";
+var dbPasswd = process.env.DB_PASS = "webeng";
 //Passwort für den root-User der mySQL-Datenbank lokal bei mir
 //var dbPasswd="WebEngStuff";
 
 //node.js-Server läuft bei HNU-Arbeitsumgebung (lokal) unter localhost:8080,
 //                     bei CODEANYWHERE auf eigenem Server
 var port = process.env.PORT || 8080;
+
 
 console.log("\t mySQL-Server: " + dbHost + "\n\t Datenbank: " + dbName + "\n\t User: " + dbUser);
 console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
@@ -32,7 +33,7 @@ console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 
 module.exports = {
     development: {
-        ip: dbHost, 
+        ip: dbHost,
         port: port,
         db: {
             host: dbHost,
