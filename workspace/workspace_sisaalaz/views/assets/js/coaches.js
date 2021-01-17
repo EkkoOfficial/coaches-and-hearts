@@ -28,7 +28,7 @@ var env = window.env = {
 
         console.log(window.history.state);
 
-        if (window.history.state && window.history.state.view) {
+ /*       if (window.history.state && window.history.state.view) {
             $('#' + window.history.state.view).trigger('show');
         } else {
             $('#indexView').trigger('show');

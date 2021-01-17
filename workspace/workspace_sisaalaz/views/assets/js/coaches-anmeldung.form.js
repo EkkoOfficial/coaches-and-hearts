@@ -145,13 +145,9 @@
                 },
             ]
 
-            var $form = $(document.createElement('form'));
+            var $form = $('#anmeldungForm');
 
             $.each(formular, function (index, formField) {
-
-                var $divTag = $(document.createElement('div'));
-                $divTag.attr('class', formField.className);
-                $divTag.addClass('formGroup');
 
                 var $labelTag = $(document.createElement('label'));
                     $labelTag.text(formField.label + ':');
@@ -161,8 +157,8 @@
                     case 'submit':
                         var $inputTag = $(document.createElement('button'));
                         $inputTag.text(formField.label);
-                        $inputTag.addClass('btn-grey');
-                        $divTag.append($inputTag);
+                        $inputTag.addClass('btn-blue');
+                        $form.append($inputTag);
                         break;
                     case 'select':
                         var $inputTag = $(document.createElement('select'));
@@ -179,8 +175,8 @@
                             $opt.text(option);
                             $inputTag.append($opt);
                         });
-                        $divTag.append($labelTag);
-                        $divTag.append($inputTag);
+                        $form.append($labelTag);
+                        $form.append($inputTag);
                         break;
                     case 'radio':
                     formField.options.forEach(function (option, index){
@@ -192,25 +188,23 @@
                         $inputTag.attr('id', 'anmeldenForm-' + formField.name + index);
                         $inputTag.attr('name', formField.name);
                         $inputTag.attr('type', formField.type);
-                        $divTag.append($labelTag);
-                        $divTag.append($inputTag);
+                        $form.append($labelTag);
+                        $form.append($inputTag);
                     });
                         break;
                     default:
                         var $inputTag = $(document.createElement('input'));
-                        $divTag.append($labelTag);
+                        $form.append($labelTag);
                         $inputTag.addClass('formInput');
                         $inputTag.attr('placeholder', formField.label + ' eingeben');
                         $inputTag.attr('id', 'anmeldenForm-' + formField.name);
                         $inputTag.attr('type', formField.type);
                         $inputTag.attr('required', formField.required);
-                        $divTag.append($inputTag);
+                        $form.append($inputTag);
                 }
 
-                $form.append($divTag);
-            })
+            });
 
-            $('#anmeldungView').append($form);
 
             /*        $.post('', formular, succes, error); */
         }

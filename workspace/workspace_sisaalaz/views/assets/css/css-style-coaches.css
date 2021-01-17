@@ -5,88 +5,25 @@
 ******************************************************************** -->*/
 
 /* ********** GESTALTUNGSRASTER mit GRID-Layout der kompletten Seite  *************/
-#indexView{
-    display: grid;
-    grid-template-columns: 5% 30% 30% 30% 5%;
-    grid-template-rows: auto;
-    grid-template-areas: ". mainImg mainImg mainImg ."
-                         ". . indexhead  . ."
-                         ". txt1 . img2 ."
-                         ". . txt2 .."
-                         ". img3 . txt3 ."
-                         ". txt4 . regBtn ."
-;
-}
-.indexCoachHeader{
-    grid-area: indexhead;
-    font-size: 100%;
-    margin: 0 auto;
-    color: var(--text-color-primary);
-}
-.indexCoachPic1{
-    grid-area: mainImg;
-    width: border-box;
-    position: relative;
-    margin: 0 auto;
-}
-.indexCoachPic2{
-    grid-area: img2;
-    width: border-box;
-    position: relative;
-    margin: 0 auto;
-}
-.indexCoachPic3{
-    grid-area: img3;
-    width: border-box;
-    position: relative;
-    margin: 0 auto;
-}
-
-.indexCoachText1{
-    grid-area: txt1;
-    width: available;
-    font-size: medium;
-    margin: 5px;
-    color: var(--text-color-primary);
+table{
     background-color: var(--signal-color);
-}
-.indexCoachText2{
-    grid-area: txt2;
-    width: available;
-    font-size: medium;
-    margin: 5px;
-    color: var(--text-color-primary);
-    background-color: var(--bg-color-primary);
-}
-.indexCoachText3{
-    grid-area: txt3;
-    width: available;
-    font-size: medium;
-    margin: 5px;
-    color: var(--text-color-primary);
-    background-color: var(--bg-color-primary);
-}
-.indexCoachText4{
-    grid-area: txt4;
-    width: available;
-    font-size: medium;
-    margin: 5px;
-    color: var(--text-color-primary);
-    background-color: var(--secondary-signal-color);
-}
-.indexButtonAnmelden{
-
+    margin: 50px 50px;
 }
 
+th{
+    font-size: 12px;
+}
+tr{
+    display: flex;
+    font-size: 10px;
+}
 
-
-
-
-
-
-
-
-
+th{
+    padding: 10px;
+}
+td{
+    padding: 10px
+}
 #viewContent {
     margin: 100px 10px 80px 10px;
     display: block;
@@ -94,38 +31,122 @@
     color: var(--text-color-primary);
     background-color: var(--bg-color-primary);
 }
+#viewContent .view.hidden {
+    display: none;
+}
+img{
+    width: 10%;
+}
 
-
-
-.view.anmeldung-view{
-    background-color: var(--signal-color);
-    display: grid;
-    grid-template-columns: 5% 40% 40% 5%;
+#indexView{
+    display:grid;
+    size: portrait;
+    grid-template-columns: 5% 30% 30% 30% 5%;
     grid-template-rows: auto;
-    grid-template-areas:
-            "border formHeader . border"
-            "border anmeldungLabel anmeldungInput border"
-            "border . anmeldungError"
+    grid-template-areas: ". img1 img1 img1 ."
+                         ". . header . ."
+                         ". txt1 . . ."
+                         ". . txt2 . ."
+                         ". . . txt3 ."
+                         ". . txt4 btn .";
+}
+.indexCoachHeader{
+    grid-area: header;
+    margin:  auto;
+    color: var(--text-color-primary);
+    font-size: 40px;
+}
+.indexCoachPic1{
+    grid-area: img1;
+    width: 2000%;
+}
+.indexCoachText1{
+    grid-area: txt1;
+    margin: 10px;
+    padding: 30px;
+    color: var(--text-color-primary);
+    background-color: var(--signal-color);
+}
+.indexCoachText2{
+    grid-area: txt2;
+    margin: 10px;
+    padding: 30px;
+    color: var(--text-color-primary);
+    background-color: var(--secondary-signal-color);
+}
+.indexCoachText3{
+    grid-area: txt3;
+
+    margin: 10px;
+    padding: 30px;
+    color: var(--text-color-primary);
+    background-color: var(--signal-color);
+}
+.indexCoachText4{
+    grid-area: txt4;
+    margin: 10px;
+    padding: 30px;
+    color: var(--text-color-primary);
+    background-color: var(--secondary-signal-color);
+}
+/*
+.indexCoachPic2{
+    grid-area: img1;
+    width: 20%;
+    position: center;
+}
+.indexCoachPic3{
+    grid-area: img1;
+    width: 20%;
+    position: center;
+}
+*/
+
+.indexButtonAnmelden{
+    grid-area: btn;
+    margin: auto;
 }
 
-.formHeader{
-    grid-area: formHeader;
+#anmeldungView > h1 {
+    color: var(--text-color-primary);
+    margin: 50px;
+    font-size: 40px;
 }
 
-.formGroup label{
-    grid-area: anmeldungLabel;
-    margin-left: 20px;
-    background-color: var(--bg-color-primary);
-}
-.formGroup input{
-    grid-area: anmeldungInput;
-    margin-left: 20px;
-}
-.formGroup select{
-    grid-area: anmeldungInput;
-    margin-left: 20px;
+#anmeldungForm {
+    width: border-box;
+    margin: 10px;
+    padding: 80px;
+    background-color: var(--bg-color-secondary);
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-template-rows: auto;
+
 }
 
+#anmeldungForm > label{
+    color: var(--bg-color-primary);
+    grid-column: 1 / 2;
+    margin: 10px;
+    max-width: 200px;
+    max-height: 20px;
+}
+#anmeldungForm > input{
+    grid-column: 2 / 2;
+    margin: 10px;
+    max-width: 200px;
+    max-height: 20px;
+}
+#anmeldungForm > select {
+    grid-column: 2 / 2;
+    max-width: 200px;
+    max-height: 20px;
+    margin: 10px;
+}
+
+.btn-blue{
+    margin-top: 50px
+}
 
 
 
@@ -149,5 +170,12 @@
 
 #logingrid input[type="submit"]{
     grid-area: buttonLogin;
+}
+#coachesListeView{
+   max-width: border-box;
+}
+#coachBearbeitenView{
+    max-width: border-box;
+
 }
 

@@ -21,9 +21,6 @@ body {
     font-family: 'Poppins';
 }
 
-#viewContent .view.hidden {
-    display: none;
-}
 
 /*******navigation***********/
 /*******Klassen umändern***********/
@@ -266,3 +263,5 @@ footer ul li a {
     color: #ffffff;
     text-decoration: none;
 }
+
+

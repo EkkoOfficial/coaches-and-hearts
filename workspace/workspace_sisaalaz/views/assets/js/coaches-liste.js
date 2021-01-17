@@ -3,22 +3,22 @@
 
         var coachesListe = [
             {
-                empfaenger: 'test-empfaenger',
-                betrag: 'test-betrag',
-                quittung: 'test-quittung',
-                anrede: 'test-anrede',
-                titel: 'test-titel',
-                vorname: 'test-vorname',
-                nachname: 'test-nachname',
-                firma: 'test-firma',
-                firmenzusatz: 'test-firmenzusatz',
-                email: 'test-email',
-                strasse: 'test-strasse',
-                hausnummer: 'test-hausnummer',
-                plz: 'test-plz',
-                ort: 'test-ort',
-                land: 'test-land',
-                zahlungsmethode: 'test-zahlungsmethode'
+                empfaenger: '',
+                betrag: '',
+                quittung: '',
+                anrede: '',
+                titel: '',
+                vorname: '',
+                nachname: '',
+                firma: '',
+                firmenzusatz: '',
+                email: '',
+                strasse: '',
+                hausnummer: '',
+                plz: '',
+                ort: '',
+                land: '',
+                zahlungsmethode: ''
             }
         ]
 
