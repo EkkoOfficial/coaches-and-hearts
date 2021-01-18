@@ -2,6 +2,14 @@ var env = window.env = {
     apiUrl: 'http://localhost:8080/api'
 };
 
+function formArrayToObject(arr) {
+    var obj = {};
+    arr.forEach(function (field) {
+        obj[field.name] = field.value;
+    });
+    return obj;
+}
+
 (function ($) {
 
     var api = {
@@ -32,6 +40,9 @@ var env = window.env = {
                     .fail(function (error) {
                         console.log(error);
                     })
+            },
+            _put(url, data, extraOptions) {
+                return this._ajax('PUT', url, data, extraOptions);
             }
         },
 
@@ -64,6 +75,9 @@ var env = window.env = {
         },
         getCoach(coachId) {
             return this._request._get(env.apiUrl + '/coaches/' + coachId);
+        },
+        updateCoach(coachId, data) {
+            return this._request._put(env.apiUrl + '/coaches/' + coachId, data);
         }
     }
 
@@ -79,11 +93,7 @@ var env = window.env = {
 
         $loginForm.submit(function (e) {
             e.preventDefault();
-            var postData = {};
-            $loginForm.serializeArray().forEach(function (field) {
-                postData[field.name] = field.value;
-            });
-
+            var postData = formArrayToObject($loginForm.serializeArray());
             api.login(postData).done(function (response) {
                 console.log(response);
                 if (response.authenticated) {
@@ -274,6 +284,7 @@ var env = window.env = {
     $('#coachesEditView').on('show', function (event, data) {
 
         function renderCoachesEditForm(coach) {
+
             var formular = [
                 {
                     label: 'Empfänger',
@@ -413,7 +424,7 @@ var env = window.env = {
                 {
                     name: 'anmelden',
                     type: 'submit',
-                    label: 'Anmelden',
+                    label: 'Speichern',
                     required: false,
                     className: '',
                     value: null
@@ -434,27 +445,34 @@ var env = window.env = {
 
                     $label = $('<label></label>')
                         .text(formField.label + ':')
-                        .attr('for', 'coachEditForm-' + formField.name);
+                        .attr('for', 'coachEditForm' + formField.name);
 
                     $input = $('<input/>')
                         .addClass('formInput')
+                        .attr('name', formField.name)
                         .attr('placeholder', formField.label + ' eingeben')
-                        .attr('id', 'coachEditForm-' + formField.name)
+                        .attr('id', 'coachEditForm' + formField.name)
                         .attr('type', formField.type)
                         .attr('required', formField.required)
                         .attr('value', coach[formField.name]);
 
-                    $div.append($input).append($label);
+                    $div
+                        .append($label)
+                        .append($input);
                 }
 
                 if (formField.type === 'select') {
 
                     $label = $('<label></label>')
                         .text(formField.label + ':')
-                        .attr('for', 'anmeldenForm-' + formField.name);
+                        .attr('for', 'coachEditForm' + formField.name);
 
                     $select = $('<select></select>')
-                        .addClass('formInput');
+                        .addClass('formInput')
+                        .attr('id', 'coachEditForm' + formField.name)
+                        .attr('name', formField.name)
+                        .attr('required', formField.required)
+                    ;
 
                     /*formField.options.forEach(function (index, option) {
 
@@ -503,11 +521,11 @@ var env = window.env = {
                         }
 
                         $label = $('<label></label>')
-                            .attr('for', 'coachEditForm-' + formField.name + value)
+                            .attr('for', 'coachEditForm' + formField.name + value)
                             .text(name);
 
                         $input = $('<input />')
-                            .attr('id', 'coachEditForm-' + formField.name + value)
+                            .attr('id', 'coachEditForm' + formField.name + value)
                             .attr('name', formField.name)
                             .attr('type', formField.type)
                             .attr('value', coach[formField.name]);
@@ -522,13 +540,20 @@ var env = window.env = {
 
 
                 $form.append($div);
-            })
+            });
+
+            $form.submit(function (e) {
+                e.preventDefault();
+                var data = formArrayToObject($form.serializeArray());
+                api.updateCoach(coach.id, data).done(function (response) {
+                    $('#coachesListView').trigger('show');
+                });
+            });
 
         }
 
 
         api.getCoach(data.coachId).done(function (response) {
-            console.log(response);
             renderCoachesEditForm(response);
         });
 

@@ -10,6 +10,7 @@ module.exports = function (app, controllers) {
     app.get('/api/coaches', controllers.coaches.getAll);
     app.get('/api/coaches/:coachId', controllers.coaches.get);
     app.delete('/api/coaches/:coachId', controllers.coaches.delete);
+    app.put('/api/coaches/:coachId', controllers.coaches.update);
 }
 /*console.log(controllers);*/
 

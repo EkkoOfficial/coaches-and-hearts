@@ -18,7 +18,7 @@ module.exports = {
 
     create: function (req, res, next) {
         console.log("serviceCoaches.js --> create");
-        buchDAO.create(req, res, function (err, data) {
+        coachDAO.create(req, res, function (err, data) {
             if (err) return next(err);
             res.send(data);
         });
@@ -28,11 +28,7 @@ module.exports = {
         console.log("serviceCoaches.js --> update");
         coachDAO.update(req, res, function (err, data) {
             if (err) return next(err);
-            if (data) {
-                res.send(data)
-            } else {
-                res.end();
-            }
+            res.json(data);
         });
     },
 
