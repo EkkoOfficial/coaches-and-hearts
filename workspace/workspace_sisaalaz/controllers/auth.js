@@ -49,7 +49,6 @@ module.exports = {
 
     requireLogin: function () {
         return function (req, res, next) {
-            return next();
             if (req.session.user) {
                 return next();
             }
@@ -60,15 +59,12 @@ module.exports = {
         }
     },
 
-    requireRole: function (roles) {
-        if (typeof roles === 'string') {
-            roles = [roles];
-        }
+    requireRole: function (role) {
         return function (req, res, next) {
-            if (req.session.user && roles.includes(req.session.user.role)) {
-                next();
+            if (req.session.user.role === role) {
+                return next();
             }
-            res.status(401).json({
+            return res.status(401).json({
                 status: 401,
                 message: 'Unauthorized'
             });
