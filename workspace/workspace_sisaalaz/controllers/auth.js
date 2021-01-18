@@ -37,6 +37,42 @@ module.exports = {
                 user: user
             });
         });
+    },
+
+    logout: function (req, res, next) {
+        delete req.session.user;
+        res.json({
+            authenticated: false,
+            user: null
+        });
+    },
+
+    requireLogin: function () {
+        return function (req, res, next) {
+            return next();
+            if (req.session.user) {
+                return next();
+            }
+            return res.status(401).json({
+                status: 401,
+                message: 'Unauthorized'
+            });
+        }
+    },
+
+    requireRole: function (roles) {
+        if (typeof roles === 'string') {
+            roles = [roles];
+        }
+        return function (req, res, next) {
+            if (req.session.user && roles.includes(req.session.user.role)) {
+                next();
+            }
+            res.status(401).json({
+                status: 401,
+                message: 'Unauthorized'
+            });
+        };
     }
 
 }

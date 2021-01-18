@@ -22,7 +22,6 @@ module.exports = function (orm, db) {
     if (process.env.MODE === 'development') {
 
         db.driver.execQuery('truncate table coaches', function (err, data) {
-            if (err) throw err;
             coaches.create({
                 empfaenger: 'Radio7',
                 betrag: 100,
@@ -39,14 +38,11 @@ module.exports = function (orm, db) {
                 plz: 'test-plz',
                 ort: 'Blaustein',
                 land: 'Deutschland',
-                zahlungsmethode: {
-                    name: 'PayPal',
-                    transactionId: '12N17240XG8953826'
-                }
+                zahlungsmethode: 'PayPal'
             }, function (err, data) {
-                if (err) throw err;
             });
         });
+
     }
 
 

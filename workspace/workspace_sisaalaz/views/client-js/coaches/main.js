@@ -47,7 +47,25 @@ function formArrayToObject(arr) {
         },
 
         login: function (credentials) {
-            return this._request._post(env.apiUrl + '/login', credentials);
+            return this._request._post(env.apiUrl + '/login', credentials)
+                .done(function (response) {
+                    if (response.authenticated) {
+                        window.user = response.user;
+                    } else {
+                        window.user = null;
+                    }
+                })
+                .fail(function (error) {
+                    alert(error.responseJSON.message);
+                });
+        },
+
+        logout: function () {
+            return this._request._post(env.apiUrl + '/logout')
+                .done(function (response) {
+                    window.user = null;
+                    $('#indexView').trigger('show');
+                });
         },
 
         authenticate: function () {
@@ -78,6 +96,9 @@ function formArrayToObject(arr) {
         },
         updateCoach(coachId, data) {
             return this._request._put(env.apiUrl + '/coaches/' + coachId, data);
+        },
+        createCoach(data) {
+            return this._request._post(env.apiUrl + '/coaches', data);
         }
     }
 
@@ -282,6 +303,9 @@ function formArrayToObject(arr) {
      */
 
     $('#coachesEditView').on('show', function (event, data) {
+        if (!api.authenticate()) {
+            return;
+        }
 
         function renderCoachesEditForm(coach) {
 
@@ -474,15 +498,6 @@ function formArrayToObject(arr) {
                         .attr('required', formField.required)
                     ;
 
-                    /*formField.options.forEach(function (index, option) {
-
-                        console.log(index);
-                        console.log(option);
-                        $opt = $('<option></option>');
-                        $opt.attr('value', option);
-                        $opt.text(option);
-                        $select.append($opt);
-                    });*/
 
                     $.each(formField.options, function (value, name) {
                         $option = $('<option></option>');
@@ -559,6 +574,275 @@ function formArrayToObject(arr) {
 
     })
 
+    /**
+     * indeView
+     */
+    $('#indexView').on('show', function () {
+
+        $('#indexViewAnmeldenButton').click(function () {
+            $('#coachesAnmeldungView').trigger('show');
+        });
+
+    });
+
+    /**
+     * coachesAnemldenView
+     */
+    $('#coachesAnmeldungView').on('show', function () {
+
+        function renderCoachesAnmeldungForm() {
+
+            var formular = [
+                {
+                    label: 'Empfänger',
+                    name: 'empfaenger',
+                    type: 'text',
+                    required: false,
+                    className: '',
+                    value: null
+                },
+                {
+                    label: 'Betrag',
+                    name: 'betrag',
+                    type: 'text',
+                    required: false,
+                    className: '',
+                    value: null
+                },
+                {
+                    label: 'Soll eine Quittung erstellt werden?',
+                    name: 'quittung',
+                    type: 'select',
+                    required: false,
+                    className: '',
+                    value: null,
+                    options: {
+                        'true': 'Ja',
+                        'false': 'Nein'
+                    }
+                },
+                {
+                    label: 'Anrede',
+                    name: 'anrede',
+                    type: 'select',
+                    required: false,
+                    className: '',
+                    value: null,
+                    options: ['Herr', 'Frau']
+                },
+                {
+                    label: 'Titel',
+                    name: 'titel',
+                    type: 'text',
+                    required: false,
+                    className: '',
+                    value: null
+                },
+                {
+                    label: 'Vorname',
+                    name: 'vorname',
+                    type: 'text',
+                    required: false,
+                    className: '',
+                    value: null
+                },
+                {
+                    label: 'Nachname',
+                    name: 'nachname',
+                    type: 'text',
+                    required: false,
+                    className: '',
+                    value: null
+                },
+                {
+                    label: 'Firma',
+                    name: 'firma',
+                    type: 'text',
+                    required: false,
+                    className: '',
+                    value: null
+                },
+                {
+                    label: 'Firmenzusatz',
+                    name: 'firmenzusatz',
+                    type: 'select',
+                    required: false,
+                    className: '',
+                    value: 'GbR',
+                    options: ['GbR', 'KG', 'e.V', 'AG', 'GmbH', 'gGmbH', 'GmbH & Co. KG', 'KGaA', 'andere']
+                },
+                {
+                    label: 'Email',
+                    name: 'email',
+                    type: 'text',
+                    required: false,
+                    className: '',
+                    value: null
+                },
+                {
+                    label: 'Straße',
+                    name: 'strasse',
+                    type: 'text',
+                    required: false,
+                    className: '',
+                    value: null
+                },
+                {
+                    label: 'Hausnummer',
+                    name: 'hausnummer',
+                    type: 'text',
+                    required: false,
+                    className: '',
+                    value: null
+                },
+                {
+                    label: 'Postleitzahl',
+                    name: 'plz',
+                    type: 'text',
+                    required: false,
+                    className: '',
+                    value: null
+                },
+                {
+                    label: 'Ort',
+                    name: 'ort',
+                    type: 'text',
+                    required: false,
+                    className: '',
+                    value: null
+                },
+                {
+                    label: 'Land',
+                    name: 'land',
+                    type: 'text',
+                    required: false,
+                    className: '',
+                    value: null
+                },
+                {
+                    label: 'Zahlungsmethode',
+                    name: 'zahlungsmethode',
+                    type: 'radio',
+                    required: false,
+                    className: '',
+                    value: null,
+                    options: ['PayPal', 'Lastschrift', 'Kreditkarte']
+                },
+                {
+                    name: 'anmelden',
+                    type: 'submit',
+                    label: 'Speichern',
+                    required: false,
+                    className: '',
+                    value: null
+                },
+            ];
+
+            var $form = $('#coachesAnmeldungForm');
+
+            $.each(formular, function (index, formField) {
+
+                var $label, $input, $select, $div;
+
+                $div = $('<div></div>')
+                    .attr('class', formField.className)
+                    .addClass('formGroup');
+
+                if (formField.type === 'text') {
+
+                    $label = $('<label></label>')
+                        .text(formField.label + ':')
+                        .attr('for', 'coachAnmeldungForm' + formField.name);
+
+                    $input = $('<input/>')
+                        .addClass('formInput')
+                        .attr('name', formField.name)
+                        .attr('placeholder', formField.label + ' eingeben')
+                        .attr('id', 'coachAnmeldungForm' + formField.name)
+                        .attr('type', formField.type)
+                        .attr('required', formField.required);
+
+                    $div
+                        .append($label)
+                        .append($input);
+                }
+
+                if (formField.type === 'select') {
+
+                    $label = $('<label></label>')
+                        .text(formField.label + ':')
+                        .attr('for', 'coachAnmeldungForm' + formField.name);
+
+                    $select = $('<select></select>')
+                        .addClass('formInput')
+                        .attr('id', 'coachAnmeldungForm' + formField.name)
+                        .attr('name', formField.name)
+                        .attr('required', formField.required)
+                    ;
+
+
+                    $.each(formField.options, function (value, name) {
+                        $option = $('<option></option>');
+
+                        if (formField.options.length > 0) {
+                            value = name;
+                        }
+
+                        $option.attr('value', value);
+                        $option.text(name);
+
+
+                        $select.append($option);
+                    });
+
+                    $div.append($label).append($select);
+
+                }
+
+                if (formField.type === 'submit') {
+                    $input = $('<button></button>')
+                        .addClass('btn-grey')
+                        .text(formField.label);
+                    $div.append($input);
+                }
+
+                if (formField.type === 'radio') {
+
+                    $.each(formField.options, function (value, name) {
+
+                        if (formField.options.length > 0) {
+                            value = name;
+                        }
+
+                        $label = $('<label></label>')
+                            .attr('for', 'coachAnmeldungForm' + formField.name + value)
+                            .text(name);
+
+                        $input = $('<input />')
+                            .attr('id', 'coachAnmeldungForm' + formField.name + value)
+                            .attr('name', formField.name)
+                            .attr('type', formField.type);
+
+
+                        $div.append($label).append($input);
+                    });
+                }
+
+
+                $form.append($div);
+            });
+
+            $form.submit(function (e) {
+                e.preventDefault();
+                var data = formArrayToObject($form.serializeArray());
+                api.createCoach(data).done(function (response) {
+                    $('#indexView').trigger('show');
+                });
+            });
+        }
+
+        renderCoachesAnmeldungForm();
+    });
 
     $(document).ready(function () {
         /**
@@ -575,13 +859,28 @@ function formArrayToObject(arr) {
 
             data.view = event.currentTarget.id;
             window.history.replaceState(data, event.currentTarget.id, window.location.url);
+            renderLogKnopf();
         });
 
         $('#indexView').trigger('show');
 
-        $('#logKnopf').click(function () {
-            $('#loginView').trigger('show');
-        });
+        function renderLogKnopf() {
+
+            $('#logKnopf').click(function () {
+                if (!window.user) {
+                    $('#loginView').trigger('show');
+                } else {
+                    api.logout();
+
+                }
+            });
+
+            if (!window.user) {
+                $('#logKnopf').text('Einloggen');
+            } else {
+                $('#logKnopf').text('Ausloggen');
+            }
+        }
 
     });
 

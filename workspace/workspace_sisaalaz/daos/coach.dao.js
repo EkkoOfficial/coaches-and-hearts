@@ -21,7 +21,10 @@ module.exports = {
     },
     create: function (req, res, next) {
         console.log("coachesDAO.js --> create");
-        req.models.coach_anmeldung.create(req.body, function (err, data) {
+
+        var data = {};
+        Object.assign(data, req.body);
+        req.models.coaches.create(data, function (err, data) {
             if (err) return next(err);
             console.log("\t Zeile angelegt (id= " + data.id + ")");
             return next(null, data);
